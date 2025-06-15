@@ -66,12 +66,10 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
     'https://abren-coffee-production-uzfs.vercel.app',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
     'https://abren-coffee-production-uzfs.vercel.app',
 ]
 
@@ -91,7 +89,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 CORS_ALLOW_CREDENTIALS = True
 
 SESSION_COOKIE_SAMESITE = "Lax"  # or "None" if cross-domain
-SESSION_COOKIE_SECURE = False    # Set to True only on HTTPS
+SESSION_COOKIE_SECURE = True    # Set to True only on HTTPS
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 1 week
 SESSION_SAVE_EVERY_REQUEST = True
