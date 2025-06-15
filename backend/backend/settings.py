@@ -66,6 +66,7 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    'https://abren-coffee-production-uzfs.vercel.app/',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
