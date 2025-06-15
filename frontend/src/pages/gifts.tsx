@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import './Gifts.css';
+import './gifts.css';
 import { FaStar } from 'react-icons/fa';
 
 import img from '../assets/images/bag-coffee-beans-bag-coffee-beans_962508-6092.jpg';
