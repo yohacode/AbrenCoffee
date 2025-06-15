@@ -29,9 +29,12 @@ SECRET_KEY = 'django-insecure-(4$s)zum6g_o#_)7@4q#va(#5p46bh#qy8_l$*t1)_5q#8=-e-
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'https://abren-coffee-production.onrender.com',
-    'https://abren-coffee-production-uzfs.vercel.app',
+    "abrencoffeeproduction.onrender.com",
+    "www.abrencoffeeproduction.onrender.com",
 ]
+
+# ✅ Let Django trust that Render handles HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
@@ -67,12 +70,12 @@ INSTALLED_APPS = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'https://abren-coffee-production-uzfs.vercel.app',
-    'https://*.vercel.app',  # for preview branches (optional)
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
     'https://abren-coffee-production-uzfs.vercel.app',
+    "https://abrencoffeeproduction.onrender.com",
     'https://*.vercel.app',
 ]
 
