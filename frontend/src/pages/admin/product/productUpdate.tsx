@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from '../../../utils/axios';
 import { toast } from 'react-toastify';
-import './ProductUpdate.css'; // Import external CSS
+import './productUpdate.css'; // Import external CSS
 
 interface Product {
   id: string;
