@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'c1ca-196-190-62-67.ngrok-free.app',
+    'abren-coffee-production.onrender.com',
 ]
 
 load_dotenv()
@@ -66,12 +67,12 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    'https://abren-coffee-production-uzfs.vercel.app/',
+    'https://abren-coffee-production-uzfs.vercel.app',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
-    'https://abren-coffee-production-uzfs.vercel.app/',
+    'https://abren-coffee-production-uzfs.vercel.app',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -94,6 +95,10 @@ SESSION_COOKIE_SECURE = False    # Set to True only on HTTPS
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 1 week
 SESSION_SAVE_EVERY_REQUEST = True
+
+if not DEBUG:
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 from datetime import timedelta
 
