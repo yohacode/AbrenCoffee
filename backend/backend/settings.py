@@ -28,7 +28,10 @@ SECRET_KEY = 'django-insecure-(4$s)zum6g_o#_)7@4q#va(#5p46bh#qy8_l$*t1)_5q#8=-e-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "http://localhost:5173").split(",")
+ALLOWED_HOSTS = [
+    'https://abren-coffee-production.onrender.com',
+    'https://abren-coffee-production-uzfs.vercel.app',
+]
 
 # Application definition
 
