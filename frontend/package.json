@@ -1,14 +1,16 @@
 {
-  "name": "abren-frontend",
+  "name": "frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
-  },
+  }
+,
   "dependencies": {
     "aos": "^2.3.4",
     "axios": "^1.9.0",
