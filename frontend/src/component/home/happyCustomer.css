@@ -35,6 +35,16 @@
   color: #fff;
 }
 
+.card::after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000c8;
+  z-index: 0;
+}
+
 .card img {
   width: 13em;
   height: 13em;
