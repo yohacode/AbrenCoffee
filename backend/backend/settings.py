@@ -33,9 +33,6 @@ ALLOWED_HOSTS = [
     "www.abrencoffeeproduction.onrender.com",
 ]
 
-# ✅ Let Django trust that Render handles HTTPS
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -76,7 +73,6 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
     'https://abren-coffee-production-uzfs.vercel.app',
     "https://abrencoffeeproduction.onrender.com",
-    'https://*.vercel.app',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
