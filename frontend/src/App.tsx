@@ -19,7 +19,6 @@ const Logout = lazy(() => import('./pages/logout'));
 const Register = lazy(() => import('./pages/register'));
 const Services = lazy(() => import('./pages/services'));
 const Subscription = lazy(() => import('./pages/subscription'));
-const Gifts = lazy(() => import('./pages/gifts'));
 
 const Shop = lazy(() => import('./pages/shop/shop'));
 const SingleProduct = lazy(() => import('./pages/shop/signleProduct'));
@@ -113,7 +112,6 @@ const App = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/services" element={<Services />} />
               <Route path="/subscription" element={<Subscription />} />
-              <Route path="/gifts" element={<Gifts />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/product/:id" element={<SingleProduct handleAddToCart={(product) => console.log('Add to cart:', product)} />} />
               <Route path="/checkout" element={<Checkout />} />

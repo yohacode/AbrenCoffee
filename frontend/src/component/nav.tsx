@@ -176,8 +176,7 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
             {products.map((product) => (
                 <div className="product-nav-img" key={product.id}>
                   <img src={product.image} alt="" />
-                </div>
-              
+                </div>             
             ))}
           </div>
         ) : (
