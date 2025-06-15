@@ -9,6 +9,11 @@
   overflow: hidden;
 }
 
+.one-half{
+  width: 100%;
+  margin: auto;
+}
+
 /* Image Half */
 .one-half.img {
   flex: 1;
@@ -25,17 +30,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3rem;
   color: #fff;
 }
 
+.overlap{
+  width: 100%;
+}
 /* Glass Effect */
 .glass-effect {
+  width: 100%;
   background: rgba(255, 255, 255, 0.066);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1rem;
   color: #fff;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
@@ -68,6 +76,7 @@
   font-size: 16px;
   line-height: 1.8;
   color: #bdbdbd;
+  text-align: justify;
 }
 
 /* Animation Placeholder */
@@ -90,13 +99,18 @@
 @media (max-width: 768px) {
   .ftco-about {
     flex-direction: column;
+    width: 100%;
+  }
+
+  .overlap{
+    width: 100%;
   }
 
   .one-half.img {
-    min-height: 300px;
+    height: 60vh;
   }
 
   .one-half.ftco-animate {
-    padding: 2rem;
+    padding: 0rem;
   }
 }

@@ -24,13 +24,12 @@ section {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  padding: 2em;
   flex-wrap: wrap;
   z-index: -50;
 }
 
 .ftco-counter {
-  padding: 7em 0;
+  padding: 7em;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -82,7 +81,7 @@ section {
   gap: 3em;
   margin: auto;
   width: 100%;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 .counter-wrap {
@@ -127,7 +126,7 @@ section {
 
 @media (max-width: 768px) {
   .ftco-counter {
-    padding: 4em 1em;
+    padding: 4em;
   }
 
   .row {
@@ -138,7 +137,7 @@ section {
 
 @media (max-width: 576px) {
   .counter-wrap {
-    max-width: 90%;
+    max-width: 100%;
   }
 
   .ftco-counter .text strong.number {

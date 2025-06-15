@@ -39,7 +39,8 @@ const Home: React.FC = () => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 transition: 'background-image 1s ease-in-out',
-            }}>
+                }}
+            >
                 <span className="mb-4">Abren Coffee</span>
                 <p className="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                 <Link to={'/shop'} className="shop-button">
