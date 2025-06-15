@@ -1,0 +1,114 @@
+ .trending-products {
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+    background: #edecec00;
+    width: 100%;
+    padding: 2em;
+    color: #000;
+  }
+
+  .trending-products h1{
+    color: #ffffff;
+  }
+  
+  .trending-products .product_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+    text-align: center;
+  }
+  
+  .trending-products .product_container .product_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vh;
+    background: #edecec00;
+    color: #000;
+    padding: .5em;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .trending-products .product_container .product_card.anime{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vh;
+    background: #edecec00;
+    color: #ffffff;
+    padding: .5em;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: moveUp .5s forwards ease-in-out;
+  }
+  .trending-products .product_container .product_card.anime:focus{
+    animation:none;
+  }
+  .trending-products .product_container .product_card.anime:nth-child(1){
+    animation-delay: .1s;
+  }
+  .trending-products .product_container .product_card.anime:nth-child(2){
+    animation-delay: .3s;
+  }
+  .trending-products .product_container .product_card.anime:nth-child(3){
+    animation-delay: .5s;
+  }
+  .trending-products .product_card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .trending-products .product_card img {
+    width: 70vh;
+    height: 50vh;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .trending-products .product_card .addCart {
+    background-color: #714b1c;
+    color: white;
+    padding: 0.5em 1em;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: absolute;
+    top: 1.5em;
+    right: 1em;
+  }
+
+  .trending-products .product_container .button-group .viewCart{
+    background: none;
+    outline: none;
+    border: 1px solid #c69c6a94;
+    border-radius: .3em;
+    padding: .6em;
+    color: #cdb393;
+    cursor: pointer;
+  }
+.trending-products .product_card .button-group .viewCart:hover{
+  background: #714b1ca8;
+  color: #ffffff;
+}
+@keyframes moveUp {
+  0%{
+    opacity: 0;
+    transform: translateY(4rem);
+  } 100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  

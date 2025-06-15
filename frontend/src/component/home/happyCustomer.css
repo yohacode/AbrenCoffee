@@ -1,0 +1,76 @@
+.slider {
+  position: relative;
+  margin: auto;
+  width: 60vh;
+  height: 100vh;
+  perspective: 1000px;
+  display: flex;
+  padding: 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider h1{
+    margin-top: -17em;
+}
+
+.card {
+  position: absolute;
+  width: 23em;
+  height: 70%;
+  background: rgba(255, 255, 255, 0.379);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  transition: transform 0.8s ease, opacity 0.5s;
+  opacity: 0;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.card img {
+  width: 15em;
+  height: 15em;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.card.active {
+  transform: translateX(0) scale(1);
+  z-index: 3;
+  opacity: 1;
+}
+
+.card.prev {
+  transform: translateX(-95%) scale(0.8);
+  z-index: 2;
+  opacity: 0.6;
+}
+
+.card.next {
+  transform: translateX(95%) scale(0.8);
+  z-index: 2;
+  opacity: 0.6;
+}
+
+.card.hidden {
+  transform: scale(0);
+  opacity: 0;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+    height: auto;
+  }
+
+  .card.prev,
+  .card.next {
+    display: none;
+  }
+}

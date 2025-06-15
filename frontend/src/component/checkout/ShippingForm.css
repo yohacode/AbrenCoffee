@@ -1,0 +1,56 @@
+.shipping-form-container {
+    width: auto;
+    height: max-content;
+    margin: 2em auto;
+    padding: 1rem;
+    background-color: #ffffff00;
+    box-shadow: 0 1px 4px rgba(182, 153, 153, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.shipping-form-container .title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.shipping-form-container .form-input-group{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.shipping-form-container input {
+  width: auto;
+  padding: 0.1rem 0.1rem;
+  border: none;
+  border-bottom: 1px solid #2563eb;
+  font-size: .9rem;
+  outline: none;
+  background: transparent;
+}
+
+.shipping-form-container .button {
+  width: 100%;
+  padding: 0.1rem;
+  margin: auto;
+  background-color: #2563eb;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.shipping-form-container .button:hover {
+  background-color: #1d4ed8;
+
+  transform: scale(1.05);
+}
+  

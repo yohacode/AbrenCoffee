@@ -1,0 +1,91 @@
+/* profileManagement.css */
+
+.profile-management {
+    width: 100%;
+    height: auto;
+    padding-top: 11em;
+    padding-bottom: 4em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #3d3d3d;
+    background: url(../../assets/images/artisan-roasted-coffee-beans.jpg);
+  }
+  
+
+  .profile-management .container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: transparent;
+  }
+  
+  .profile-management .tabs {
+    width: 20%;
+    border-right: 1px solid #ddd;
+  }
+  
+  .profile-management .profile-tab-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: #e0e0e0a5;
+    padding: 1rem;
+    color: #3d3d3d;
+    margin-right: 3em;
+  }
+  
+  .profile-management .profile-tab-container button {
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    color: #3d3d3d;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .profile-management .profile-tab-container button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .profile-management .profile-tab-container button.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .profile-management .contents {
+    flex-grow: 1;
+    border-radius: 8px;
+    width: 50%;
+    background-color: transparent;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .profile-management .container {
+      flex-direction: column-reverse;
+    }
+  
+    .profile-management .tabs {
+      border-right: none;
+      border-top: 1px solid #ddd;
+      padding-top: 1rem;
+      padding-right: 0;
+    }
+  
+    .profile-management .tab-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .profile-management .tab-container button {
+      flex: 1 1 45%;
+      text-align: center;
+    }
+  }
+  

@@ -1,0 +1,137 @@
+/* Swatches */
+:root {
+  --bg: #f4f4f4;
+  --primary: #6f4e37;
+  --secondary: #c7a17a;
+  --highlight: #a9746e;
+  --success: #4e944f;
+  --warning: #d9a441;
+  --danger: #b03a2e;
+  --text-dark: #3e2723;
+  --text-light: #ffffff;
+}
+
+/* Main layout */
+.admin-page {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    background: var(--bg);
+    background-attachment: fixed;
+    transition: all .5s ease-in-out;
+    padding-bottom: 2.5em;
+    
+}
+
+.admin-content{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 1em;
+  padding-right: 4em;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-container{
+  position: sticky;
+  top: 0em;
+  left: 0;
+}
+
+@keyframes blink {
+  0%{
+    opacity: 0;
+  }100%{
+    opacity: 1;
+  }
+}
+
+/* Make cards container adapt to small screens */
+@media screen and (max-width: 1024px) {
+  .admin-page .cards-container {
+      left: 0;
+      top: 6em;
+      padding: 1em;
+      width: 100%;
+    }
+  
+    .admin-page .cards {
+      justify-content: center;
+    }
+  
+    .admin-page .users-top-products {
+      flex-direction: column;
+    }
+  
+    .admin-page .top-products,
+    .sales-per-day {
+      width: 100%;
+    }
+  
+    .sales-chart {
+      flex-direction: column;
+    }
+  
+    .sales-per-day-chart {
+      width: 100%;
+    }
+  }
+  
+  /* Stack sidebar and content on mobile */
+  @media screen and (max-width: 768px) {
+    .admin-page {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    }
+
+    .admin-content{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding-left: 0em;
+      padding-right: 0em;
+    }
+
+    .tab-container{
+      position: sticky;
+      top: 0em;
+      left: 0;
+    }
+    
+  }
+  
+  /* Handle extreme small screens */
+  @media screen and (max-width: 480px) {
+   .admin-page {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    background: var(--bg);
+    background-attachment: fixed;
+    transition: all .5s ease-in-out;
+    padding-bottom: 2.5em;
+    
+  }
+
+  .admin-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 4em;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tab-container{
+    position: sticky;
+    top: 0em;
+    left: 0;
+  }
+  }
+  

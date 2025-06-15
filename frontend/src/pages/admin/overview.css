@@ -1,0 +1,277 @@
+.overview{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 3em;
+}
+
+/* Flex container for sidebar and content */
+.overview .cards-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+/* Cards wrapper */
+.overview .cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+    box-shadow: 1px solid #050505;
+    border-radius: .7em;
+    margin: auto;
+    opacity: 1;
+    width: 100%;
+    padding-left: 1.7em;
+}
+
+/* Individual card styles */
+.overview .card {
+    width: 19%;
+    height: 20vh;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(151, 151, 151, 0.308);
+    padding: 1.4em;
+    gap: .5em;
+    margin: auto;
+    text-align: center;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.overview .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+.overview .card h2 {
+    font-size: .8rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.overview .card p {
+    font-size: 1.2rem;
+    color: #2d8cf0;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Small stats section under main value */
+.overview .card small {
+    display: flex;
+    gap: .4em;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    font-size: 0.6rem;
+}
+
+.overview .card small p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: #7f7f7fde;
+}
+
+.overview .card .less-stock p{
+  color: red;
+  opacity: 0;
+  animation: blink 1s forwards ease-in-out infinite;
+}
+
+/* Loading/Error styling */
+.admin-page .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Error alert */
+.admin-page .alert {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: #ff4d4f;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.users-top-products{
+    display: flex;
+    width: 100%;
+    padding: 1.5em;
+    gap: 1.5em;
+    border-radius: .7em;
+    margin: auto;
+}
+
+.users-top-products .top-product-head{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.top-product-head .search-bar{
+  margin-left: auto;
+  width: 60%;
+  padding-right: 1em;
+}
+
+.top-product-head .search-bar input{
+  width: 100%;
+  padding: .4em;
+  border: 1px solid #b1b1b1;
+  border-radius: .3em;
+}
+
+.top-products{
+    padding: 1em;
+    background-color: #ffffff; /* Tailwind slate-50 */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(174, 174, 174, 0.308);
+    overflow-x: auto;
+    color: #050505;
+    width: 60%;
+    margin: auto;
+}
+
+.sales-per-day {
+    padding: 1em;
+    background-color: #eae6de; /* Tailwind slate-50 */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(175, 175, 175, 0.308);
+    overflow-x: auto;
+    color: #050505;
+    width: 30%;
+}
+
+.sales-chart{
+    display: flex;
+    padding: 1.5em;
+    gap: 1.5em;
+    border-radius: .7em;
+    margin: auto;
+    width: 100%;
+}
+
+.sales-per-day-chart{
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff; /* Tailwind slate-50 */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(191, 191, 191, 0.308);
+    color: #050505;
+}
+
+.top-products table, .sales-per-day table, .sales-per-day-chart {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.top-products th,
+.top-products td ,
+.sales-per-day th, 
+.sales-per-day td{
+    padding: 12px 15px;
+    text-align: left;
+    color: #050505;
+    border-bottom: 1px solid #e2e8f0; /* slate-200 */
+}
+
+.top-products thead {
+    background-color: #e2e8f0; /* slate-200 */
+    color: #1e293b; /* slate-800 */
+}
+
+.top-products tr:hover {
+    background-color: #f1f5f9; /* slate-100 */
+    transition: background-color 0.2s ease;
+}
+
+.top-products td:first-child {
+    font-weight: bold;
+    color: #050505; /* slate-500 */
+}
+
+.less-stock{
+    color: red;
+}
+
+ /* Stack sidebar and content on mobile */
+  @media screen and (max-width: 768px) {
+    /* Flex container for sidebar and content */
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        gap: 2em;
+    }
+
+    /* Cards wrapper */
+    .cards {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        width: 100%;
+        padding-left: 0em;
+    }
+
+    /* Individual card styles */
+    .card {
+        width: 35%;
+        height: 20vh;
+    }
+    .users-top-products{
+        display: flex;
+        width: 90%;
+        padding: .5em;
+        margin-left: 0;
+    }
+
+    .users-top-products .top-product-head{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .top-product-head .search-bar{
+    width: 60%;
+    }
+
+    .top-product-head .search-bar input{
+    width: 60%;
+    }
+
+    .top-products{
+        width: 100%;
+        margin: 0;
+    }
+
+    .sales-per-day {
+        width: 100%;
+    }
+
+    .sales-chart{
+        margin-left: 0;
+        width: 90%;
+    padding: .5em;
+    }
+
+    .sales-per-day-chart{
+        width: 100%;
+        padding: .5em;
+    }
+        
+}
+    

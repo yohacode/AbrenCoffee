@@ -1,0 +1,441 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border-bottom: 0.1px solid #ffffff67;
+  z-index: 99999;
+  transition: all .5s ease-in-out;
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  transition: all 0.3s ease; /* Smooth transition for shrinking */
+}
+
+.navbar .container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 2em;
+}
+
+
+/* Scroll State */
+.navbar.scroll {
+background-color: #050606;
+  color: #ebebebe4;
+  padding: 0.5rem 1rem;
+  border-bottom: none;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.navbar.scroll img, .navbar img {
+  height: 1.5em;
+  width: auto;
+  border-radius: 50%;
+}
+
+.navbar.scroll img:hover, .navbar img:hover {
+  scale: 1.2;
+}
+
+.scroll {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  transition: all 0.3s ease;
+}
+.navbar .navbar-brand img {
+  transition: all 0.3s ease;
+}
+
+.scroll .navbar-brand img {
+  height: 2em !important;
+  width: 2em !important;
+}
+
+.navbar .navbar-collapse
+.navbar.scroll .container .collapse .navbar-nav .nav-link,
+.navbar.scroll .carts .bag,
+.navbar.scroll .carts .icon-shopping_cart {
+  color: #e5e5e5 !important;
+}
+
+.navbar.scroll .nav_second {
+  display: none;
+}
+
+.nav_second {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: #604628;
+  color: #e3e3e3;
+  z-index: 1000;
+}
+
+/* Brand */
+.ftco-navbar-light {
+  background: rgba(0, 0, 0, 0.9) !important;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-left: 2rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap; 
+  color: #e3e2e2;
+}
+.navbar-brand:hover, .navbar-brand:focus {
+    text-decoration: none;
+}
+
+.navbar-brand small {
+  font-size: 14px;
+  display: block;
+  letter-spacing: 3px;
+  color: #c8a97e;
+}
+
+/* Nav Links */
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.nav-item {
+  list-style: none;
+}
+
+.nav-link {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 1rem;
+  color: #e3e2e2 !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-item.active .nav-link {
+  color: #c8a97e !important;
+}
+
+/* Dropdown Menu */
+.dropdown-menu,
+.profile-dropdown-menu {
+  border: none;
+  border-radius: 0;
+  height: auto;
+  list-style: none;
+  position: absolute;
+  color: #000;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  padding: 2em;
+  margin-left: 0em;
+  top: 20.3vh;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.87);
+}
+
+.profile-dropdown-menu {
+  display: block;
+  width: 30vh;
+  margin-right: -1.5em;
+  font-size: 1rem;
+  top: 20vh;
+  right: 2em;
+  z-index: 99;
+  background: rgba(255, 255, 255, 0.854);
+  animation: fallD 1s forwards ease-in-out;
+}
+.profile-dropdown-menu img{
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+}
+
+.navbar.scroll .dropdown-menu {
+  top: 14vh;
+  right: 1em;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.895);
+}
+
+.navbar.scroll .profile-dropdown-menu {
+  top: 15vh;
+  right: 5em;
+  width: 30vh;
+  color: #e6e6e6;
+  background: rgba(215, 215, 215, 0.945);
+  transition: all .5s ease;
+}
+
+/* Dropdown Items */
+.dropdown-menu ul,
+.profile-dropdown-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: .1em;
+  padding: 1.5em;
+  padding-left: 2em;
+  justify-content: flex-start;
+  transition: all .5s ease-in-out;
+}
+
+.dropdown-menu ul li,
+.profile-dropdown-menu ul li {
+  list-style: none;
+  text-align: start;
+  height: 2.3em;
+}
+
+.dropdown-item,
+.profile-dropdown-menu .dropdown-item {
+  color: #000;
+  padding-bottom: 1vh;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.navbar.scroll .profile-dropdown-menu .dropdown-item {
+  color: #000000;
+  padding-bottom: 1vh;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.dropdown-item:hover {
+  color: #896e1c;
+}
+
+/* Dropdown Product Images */
+.dropdown-menu .product-imgs{
+  display: flex;
+  gap: 2em;
+}
+.dropdown-menu .product-imgs .product-cards .product-nav-img {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-nav-img img {
+  width: 14em;
+  height: 15em;
+}
+
+/* Side Icons / Cart */
+.navbar .container .side {
+  background: transparent;
+  padding: 0.5em;
+  font-size: 1.2em;
+  color: #111;
+  display: flex;
+  align-items: center;
+  margin-right: 4em;
+  border-radius: 6px;
+  transition: all 0.5s ease-in-out;
+}
+
+.navbar.scroll .container .side {
+  background: transparent;
+  font-size: 1.4em;
+  color: #f1f1f1;
+  margin-right: 5em;
+}
+
+.navbar .container .side span,
+.navbar.scroll .container .side span {
+  padding: 0.5em;
+  border-radius: 6px;
+  transition: all 0.5s ease-in-out;
+}
+
+.navbar .container .side span {
+  color: #eaeaea;
+}
+
+.navbar .container .side span:hover {
+  background: #000;
+  color: #f2f2f2;
+}
+
+.navbar.scroll .container .side span {
+  color: #ffffff;
+}
+
+.navbar.scroll .container .side span:hover {
+  background: #1b1b1b;
+  color: #e8e8e8;
+}
+
+.navbar .container .cart,
+.navbar.scroll .container .cart {
+  position: absolute;
+  width: 1.4em;
+  font-size: 0.6em;
+  font-weight: 600;
+  border-radius: 50%;
+  background: rgb(175, 30, 5);
+  z-index: 9;
+  transition: all .5s ease;
+}
+
+.navbar .container .cart {
+  top: 4em;
+  right: 6.4em;
+}
+
+.navbar.scroll .container .cart {
+  top: 2em;
+  right: 9.4em;
+}
+
+/* Hover animation for links */
+.nav-link:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #c8a97e;
+  transition: width 0.3s;
+}
+
+.navbar-toggle{
+  display: none;
+}
+
+/* Animations */
+@keyframes fallD {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: #00000036;
+    padding: 20px;
+    margin-top: 15px;
+  }
+
+  .nav-item {
+    margin: 5px 0;
+  }
+
+  .dropdown-menu {
+    background: #111;
+    margin-left: 15px;
+  }
+}
+
+@media (max-width: 898px) {
+  .navbar {
+    height: auto;
+    padding-left: 0vh;
+    background: #6d4b25;
+    border: none;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .navbar .container {
+    display: flex;
+    margin: auto;
+  }
+
+  .navbar-nav {
+    position: absolute;
+    inset: 0;
+    margin-top: 7em;
+    display: flex;
+    height: 25em;
+    flex-direction: column;
+    background:#6d4b25;
+    transition: all .5s ease-in-out;
+    animation: fallD .5s forwards ease-in-out;
+    align-items: start;
+  }
+
+  .navbar-collapse {
+    display: none;
+  }
+
+  .dropdown-menu {
+    display: flex;
+    width: 24vh;
+    top: 12vh;
+    left: 0;
+  }
+
+  .dropdown-menu ul {
+    display: flex;
+    gap: 2em;
+    margin-left: -1.5em;
+  }
+
+  .dropdown-menu .dropdown-img{
+    display: none;
+  }
+
+  .dropdown-menu ul li {
+    text-align: start;
+    line-height: 2.4em;
+  }
+
+  .dropdown-item {
+    color: #fff;
+    padding-bottom: 1vh;
+    transition: all 0.3s ease;
+  }
+
+  .navbar .container .cart {
+    top: 3.7em;
+    right: 12.4em;
+  }
+
+  .navbar.scroll .container .cart {
+    top: 2em;
+    right: 14.4em;
+  }
+
+  .navbar-toggle{
+    display: block;
+    margin-right: 1.2em;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #f1f1f1;
+    transition: all .5s ease-in-out;
+  }
+}
+

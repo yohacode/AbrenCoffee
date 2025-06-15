@@ -1,0 +1,271 @@
+/* cart.css */
+
+/* Backdrop for modal */
+.cart-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  z-index: 999999;
+}
+
+/* Modal content box */
+.cart-modal-content {
+  background: white;
+  width: 50%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 1.4em;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  animation: slideIn .5s forwards ease-in-out;
+}
+
+/* Close button (top right corner) */
+.close-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  color: #000;
+}
+
+/* Heading */
+.cart-modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Cart items list */
+.cart-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+/* Each cart item */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+/* Info section: name and price */
+.cart-item-info {
+  flex: 1;
+  color: #333;
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  gap: 1em;
+}
+
+/* Item name */
+.cart-item-name {
+  font-weight: 500;
+  margin: auto;
+}
+
+/* Item price */
+.cart-item-price {
+  color: #555;
+  margin: auto;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: right;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1em;
+  margin-right: 1em;
+}
+
+/* Image section */
+.cart-item-image {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.cart-item-image img{
+  width: 8em;
+  height: 7em;
+  border-radius: 4px;
+}
+
+/* Controls: quantity buttons and remove */
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #333;
+}
+
+/* Buttons for quantity + remove */
+.cart-item-controls button {
+  background: #eee;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+.cart-item-controls button:hover:not(:disabled) {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Disabled button style */
+.cart-item-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Total price section */
+.cart-total {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: right;
+  color: black;
+}
+
+.button-group{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em;
+  gap: .3em;
+}
+
+/* Checkout button */
+.checkout-btn {
+  width: 50%;
+  background-color: #007bff;
+  border: none;
+  padding: 1em;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #0056b3;
+}
+
+.continue-shopping-btn:hover {
+  background-color: #ffffff;
+}
+
+.continue-shopping-btn{
+  width: 50%;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 1em;
+  font-size: 1.1rem;
+  color: #333;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Pagination container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 6px;
+}
+
+/* Pagination buttons */
+.pagination button {
+  background-color: #eee;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Active page button style */
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: 700;
+}
+
+/* Disabled pagination buttons */
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+  .cart-modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .cart-item-controls button {
+    padding: 4px 6px;
+    font-size: 14px;
+  }
+
+  .checkout-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+/* Responsive styles for smaller screens */
+@media (max-width: 480px) {
+  .cart-modal-content {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .cart-item-controls button {
+    padding: 4px 4px;
+    font-size: 12px;
+  }
+
+  .checkout-btn {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+  
+}

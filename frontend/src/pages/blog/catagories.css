@@ -1,0 +1,38 @@
+.blog-catagories{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4em;
+}
+.blog-categories ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #fdfdfd00;
+}
+.blog-categories ul li .li{
+    padding: .5em;
+    line-height: 3em;
+    color: antiquewhite;
+    text-decoration: none;
+}
+.blog-categories ul li:hover{
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+.blog-categories ul li:active{
+    background: white;
+}
+.blog-categories ul .li.active{
+    background: white;
+    color: black;
+}
+.blog-categories ul .li button{
+    background: 'none';
+    border: 'none';
+    cursor: 'pointer';
+}

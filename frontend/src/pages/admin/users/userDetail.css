@@ -1,0 +1,41 @@
+.user-detail {
+  margin-top: -1em;
+    padding: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: black;
+  }
+  
+  .detail-card {
+    margin: auto;
+    align-self: center;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: black;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+  }
+
+  .detail-card img{
+    width: 50%;
+  }
+
+  .detail-card .user-detail-info{
+    text-align: start;
+    padding-top: 2em;
+
+  }
+  
+  .detail-card p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+  }
+  

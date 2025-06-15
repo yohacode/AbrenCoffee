@@ -1,0 +1,89 @@
+form .mb4 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form .mb4 input {
+    padding: 1.2em ;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  form .mb4 input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    outline: none;
+    background-color: #f0f0f0;
+  }
+  
+  form .mb4 input::placeholder {
+    color: transparent; /* Hide placeholder text */
+  }
+  
+  .form input[type="text"],
+  .form input[type="email"],
+  .form input[type="tel"] {
+    width: 25em;
+    padding: .6em;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    outline: none;
+    background: transparent;
+    color: #2d2813;
+    border:1px solid #000000;
+  }
+  
+  .form input:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+  
+  .form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 25em;
+  }
+  form .mb4 label {
+    position: absolute;
+    top: .6em;
+    left: 0.75em;
+    background: #f0f0f0;
+    padding: 0 .3em;
+    color: #666;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: transform 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  }
+  
+  form .mb4 input:focus + label,
+  form .mb4 input:not(:placeholder-shown) + label {
+    transform: translateY(-1.3rem);
+    font-size: 0.85rem;
+    color: #007bff;
+    animation: moveUp 0.25s ease-out;
+  }
+  
+  @keyframes moveUp {
+    0% {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-1.4rem);
+    }
+  }
+
+  

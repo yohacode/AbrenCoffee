@@ -1,0 +1,50 @@
+.story {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .story-card {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    text-align: justify;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+    gap: 2em;
+    padding-right: 2em;
+    letter-spacing: .1em;
+  }
+  
+  .story-image {
+    width: 50%;
+    height: 90vh;
+    object-fit: cover;
+  }
+  .story h2{
+    font-size: 2.2rem;
+  }
+  .story p{
+    font-size: 1.4rem;
+  }
+  .story button{
+    padding: .9em;
+    font-size: 1.2rem;
+    border-radius: 1.4em;
+    border: 1px solid #fff;
+    background: none;
+    cursor: pointer;
+  }
+  .story button:hover{
+    background: #fff;
+    color: black;
+    border: none;
+  }
+  

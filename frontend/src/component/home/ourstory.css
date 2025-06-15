@@ -1,0 +1,102 @@
+/* OurStory Component Styling */
+
+/* Basic Section Layout */
+.ftco-about {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Image Half */
+.one-half.img {
+  flex: 1;
+  background: url(../../assets/images/images/huhu.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 50%;
+}
+
+/* Text Half */
+.one-half.ftco-animate {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  color: #fff;
+}
+
+/* Glass Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.066);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  color: #fff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Heading Section */
+.heading-section {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.heading-section .subheading {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #c8a97e;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.heading-section h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+/* Paragraph */
+.overlap p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #bdbdbd;
+}
+
+/* Animation Placeholder */
+.ftco-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Keyframes for Animation */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ftco-about {
+    flex-direction: column;
+  }
+
+  .one-half.img {
+    min-height: 300px;
+  }
+
+  .one-half.ftco-animate {
+    padding: 2rem;
+  }
+}

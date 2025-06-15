@@ -1,0 +1,99 @@
+/* home.css */
+.home-section {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('../assets/images/images/bg_4.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Poppins',sans-serif;
+
+  }
+  
+  .home-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000055;
+    z-index: 0;
+  }
+  
+  .home-section .home-content {
+    width: 100%;
+    height: 90vh;
+    padding-top: 4em;
+    z-index: 2;
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0000006f;
+    z-index: 0;
+  }
+  
+  .home-content h1 {
+    font-size: 3rem;
+    z-index: 3;
+  }
+  
+  .brand-name {
+    color: #f4b400;
+  }
+  
+  .home-content span{
+    color: #bfbfbf;
+    z-index: 3;
+  }
+  
+  .home-content p{
+    font-size: 1.2rem;
+    font-family: 'Poppins',sans-serif;
+    z-index: 3;
+    color: #ebebeb;
+  }
+
+  .shop-button {
+    padding: 12px 30px;
+    border:1px solid #f4b400;
+    color: #f4b400;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+    z-index: 3;
+  }
+  
+  .shop-button:hover {
+    color: #ffffff;
+    background-color: #f4b400;
+  }
+
+  @keyframes slideD {
+    from{
+      transform: translateY(-4rem);
+    }to{
+      transform: translateY(0);
+    }
+  }
+ 

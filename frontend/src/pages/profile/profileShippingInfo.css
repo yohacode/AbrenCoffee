@@ -1,0 +1,38 @@
+/* ProfileShippingInfo.css */
+
+.profile-shipping-container {
+    max-width: 700px;
+    margin: 0rem auto;
+    padding: 1rem;
+    background-color: #ffffffce;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .profile-shipping-container h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: #333333;
+  }
+  
+  .shipping-details p {
+    font-size: 1rem;
+    color: #555555;
+    margin: 0.4rem 0;
+  }
+  
+  .shipping-details p strong {
+    color: #222;
+  }
+  
+  .loading,
+  .no-address {
+    color: #888888;
+    font-size: 1rem;
+    font-style: italic;
+    margin-top: 1rem;
+  }
+  
