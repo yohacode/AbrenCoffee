@@ -71,6 +71,7 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
+    'https://abren-coffee-production-uzfs.vercel.app/',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'

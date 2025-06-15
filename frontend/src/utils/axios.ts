@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://abrencoffeeproduction.onrender.com', // match your backend
+  baseURL: import.meta.env.VITE_API_BASE_URL, // match your backend
   withCredentials: true,
 });
 
