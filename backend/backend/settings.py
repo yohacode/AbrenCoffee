@@ -84,7 +84,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_ENGINE = os.getenv('SESSION_ENGINE')
 CORS_ALLOW_CREDENTIALS = True
 
 SESSION_COOKIE_SAMESITE = "Lax"  # or "None" if cross-domain
