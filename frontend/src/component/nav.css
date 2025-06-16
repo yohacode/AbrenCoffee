@@ -251,7 +251,7 @@ background-color: #050606;
 /* Side Icons / Cart */
 .navbar .container .side {
   background: transparent;
-  padding: 0.5em;
+  padding: 0.4em;
   font-size: 1.2em;
   color: #111;
   display: flex;
@@ -263,29 +263,29 @@ background-color: #050606;
 
 .navbar.scroll .container .side {
   background: transparent;
-  font-size: 1.4em;
+  font-size: 1em;
   color: #f1f1f1;
   margin-right: 5em;
 }
 
 .navbar .container .side span,
 .navbar.scroll .container .side span {
-  padding: 0.5em;
+  padding: 0.3em;
   border-radius: 6px;
   transition: all 0.5s ease-in-out;
 }
 
 .navbar .container .side span {
-  color: #eaeaea;
+  color: #e4e4e4;
 }
 
 .navbar .container .side span:hover {
   background: #000;
-  color: #f2f2f2;
+  color: #e4e4e4;
 }
 
 .navbar.scroll .container .side span {
-  color: #ffffff;
+  color: #e3e3e3;
 }
 
 .navbar.scroll .container .side span:hover {
@@ -429,10 +429,21 @@ background-color: #050606;
     right: 14.4em;
   }
 
+  .navbar .container .cart,
+  .navbar.scroll .container .cart {
+    position: absolute;
+    width: 1.4em;
+    font-size: 0.6em;
+    font-weight: 600;
+    border-radius: 50%;
+    background: rgb(175, 30, 5);
+    z-index: 9;
+    transition: all .5s ease;
+  }
   .navbar-toggle{
     display: block;
-    margin-right: 1.2em;
-    font-size: 1.4rem;
+    margin-right: 2em;
+    font-size: 1.2rem;
     cursor: pointer;
     color: #f1f1f1;
     transition: all .5s ease-in-out;
