@@ -135,6 +135,7 @@ PAYPAL_WEBHOOK_ID = os.getenv('PAYPAL_WEBHOOK_ID')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',  # ✅ Must come early
     'corsheaders.middleware.CorsMiddleware',                # ✅ After sessions
     'django.middleware.common.CommonMiddleware',
@@ -145,6 +146,8 @@ MIDDLEWARE = [
     'cart.middleware.CartMergeMiddleware',
     'adminPanel.middleware.PageVisitLoggerMiddleware',
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'backend.urls'
 
