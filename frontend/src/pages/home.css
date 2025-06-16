@@ -55,6 +55,7 @@
   .home-content h1 {
     font-size: 3rem;
     z-index: 3;
+    font-family: Monotype Corsiva, monospace;
   }
   
   .brand-name {

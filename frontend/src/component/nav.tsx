@@ -37,7 +37,7 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
   const navRef = useRef<HTMLDivElement>(null);        // whole nav
   const location = useLocation();
 
-  const lastScrollY = useRef(window.scrollY);
+  //const lastScrollY = useRef(window.scrollY);
 
   useEffect(()=> {
     const fetchProducts = async () => {
@@ -107,9 +107,12 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrolledUp(currentScrollY > lastScrollY.current);
-      lastScrollY.current = currentScrollY;
+      if (window.scrollY == 0){
+        setScrolledUp(false);
+      } else {
+        setScrolledUp(true);
+      }
+      
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -164,7 +167,7 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
   ].filter((item): item is { name: string; to: string; onClick?: () => Promise<void> } => item !== null);
 
   const sideLinks = [
-    { link: '#', icon: isLoggedIn ? <img src={`${import.meta.env.VITE_REACT_APP_MEDIA_URL || ''}/${user?.profile_image}`} alt="" className='proImage'/> : <FaUser />, onClick: () => setIsProfileOpen(prev => !prev) },
+    { link: '#', icon: isLoggedIn ? <img src={`${import.meta.env.VITE_REACT_APP_MEDIA_URL || 'http://127.0.0.1:8000'}/${user?.profile_image}`} alt="" className='proImage'/> : <FaUser />, onClick: () => setIsProfileOpen(prev => !prev) },
     { link: '#', icon: <FaShoppingCart />, onClick: onCartClick },
   ];
 
@@ -196,7 +199,7 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
       <nav className={scrolledUp ? 'navbar scroll' : 'navbar'}>
         <div className="container">
           <Link className="navbar-brand" to="/">
-            <img src={logo} alt="CoffeeBlend Logo" style={{ height: '5em', width: '6em' }} />
+            <img src={logo} alt="CoffeeBlend Logo" />
           </Link>
 
           <div className={isClicked ? "collapse" : "collapse navbar-collapse"} id="ftco-nav">
