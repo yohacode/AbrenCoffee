@@ -102,6 +102,10 @@
   background: #714b1ca8;
   color: #ffffff;
 }
+
+.loading-products{
+  color: #ffffff;
+}
 @keyframes moveUp {
   0%{
     opacity: 0;

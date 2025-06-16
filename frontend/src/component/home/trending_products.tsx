@@ -87,7 +87,7 @@ const Trending_products: React.FC = () => {
             </div>
         ) : (
             <>
-                <p>Loading products....</p>
+                <p className='loading-products'>Loading products....</p>
             </>
         )}
     </div>
