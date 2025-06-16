@@ -6,11 +6,12 @@ on:
     paths:
       - 'backend/**'
 
-      
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Render Deploy Hook
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
-
+        env:
+          DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: curl -X POST $DEPLOY_HOOK
