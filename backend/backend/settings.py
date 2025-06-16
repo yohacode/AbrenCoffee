@@ -62,17 +62,9 @@ INSTALLED_APPS = [
 ]
 
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'https://abren-coffee-production-uzfs.vercel.app',
-]
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', '*').split(',')
 
-
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:5173',
-    'https://abren-coffee-production-uzfs.vercel.app',
-    "https://abrencoffeeproduction.onrender.com",
-]
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', '*').split(',')
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
