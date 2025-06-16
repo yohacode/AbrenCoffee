@@ -55,7 +55,7 @@
   .home-content h1 {
     font-size: 3rem;
     z-index: 3;
-    font-family: Monotype Corsiva, monospace;
+    font-family: 'Monotype Corsiva', 'Cursive', sans-serif;
   }
   
   .brand-name {
@@ -63,6 +63,7 @@
   }
   
   .home-content span{
+    font-family: 'Monotype Corsiva', 'Cursive', sans-serif;
     color: #bfbfbf;
     z-index: 3;
   }
