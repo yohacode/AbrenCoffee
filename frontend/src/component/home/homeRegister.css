@@ -84,13 +84,14 @@
   color: #eeeeee;
 }
 
-.section-title h1 {
+.section-register h1 {
   display: block;
   font-size: 2.5rem;
   line-height: 1.2;
+  font-family: 'Gabriola','Great Vibes', cursive;
 }
 
-h1 span {
+.section-register span {
   color: rgb(125, 60, 17);
 }
 

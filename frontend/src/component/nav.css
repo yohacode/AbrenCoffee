@@ -11,9 +11,7 @@
   border-bottom: 0.1px solid #ffffff67;
   z-index: 99999;
   transition: all .5s ease-in-out;
-  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  transition: all 0.3s ease; /* Smooth transition for shrinking */
+  font-family: 'Great Vibes', 'Gabriola', cursive;
 }
 
 .navbar .container {
@@ -127,8 +125,7 @@ background-color: #050606;
 }
 
 .nav-link {
-  font-family: 'Trebuchet MS', sans-serif;
-  font-size: 1rem;
+  font-size: 1.4rem;
   color: #e3e2e2 !important;
   text-decoration: none;
   font-weight: 500;
