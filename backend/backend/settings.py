@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'cart',
     'payment',
     'frontend',
+    'whitenoise',
     
     'rest_framework',
     'rest_framework.authtoken',

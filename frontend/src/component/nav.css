@@ -11,7 +11,7 @@
   border-bottom: 0.1px solid #ffffff67;
   z-index: 99999;
   transition: all .5s ease-in-out;
-  font-family: 'Great Vibes', 'Gabriola', cursive;
+  font-family: 'Roboto', sans-serif;
 }
 
 .navbar .container {
