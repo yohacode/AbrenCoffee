@@ -108,7 +108,6 @@ background-color: #050606;
   letter-spacing: 3px;
   color: #c8a97e;
 }
-
 /* Nav Links */
 .navbar-nav {
   display: flex;
@@ -117,11 +116,9 @@ background-color: #050606;
   align-items: center;
   gap: 1.4rem;
 }
-
 .nav-item {
   list-style: none;
 }
-
 .nav-link {
   font-size: 1rem;
   color: #e3e2e2 !important;
@@ -129,16 +126,13 @@ background-color: #050606;
   font-weight: 500;
   transition: all 0.3s ease;
 }
-
 .navbar.scroll .nav-link{
   font-size: .8rem;
 }
-
 .nav-link:hover,
 .nav-item.active .nav-link {
   color: #c8a97e !important;
 }
-
 /* Dropdown Menu */
 .dropdown-menu,
 .profile-dropdown-menu {
@@ -149,7 +143,6 @@ background-color: #050606;
   position: absolute;
   color: #000;
 }
-
 .dropdown-menu {
   display: flex;
   flex-direction: column;
@@ -161,9 +154,8 @@ background-color: #050606;
   left: 0;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.87);
+  background: rgba(0, 0, 0, 0.596);
 }
-
 .profile-dropdown-menu {
   display: block;
   width: 30vh;
@@ -172,7 +164,7 @@ background-color: #050606;
   top: 20vh;
   right: 2em;
   z-index: 99;
-  background: rgba(255, 255, 255, 0.854);
+  background: rgba(0, 0, 0, 0.587);
   animation: fallD 1s forwards ease-in-out;
 }
 .profile-dropdown-menu img{
@@ -180,14 +172,12 @@ background-color: #050606;
   height: 2em;
   border-radius: 50%;
 }
-
 .navbar.scroll .dropdown-menu {
   top: 14vh;
   right: 1em;
   width: 100%;
   background: rgba(255, 255, 255, 0.895);
 }
-
 .navbar.scroll .profile-dropdown-menu {
   top: 15vh;
   right: 5em;
@@ -196,7 +186,6 @@ background-color: #050606;
   background: rgba(215, 215, 215, 0.945);
   transition: all .5s ease;
 }
-
 /* Dropdown Items */
 .dropdown-menu ul,
 .profile-dropdown-menu ul {
@@ -208,22 +197,19 @@ background-color: #050606;
   justify-content: flex-start;
   transition: all .5s ease-in-out;
 }
-
 .dropdown-menu ul li,
 .profile-dropdown-menu ul li {
   list-style: none;
   text-align: start;
   height: 2.3em;
 }
-
 .dropdown-item,
 .profile-dropdown-menu .dropdown-item {
-  color: #000;
+  color: #ffffff;
   padding-bottom: 1vh;
   transition: all 0.3s ease;
   text-decoration: none;
 }
-
 .navbar.scroll .profile-dropdown-menu .dropdown-item {
   color: #000000;
   padding-bottom: 1vh;
@@ -233,7 +219,6 @@ background-color: #050606;
 .dropdown-item:hover {
   color: #896e1c;
 }
-
 /* Dropdown Product Images */
 .dropdown-menu .product-imgs{
   display: flex;
@@ -246,12 +231,10 @@ background-color: #050606;
   align-items: center;
   justify-content: center;
 }
-
 .product-nav-img img {
   width: 14em;
   height: 15em;
 }
-
 /* Side Icons / Cart */
 .navbar .container .side {
   background: transparent;

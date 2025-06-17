@@ -167,7 +167,7 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
   ].filter((item): item is { name: string; to: string; onClick?: () => Promise<void> } => item !== null);
 
   const sideLinks = [
-    { link: '#', icon: isLoggedIn ? <img src={`${import.meta.env.VITE_REACT_APP_MEDIA_URL || 'http://127.0.0.1:8000'}/${user?.profile_image}`} alt="" className='proImage'/> : <FaUser />, onClick: () => setIsProfileOpen(prev => !prev) },
+    { link: '#', icon: isLoggedIn ? <img src={`${import.meta.env.VITE_REACT_APP_MEDIA_URL || ''}/${user?.profile_image}`} alt="" className='proImage'/> : <FaUser />, onClick: () => setIsProfileOpen(prev => !prev) },
     { link: '#', icon: <FaShoppingCart />, onClick: onCartClick },
   ];
 
