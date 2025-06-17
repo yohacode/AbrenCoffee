@@ -129,6 +129,9 @@ background-color: #050606;
   font-weight: 500;
   transition: all 0.3s ease;
 }
+.navbar.scroll .nav-link{
+  font-size: .8rem;
+}
 
 .nav-link:hover,
 .nav-item.active .nav-link {
