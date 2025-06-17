@@ -9,10 +9,14 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
-from pathlib import Path
 import os
+import dj_database_url
+import environ
+from pathlib import Path
 from dotenv import load_dotenv
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +30,7 @@ load_dotenv()
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False").lower() == "true"
+DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 
@@ -49,7 +53,7 @@ INSTALLED_APPS = [
     'cart',
     'payment',
     'frontend',
-    'whitenoise',
+    'whitenoise.runserver_nostatic',
     
     'rest_framework',
     'rest_framework.authtoken',
@@ -176,10 +180,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(conn_max_age=600)
 }
 
 # Password validation
@@ -217,7 +218,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # 🔧 Where static files will be collected during `collectstatic` (for Render/deployment)
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # 🧑‍💻 Where to find extra static files in development (optional)
 # DON'T point this to STATIC_ROOT — use a different folder (or remove it if unused)
