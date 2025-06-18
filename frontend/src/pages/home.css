@@ -55,6 +55,7 @@
   .home-content h1 {
     font-size: 3rem;
     z-index: 3;
+    color: tomato;
     font-family: 'Monotype Corsiva', 'Cursive', sans-serif;
   }
   
