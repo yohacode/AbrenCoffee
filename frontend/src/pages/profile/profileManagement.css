@@ -72,7 +72,7 @@
   /* Responsive design */
   @media (max-width: 768px) {
     .profile-management .container {
-      flex-direction: column-reverse;
+      flex-direction: column;
     }
   
     .profile-management .tabs {

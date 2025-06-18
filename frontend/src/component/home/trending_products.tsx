@@ -12,7 +12,7 @@ interface Product {
     stock: number;
     image: string;
     quantity: number;
-}
+  }
 
 const Trending_products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
