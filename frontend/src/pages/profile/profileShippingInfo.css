@@ -1,14 +1,13 @@
 /* ProfileShippingInfo.css */
 
 .profile-shipping-container {
-    max-width: 700px;
+    width: 50%;
     margin: 0rem auto;
     padding: 1rem;
     background-color: #ffffffce;
-    border-radius: 12px;
+    border-radius:0.6em;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     border: 1px solid #e0e0e0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   .profile-shipping-container h2 {

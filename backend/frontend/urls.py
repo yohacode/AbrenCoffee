@@ -1,6 +1,6 @@
 from django.urls import path, re_path
-from .views import FrontendView
+from . import views
 
 urlpatterns = [
-    path(r'^.*$', FrontendView.as_view(), name='Frontend'),
+    path("/", views.index),
 ]

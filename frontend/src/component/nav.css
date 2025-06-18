@@ -150,7 +150,7 @@ background-color: #050606;
   width: 100%;
   padding: 2em;
   margin-left: 0em;
-  top: 20.3vh;
+  top: 19vh;
   left: 0;
   align-items: center;
   justify-content: center;
@@ -159,12 +159,13 @@ background-color: #050606;
 .profile-dropdown-menu {
   display: block;
   width: 30vh;
+  height: 25vh;
   margin-right: -1.5em;
-  font-size: 1rem;
-  top: 20vh;
+  font-size: .9rem;
+  top: 19vh;
   right: 2em;
   z-index: 99;
-  background: rgba(0, 0, 0, 0.587);
+  background: rgba(76, 4, 4, 0.587);
   animation: fallD 1s forwards ease-in-out;
 }
 .profile-dropdown-menu img{
@@ -173,17 +174,18 @@ background-color: #050606;
   border-radius: 50%;
 }
 .navbar.scroll .dropdown-menu {
-  top: 14vh;
+  top: 16vh;
   right: 1em;
   width: 100%;
-  background: rgba(255, 255, 255, 0.895);
+  background: rgba(42, 42, 42, 0.895);
 }
 .navbar.scroll .profile-dropdown-menu {
-  top: 15vh;
+  top: 12vh;
   right: 5em;
   width: 30vh;
+  height: auto;
   color: #e6e6e6;
-  background: rgba(215, 215, 215, 0.945);
+  background: rgba(28, 28, 28, 0.945);
   transition: all .5s ease;
 }
 /* Dropdown Items */
@@ -201,18 +203,16 @@ background-color: #050606;
 .profile-dropdown-menu ul li {
   list-style: none;
   text-align: start;
-  height: 2.3em;
+  height: 2em;
 }
 .dropdown-item,
 .profile-dropdown-menu .dropdown-item {
   color: #ffffff;
-  padding-bottom: 1vh;
   transition: all 0.3s ease;
   text-decoration: none;
 }
 .navbar.scroll .profile-dropdown-menu .dropdown-item {
   color: #000000;
-  padding-bottom: 1vh;
   transition: all 0.3s ease;
   text-decoration: none;
 }

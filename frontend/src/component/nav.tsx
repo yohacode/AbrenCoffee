@@ -19,6 +19,7 @@ interface Product {
 }
 
 interface User {
+  username: string,
   profile_image: string;
 }
 
@@ -58,6 +59,8 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  console.log(cartItemCount);
+
   useEffect(() => {
     const fetchRoleData = async () => {
       try {
@@ -75,6 +78,7 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
     if (isLoggedIn) fetchRoleData();
   }, [isLoggedIn]);
 
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
@@ -160,14 +164,14 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
   ];
 
   const profileDropdown = [
-    { name: isLoggedIn ? 'Profile' : '', to: '/profile' },
+    { name: isLoggedIn ? <>{user?.username}</> : '', to: '/profile' },
     role === 'admin' && isLoggedIn ? { name: 'Dashboard', to: '/admin' } : null,
     { name: isLoggedIn ? 'Logout' : 'Login', to: '/login', onClick: handleLogout },
     { name: isLoggedIn ? '' : 'Register', to: '/register', onClick: handleLogout },
   ].filter((item): item is { name: string; to: string; onClick?: () => Promise<void> } => item !== null);
 
   const sideLinks = [
-    { link: '#', icon: isLoggedIn ? <img src={`${import.meta.env.VITE_REACT_APP_MEDIA_URL || ''}/${user?.profile_image}`} alt="" className='proImage'/> : <FaUser />, onClick: () => setIsProfileOpen(prev => !prev) },
+    { link: '#', icon: isLoggedIn ? <img src={`${import.meta.env.VITE_API_BASE_URL}/${user?.profile_image}`} alt="" className='proImage'/> : <FaUser />, onClick: () => setIsProfileOpen(prev => !prev) },
     { link: '#', icon: <FaShoppingCart />, onClick: onCartClick },
   ];
 

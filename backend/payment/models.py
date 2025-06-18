@@ -10,7 +10,6 @@ from uuid import uuid4
 def format_date(date_obj):
     return date_obj.strftime("%Y-%m-%d %H:%M:%S") if date_obj else "Not Available"
 
-
 class Payment(models.Model):
     PAYMENT_METHOD_CHOICES = [
         ('stripe', 'Stripe'),

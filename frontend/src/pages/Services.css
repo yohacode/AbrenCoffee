@@ -158,14 +158,12 @@
   margin-bottom: 1.5rem;
   font-size: 2rem;
 }
-
 .why-choose-us ul {
   list-style: none;
   padding-left: 8em;
   display: grid;
   gap: 0.75rem;
 }
-
 .check-icon {
   color: #4caf50;
   margin-right: 0.5rem;

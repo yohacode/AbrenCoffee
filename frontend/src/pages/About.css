@@ -184,6 +184,37 @@
         margin-bottom: 0;
     }
 
+    .why-choose-us {
+      background-color: #ffffff00;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: row;
+    }
+    .why-choose-us img{
+      width: 50%;
+    }
+    .why-choose-us .content{
+      width: 50%;
+      text-align: start;
+      padding: 2em;
+      color: white;
+    }
+    .why-choose-us h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+    .why-choose-us ul {
+      list-style: none;
+      padding-left: 8em;
+      display: grid;
+      gap: 0.75rem;
+    }
+    .check-icon {
+      color: #4caf50;
+      margin-right: 0.5rem;
+    }
+
 @media (max-width: 898px) {
   
   .about-hero{

@@ -32,7 +32,11 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'c1ca-196-190-62-67.ngrok-free.app',
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -89,8 +93,11 @@ REST_FRAMEWORK = {
 SESSION_ENGINE = os.getenv('SESSION_ENGINE')
 CORS_ALLOW_CREDENTIALS = True
 
-SESSION_COOKIE_SAMESITE = "Lax"  # or "None" if cross-domain
-SESSION_COOKIE_SECURE = True    # Set to True only on HTTPS
+SESSION_COOKIE_SAMESITE = 'None'     # Allow cross-site requests
+SESSION_COOKIE_SECURE = True         # Required for 'None' to work in modern browsers
+
+CSRF_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 1 week
 SESSION_SAVE_EVERY_REQUEST = True
@@ -180,7 +187,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 # Password validation
@@ -218,12 +228,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # 🔧 Where static files will be collected during `collectstatic` (for Render/deployment)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # 🧑‍💻 Where to find extra static files in development (optional)
 # DON'T point this to STATIC_ROOT — use a different folder (or remove it if unused)
 STATICFILES_DIRS = [
-    BASE_DIR / 'frontend' / 'static',  # if using React
+    BASE_DIR / 'static',  # if using React
 ]
 
 MEDIA_URL = '/media/'

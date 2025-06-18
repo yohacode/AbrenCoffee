@@ -47,14 +47,10 @@ const Profile: React.FC = () => {
 
 
     return (
-        <div className="profile">
-            <div className="profile-container">
-                <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="Profile" />
-                <p><strong>Username:</strong> {user?.username}</p>
-                <p><strong>Email:</strong> {user?.email}</p>
-                <p><strong>Role:</strong> {user?.role}</p>
-                <p><strong>Date Joined:</strong> {user?.date_joined}</p>
-            </div> 
+        <div className="profile-detail">
+            <p><strong>Username:</strong> {user?.username}</p>
+            <p><strong>Email:</strong> {user?.email}</p>
+            <p><strong>Date Joined:</strong> {user?.date_joined}</p>
         </div>
     );
 };

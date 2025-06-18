@@ -1,49 +1,85 @@
-from rest_framework.test import APITestCase
-from django.urls import reverse
-from products.models import Product
+from django.test import TestCase, RequestFactory
+from django.contrib.sessions.middleware import SessionMiddleware
+from products.models import Product, Discount
+from cart.cart import Cart  # adjust path as needed
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.utils import timezone
 
-class CartAPITests(APITestCase):
+
+def attach_session(request):
+    middleware = SessionMiddleware(get_response=lambda r: None)
+    middleware.process_request(request)
+    request.session.save()
+
+
+class CartTestCase(TestCase):
     def setUp(self):
-        self.product = Product.objects.create(
-            name="Amaricano",
-            description="A strong coffee",
-            price=6.00,
+        self.factory = RequestFactory()
+        self.image = SimpleUploadedFile(name='test.jpg', content=b'', content_type='image/jpeg')
+
+        product = Product.objects.create(
+            name="Test Product",
+            price=100.00,
+            quantity=1,
             stock=10,
-            sku="AMA-001"
         )
+        self.discount = Discount.objects.create(
+            product=product,
+            discount_type='promo',
+            percent=10.00,
+            promo_code='TEST10',
+            applies_to_subscriptions=False,
+            start_date=timezone.now(),
+            end_date=timezone.now() + timezone.timedelta(days=7)
+        )
+        self.discount.is_valid = lambda: True
+        self.discount.applies_to = lambda product: True
 
-    def test_cart_retrieve_empty(self):
-        url = reverse('cart')  # make sure 'cart' is named in urls.py
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data['total_items'], 0)
+        self.request = self.factory.get('/')
+        attach_session(self.request)
+        self.cart = Cart(self.request)
 
-    def test_cart_add_item(self):
-        url = reverse('cart_add')  # should be named in urls.py
-        response = self.client.post(url, {'product_id': self.product.id, 'quantity': 2})
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('qty', response.json())
-        self.assertEqual(response.json()['qty'], 2)
 
-    def test_cart_update_quantity(self):
-        # Add first
-        self.client.post(reverse('cart_add'), {'product_id': self.product.id, 'quantity': 1})
-        # Update
-        url = reverse('cart_update', args=[self.product.id])
-        response = self.client.put(url, {'quantity': 3}, content_type='application/json')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('message', response.json())
-        self.assertIn('updated to 3', response.json()['message'])
+    def test_add_product(self):
+        self.cart.add(self.product1, 2)
+        self.assertIn(str(self.product1.id), self.cart.cart)
+        self.assertEqual(self.cart.cart[str(self.product1.id)]['quantity'], 2)
 
-    def test_cart_remove_item(self):
-        self.client.post(reverse('cart_add'), {'product_id': self.product.id, 'quantity': 1})
-        url = reverse('cart_delete', args=[self.product.id])
-        response = self.client.delete(url)
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('removed from cart', response.json()['message'])
+    def test_update_product_quantity(self):
+        self.cart.add(self.product1, 1)
+        self.cart.update(self.product1, 5)
+        self.assertEqual(self.cart.cart[str(self.product1.id)]['quantity'], 5)
 
-    def test_cart_merge_stub(self):
-        url = reverse('cart_merge')
-        response = self.client.post(url)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()['message'], 'Cart merge logic is handled in middleware')
+    def test_remove_product(self):
+        self.cart.add(self.product1, 1)
+        self.cart.remove(self.product1)
+        self.assertNotIn(str(self.product1.id), self.cart.cart)
+
+    def test_clear_cart(self):
+        self.cart.add(self.product1, 1)
+        self.cart.clear()
+        self.assertEqual(len(self.cart.cart), 0)
+
+    def test_get_items(self):
+        self.cart.add(self.product1, 2)
+        items = self.cart.get_items()
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]['quantity'], 2)
+        self.assertEqual(items[0]['total_price'], 200)
+
+    def test_get_total_price_without_discount(self):
+        self.cart.add(self.product1, 1)
+        self.cart.add(self.product2, 1)
+        total = self.cart.get_total_price()
+        self.assertEqual(total, 300)
+
+    def test_apply_discount(self):
+        self.cart.add(self.product1, 2)  # 100 * 2 = 200 → 10% = 20
+        discount_amount = self.cart.apply_discount('SAVE10')
+        self.assertEqual(discount_amount, 20)
+        total = self.cart.get_total_price()
+        self.assertEqual(total, 180)
+
+    def test_apply_invalid_discount(self):
+        discount_amount = self.cart.apply_discount('INVALID')
+        self.assertEqual(discount_amount, 0)
