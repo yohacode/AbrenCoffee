@@ -8,7 +8,7 @@ import ProfileInvoices from './profileInvoice';
 import ProfileOrderList from './profileOrders';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import Wishlist from './wishlist';
+import Wishlist from './profileWishlist';
 
 interface User {
     id: number;
