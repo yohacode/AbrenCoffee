@@ -4,7 +4,7 @@ import axios from '../../utils/axios';
 import { toast } from 'react-toastify';
 import ConfirmModal from '../../component/confirmDelete';
 import { useCart } from '../shop/useCart'; // ✅ Make sure this hook is available
-
+import './profileWishlist.css';
 interface Product {
   id: number;
   name: string;
@@ -39,7 +39,7 @@ const Wishlist: React.FC = () => {
         });
         setWishlist(response.data);
       } catch {
-        toast.error('❌ Failed to load wishlist.');
+        console.error('❌ Failed to load wishlist.');
       }
     };
 
@@ -70,18 +70,16 @@ const Wishlist: React.FC = () => {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedItems = wishlist.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
-  const totalPrice = wishlist.reduce(
-    (sum, item) => sum + item.product.price * (item.quantity ?? 1),
-    0
-  );
-
   return (
     <div className="wishlist">
       <div className="wishlist-container">
         <h2 className="wishlist-header">Your Wishlist</h2>
 
         {wishlist.length === 0 ? (
-          <p>Your Wishlist is empty.</p>
+          <>
+            <p>Your Wishlist is empty.</p>
+            <button className='button-shop' onClick={() => navigate('/shop')}>Go to Shop</button>
+          </>
         ) : (
           <>
             <ul className="cart-items-list">
@@ -126,11 +124,6 @@ const Wishlist: React.FC = () => {
               <button onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))} disabled={currentPage === totalPages}>
                 Next
               </button>
-            </div>
-
-            {/* Total Price & Actions */}
-            <div className="cart-total">
-              <strong>Total:</strong> ${totalPrice.toFixed(2)}
             </div>
 
             <div className="button-group">

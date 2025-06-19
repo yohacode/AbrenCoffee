@@ -32,7 +32,7 @@ const ProfileManagement:React.FC = () => {
             const token = localStorage.getItem('access_token');
             if (!token) {
                 setError("You must be logged in to view your profile.");
-               
+                navigate('/login');
                 return;
             }
 
@@ -43,6 +43,7 @@ const ProfileManagement:React.FC = () => {
                 setUser(response.data);
             } catch{
                 setError("Failed to load profile.");
+                navigate('/login');
             }
         };
 

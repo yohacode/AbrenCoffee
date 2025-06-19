@@ -165,7 +165,7 @@ background-color: #050606;
   right: 2em;
   z-index: 99;
   background: rgba(76, 4, 4, 0.587);
-  animation: fallD 1s forwards ease-in-out;
+  animation: fallD .5s forwards ease-in-out;
 }
 .profile-dropdown-menu img{
   width: 2em;

@@ -1,0 +1,8 @@
+.button-shop{
+    color: #bd5220;
+    cursor: pointer;
+    padding: .8em;
+    border: 1px solid #c0520a;
+    border-radius: .5em;
+    background: none;
+}
