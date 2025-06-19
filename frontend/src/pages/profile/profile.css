@@ -52,7 +52,6 @@
     height: auto;
     font-size: 1rem;
     padding: 2em;
-    color: #a7a7a7;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,7 +63,7 @@
   }
   
   .profile-container p strong {
-    color: #555;
+    color: #dedede;
   }
   
   .loading,

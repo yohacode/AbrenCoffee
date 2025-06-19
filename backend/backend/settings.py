@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'cart',
     'payment',
     'frontend',
+    'wishlist',
     'whitenoise.runserver_nostatic',
     
     'rest_framework',
