@@ -72,7 +72,6 @@ const ProfileManagement:React.FC = () => {
         { name: 'orders'},
         { name: 'wishlist' },
         { name: 'invoices' },
-        { name: 'settings' },
       ].filter(button => button.name);
 
       return (
