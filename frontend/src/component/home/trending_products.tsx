@@ -4,6 +4,7 @@ import { useCart } from '../../pages/shop/useCart'; // ✅ Import global cart co
 import { useNavigate } from 'react-router-dom';
 import './trending_products.css';
 import { toast } from 'react-toastify';
+import { FaHeart } from 'react-icons/fa';
 
 interface Product {
     id: number;
@@ -16,41 +17,46 @@ interface Product {
 
 const Trending_products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isClicked, setIsClicked] = useState(false);
   const { addItem } = useCart(); // ✅ Use global cart context
   const navigate = useNavigate();
   const [scrolledUp, setScrolledUp] = useState<boolean>(false);
   const lastScrollY = useRef<number>(0);
   const maxItems = 3;
   
-    const handleScrollChange = () => {
-      const currentScrollY = window.scrollY;
-  
-      if (currentScrollY > lastScrollY.current) {
-        setScrolledUp(true); // User is scrolling up
-      } else {
-        setScrolledUp(false); // User is scrolling down
+  const handleClicked = () => {
+    setIsClicked(!isClicked);
+  };
+
+  const handleScrollChange = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY.current) {
+      setScrolledUp(true); // User is scrolling up
+    } else {
+      setScrolledUp(false); // User is scrolling down
+    }
+
+    lastScrollY.current = currentScrollY;
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScrollChange);
+    return () => window.removeEventListener('scroll', handleScrollChange);
+  }, []);
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      try {
+        const productsResponse = await axios.get<Product[]>('/products/list/');
+        setProducts(productsResponse.data.slice(0, maxItems));
+      } catch {
+        toast.error('Failed to load products. Please try again later.');
       }
-  
-      lastScrollY.current = currentScrollY;
     };
-  
-    useEffect(() => {
-      window.addEventListener('scroll', handleScrollChange);
-      return () => window.removeEventListener('scroll', handleScrollChange);
-    }, []);
 
-    useEffect(() => {
-      const fetchInitialData = async () => {
-        try {
-          const productsResponse = await axios.get<Product[]>('/products/list/');
-          setProducts(productsResponse.data.slice(0, maxItems));
-        } catch {
-          toast.error('Failed to load products. Please try again later.');
-        }
-      };
-
-      fetchInitialData();
-    }, []);
+    fetchInitialData();
+  }, []);
 
   return (
     <div className="trending-products">
@@ -81,7 +87,9 @@ const Trending_products: React.FC = () => {
                                 View Product
                             </button>
                         </div>
-                        
+                        <button className={isClicked ? 'wish-button red' : 'wish-button'} title='wish' onClick={handleClicked}>
+                          <FaHeart />
+                        </button>
                     </div>
                 ))}
             </div>
