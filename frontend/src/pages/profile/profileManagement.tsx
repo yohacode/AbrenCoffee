@@ -8,6 +8,7 @@ import ProfileInvoices from './profileInvoice';
 import ProfileOrderList from './profileOrders';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import Wishlist from './wishlist';
 
 interface User {
     id: number;
@@ -102,6 +103,8 @@ const ProfileManagement:React.FC = () => {
             return <AdminPage />
         case 'invoices':
           return <ProfileInvoices />
+        case 'wishlist':
+          return <Wishlist />
         case 'orders':
           return <ProfileOrderList />
         default:

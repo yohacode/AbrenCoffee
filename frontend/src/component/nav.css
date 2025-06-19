@@ -232,6 +232,7 @@ background-color: #050606;
   justify-content: center;
 }
 .product-nav-img img {
+  cursor: pointer;
   width: 14em;
   height: 15em;
 }

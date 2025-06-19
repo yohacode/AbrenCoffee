@@ -13,13 +13,17 @@
 
   .profile-management .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     background: transparent;
     position: relative;
+  }
+
+  .profile-management .container .contents{
+    padding-top: 0em;
   }
   
   .profile-management .tabs {
@@ -59,15 +63,7 @@
     font-weight: bold;
   }
   
-  .profile-management .contents {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color: transparent;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  }
+
   
   /* Responsive design */
   @media (max-width: 768px) {

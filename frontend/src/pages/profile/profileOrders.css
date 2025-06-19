@@ -1,10 +1,10 @@
 /* ProfileOrderList.css */
 
 .order-list {
-    width: 80%;
+    width: 100%;
     margin: 0rem auto;
     padding: 2rem;
-    background: #fff;
+    background: #ffffff00;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,10 +13,11 @@
   .order-list h1 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    color: #222;
+    color: #ffffff;
   }
   
   .order-table table {
+    color: #000000;
     width: 100%;
     border-collapse: collapse;
   }

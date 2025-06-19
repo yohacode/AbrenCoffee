@@ -47,11 +47,17 @@ const Profile: React.FC = () => {
 
 
     return (
-        <div className="profile-detail">
-            <p><strong>Username:</strong> {user?.username}</p>
-            <p><strong>Email:</strong> {user?.email}</p>
-            <p><strong>Date Joined:</strong> {user?.date_joined}</p>
-        </div>
+        <>
+            <div className="heading">
+                <h1>Profile</h1>
+            </div>
+            <div className="profile-detail">
+                <p><strong>Username:</strong> {user?.username}</p>
+                <p><strong>Email:</strong> {user?.email}</p>
+                <p><strong>Date Joined:</strong> {user?.date_joined}</p>
+            </div>
+        </>
+        
     );
 };
 

@@ -1,18 +1,16 @@
 .single-product{
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     z-index: 3;
     width: 100%;
     height: auto;
     align-items: center;
-    margin-top: 4.2em;
     padding-top: 2em;
     padding-bottom: 2em;
-    padding-left: 2em;
+    gap: 2em;
     justify-content: center;
-    text-align: center;
-    background: url('../../assets/images/cup-coffee-placed-table-some-scattered-coffee-beans-with-sheet-music-background_1_AUIWRs2.jpg') no-repeat center center/cover;
+    background: url('../../assets/images/images/bg_4.jpg') no-repeat center center/cover;
 }
 .single-product::after{
     content: '';
@@ -21,8 +19,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #14100cef;
+    background: #14100c7a;
     z-index: -2;
+}
+.single-product .single-product-header{
+    width: 100%;
+    background: rgb(133, 28, 14);
+    padding: 0em;
+    margin-top: 5em;
+    color: white;
 }
 .single-product .product-grid{
     background: white;
@@ -30,19 +35,19 @@
 .single-product .product-grid .product-card{
     display: flex;
     flex-direction: row;
-    gap: 2em;
+    gap: 0em;
     color: black;
     background-color: antiquewhite;
 }
 .single-product .product-grid .product-card .description{
     padding: 2em;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    align-items: start;
+    justify-content: start;
+    text-align: start;
     display: flex;
     flex-direction: column;
 }
 .single-product .product-grid .product-card img{
     width: 60vh;
-    height: 50vh;
+    height: 60vh;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaBars, FaShoppingCart, FaTimes, FaUser } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from '../utils/axios';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../pages/shop/useCart';
@@ -37,13 +37,13 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
   const profileRef = useRef<HTMLDivElement>(null);    // profile
   const navRef = useRef<HTMLDivElement>(null);        // whole nav
   const location = useLocation();
-
-  //const lastScrollY = useRef(window.scrollY);
+  const navigate = useNavigate();
+  const maxItems = 3;
 
   useEffect(()=> {
     const fetchProducts = async () => {
       const response = await axios.get('/products/list');
-      setProducts(response.data);
+      setProducts(response.data.slice(0, maxItems));
     }
     fetchProducts();
   }, []);
@@ -58,8 +58,6 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
-
-  console.log(cartItemCount);
 
   useEffect(() => {
     const fetchRoleData = async () => {
@@ -77,7 +75,6 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
 
     if (isLoggedIn) fetchRoleData();
   }, [isLoggedIn]);
-
   
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -160,7 +157,7 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
 
   const shopDropdown = [
     { name: 'All Products', to: '/shop' },
-    { name: 'Checkout', to: '/checkout' },
+    { name: cartItemCount === 0 ? '':'Checkout', to: '/checkout' },
   ];
 
   const profileDropdown = [
@@ -181,7 +178,7 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
         {products.length > 0 ? (
           <div className="product-imgs">
             {products.map((product) => (
-                <div className="product-nav-img" key={product.id}>
+                <div className="product-nav-img" key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
                   <img src={product.image} alt="" />
                 </div>             
             ))}

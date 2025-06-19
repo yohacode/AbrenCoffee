@@ -9,6 +9,7 @@ interface Product {
   price: number;
   stock: number;
   image: string;
+  quantity: number;
   description: string;
 }
 
@@ -79,24 +80,28 @@ const SingleProduct: React.FC<SingleProductProps> = ({ handleAddToCart }) => {
   
   return (
     <div className="single-product">
-        <div className="product-grid">
-            <article className="product-card">
-                <img src={imageUrl} alt={product.name} />
-                <div className="description">
-                  <h2>{product.name}</h2>
-                  <p>Price: ${Number(product.price).toFixed(2)}</p>
-                  <p>{product.description}</p>
-                  <button
-                      className='addCart'
-                      onClick={() => handleAddToCart(product)}  // Pass the correct product to the handler
-                      disabled={loading || isOutOfStock}
-                      type="button"
-                      >
-                      {isProductInCart? 'InCart' : loading ? 'Adding...' : isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
-                  </button>
-                </div>           
-            </article>
-        </div>
+      <div className="single-product-header">
+        <h2>{product.name}</h2>
+      </div>
+      <div className="product-grid">
+          <article className="product-card">
+              <img src={imageUrl} alt={product.name} />
+              <div className="description">
+                <p>{product.description}</p>
+                <p>Price: ${Number(product.price).toFixed(2)}</p>
+                <p>Quantity: {product.quantity}g</p>
+                <p>Stock: {product.stock}</p>
+                <button
+                    className='addCart'
+                    onClick={() => handleAddToCart(product)}  // Pass the correct product to the handler
+                    disabled={loading || isOutOfStock}
+                    type="button"
+                    >
+                    {isProductInCart? 'InCart' : loading ? 'Adding...' : isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+                </button>
+              </div>           
+          </article>
+      </div>
     </div>
   );
 };

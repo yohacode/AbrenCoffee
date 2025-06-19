@@ -1,30 +1,50 @@
 /* ProfileShippingInfo.css */
 
 .profile-shipping-container {
-    width: 50%;
-    margin: 0rem auto;
-    padding: 1rem;
-    background-color: #ffffffce;
+    width: 100%;
+    margin: auto;
+    padding: 0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff00;
     border-radius:0.6em;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e0e0e0;
   }
   
   .profile-shipping-container h2 {
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 1.2rem;
-    color: #333333;
+    color: #dfdfdf;
   }
   
+  .shipping-details{
+    width: 50%;
+    height: auto;
+    font-size: 1rem;
+    padding: 2em;
+    gap: 1.5em;
+    color: #efefef;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    background: #421d1d;
+    border-bottom-right-radius: .8em;
+    border-top-left-radius: .8em;
+  }
   .shipping-details p {
     font-size: 1rem;
-    color: #555555;
+    color: #e5e5e5;
     margin: 0.4rem 0;
   }
   
   .shipping-details p strong {
-    color: #222;
+    color: #797979;
   }
   
   .loading,
