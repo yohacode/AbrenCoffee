@@ -1,3 +1,23 @@
+.wishlist .cart-item-image{
+    width: 15em;
+    height: 15em;
+}
+.wish-items-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2em;
+    list-style: none;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+}
+.wishlist .wish-item-info{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    
+}
 .button-shop{
     color: #bd5220;
     cursor: pointer;

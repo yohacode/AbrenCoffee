@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import ConfirmModal from '../../component/confirmDelete';
 import { useCart } from '../shop/useCart'; // ✅ Make sure this hook is available
 import './profileWishlist.css';
+
 interface Product {
   id: number;
   name: string;
@@ -38,6 +39,7 @@ const Wishlist: React.FC = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         setWishlist(response.data);
+        console.log(response.data);
       } catch {
         console.error('❌ Failed to load wishlist.');
       }
@@ -80,13 +82,12 @@ const Wishlist: React.FC = () => {
             <p>Your Wishlist is empty.</p>
             <button className='button-shop' onClick={() => navigate('/shop')}>Go to Shop</button>
           </>
-        ) : (
+          ) : (
           <>
-            <ul className="cart-items-list">
+            <ul className="wish-items-list">
               {paginatedItems.map((item) => (
-                <li key={item.id} className="cart-item">
-                  <div className="cart-item-info">
-                    <img
+                <li key={item.id} className="wish-item">
+                  <img
                       src={`http://127.0.0.1:8000/${item.product.image}`}
                       alt={item.product.name}
                       onError={(e) =>
@@ -94,14 +95,14 @@ const Wishlist: React.FC = () => {
                       }
                       className="cart-item-image"
                     />
-                    <span className="cart-item-name">{item.product.name}</span>
-                    <span className="cart-item-price">${item.product.price.toFixed(2)}</span>
-                  </div>
-
-                  <div className="cart-item-controls">
-                    <button onClick={() => addItem({ ...item.product, stock: 1, quantity: 1 })}>Add to Cart</button>
-                    <button onClick={() => navigate(`/product/${item.product.id}`)}>View</button>
-                    <button onClick={() => handleDeleteClick(item.id)}>🗑️</button>
+                  <div className="wish-item-info">
+                    <span className="cart-item-name">{item.product.name} - ${item.product.price}</span>
+                    <span className="cart-item-price"></span>
+                    <div className="cart-item-controls">
+                      <button onClick={() => addItem({ ...item.product, stock: 1, quantity: 1 })}>Add to Cart</button>
+                      <button onClick={() => navigate(`/product/${item.product.id}`)}>View</button>
+                      <button onClick={() => handleDeleteClick(item.id)}>🗑️</button>
+                    </div>
                   </div>
                 </li>
               ))}
@@ -128,7 +129,7 @@ const Wishlist: React.FC = () => {
 
             <div className="button-group">
               <button onClick={() => navigate('/shop')}>Continue Shopping</button>
-              <button onClick={() => navigate('/checkout')}>Checkout</button>
+              <button onClick={() => navigate('/cart')}>View Cart</button>
             </div>
           </>
         )}

@@ -79,14 +79,25 @@
   }
   
   /* Responsive tweaks */
-  @media (max-width: 600px) {
-    .profile-container {
-      padding: 1.5rem;
+  @media (max-width: 780px) {
+    .profile{
+      width: 90%;
+    overflow: hidden;
+      
     }
-  
+    .profile-container {
+      width: 100%;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
     .profile-container img {
-      width: 100px;
-      height: 100px;
+      width: 5em;
+      height: 5em;
+      align-self: center;
     }
   
     .profile-container p {

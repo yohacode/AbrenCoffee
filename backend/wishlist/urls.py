@@ -5,6 +5,6 @@ from .views import (
 
 urlpatterns = [
     path('list/', WishlistView.as_view(), name='wishlist-view'),
-    path('create/<int:pk>', WishlistCreateView.as_view(), name='wishlist-create'),
-    path('remove/<int:pk>', WishlistRemoveView.as_view(), name='wishlist-remove'),
+    path('create/', WishlistCreateView.as_view(), name='wishlist-create'),
+    path('delete/<int:pk>/', WishlistRemoveView.as_view(), name='wishlist-delete'),
 ]

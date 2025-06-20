@@ -4,7 +4,7 @@ import { useCart } from '../../pages/shop/useCart'; // ✅ Import global cart co
 import { useNavigate } from 'react-router-dom';
 import './trending_products.css';
 import { toast } from 'react-toastify';
-import { FaHeart } from 'react-icons/fa';
+import WishButton from '../wishButton';
 
 interface Product {
     id: number;
@@ -17,16 +17,12 @@ interface Product {
 
 const Trending_products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [isClicked, setIsClicked] = useState(false);
   const { addItem } = useCart(); // ✅ Use global cart context
   const navigate = useNavigate();
   const [scrolledUp, setScrolledUp] = useState<boolean>(false);
   const lastScrollY = useRef<number>(0);
   const maxItems = 3;
-  
-  const handleClicked = () => {
-    setIsClicked(!isClicked);
-  };
+
 
   const handleScrollChange = () => {
     const currentScrollY = window.scrollY;
@@ -87,9 +83,7 @@ const Trending_products: React.FC = () => {
                                 View Product
                             </button>
                         </div>
-                        <button className={isClicked ? 'wish-button red' : 'wish-button'} title='wish' onClick={handleClicked}>
-                          <FaHeart />
-                        </button>
+                        <WishButton show={true} productId={product.id} userId={1} />
                     </div>
                 ))}
             </div>

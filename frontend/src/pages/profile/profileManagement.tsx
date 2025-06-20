@@ -9,6 +9,7 @@ import ProfileOrderList from './profileOrders';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Wishlist from './profileWishlist';
+import { FaBars } from 'react-icons/fa';
 
 interface User {
     id: number;
@@ -25,7 +26,12 @@ const ProfileManagement:React.FC = () => {
     const [activeTab, setActiveTab] = useState('profile');
     const [user, setUser] = useState<User | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [isClicked, setIsClicked] = useState(false);
     const navigate = useNavigate();
+
+    const handleToggleClicked = () => {
+      setIsClicked(!isClicked);
+    };
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -76,7 +82,7 @@ const ProfileManagement:React.FC = () => {
       ].filter(button => button.name);
 
       return (
-        <div className="profile-tab-container">
+        <div className={isClicked ? "profile-tab-container small" : "profile-tab-container"}>
           {buttons.map((button, index) => (
             <button
               key={index}
@@ -113,11 +119,13 @@ const ProfileManagement:React.FC = () => {
     };
 
     if (error) return <div className="error-message">{error}</div>;
-
   
     return (
       <div className="profile-management">
         <div className="container">
+          <div className="bars" onClick={handleToggleClicked}>
+            <FaBars />
+          </div>
           <div className="profile">
             <div className="profile-container">
                 <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="Profile" />  

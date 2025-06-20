@@ -9,7 +9,6 @@
     color: #ffffff;
     background: url(../../assets/images/images/bg_4.jpg);
   }
-  
 
   .profile-management .container {
     display: flex;
@@ -21,19 +20,17 @@
     background: transparent;
     position: relative;
   }
-
   .profile-management .container .contents{
     padding-top: 0em;
-  }
-  
+    position: relative;
+  }  
   .profile-management .tabs {
     position: absolute;
     top: 7em;
     left: 0em;
     width: 100%;
     background-color: #421d1d;
-  }
-  
+  } 
   .profile-management .profile-tab-container {
     display: flex;
     flex-direction: row;
@@ -41,52 +38,93 @@
     padding-left: 18em;
     color: #fefefe;
   }
-  
+  .profile-management .profile-tab-container.small {
+      display: none;
+  }
   .profile-management .profile-tab-container button {
     background-color: transparent;
     border: none;
     text-align: left;
     cursor: pointer;
     font-size: 1rem;
-    padding: .6rem;
+    padding: 1rem;
     color: #efefef;
     transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
+  } 
   .profile-management .profile-tab-container button:hover {
     background-color: #e0e0e0;
-  }
-  
+  } 
   .profile-management .profile-tab-container button.active {
     background-color: #007bff00;
     color: white;
     font-weight: bold;
-  }
-  
+  } 
+ .container .bars{
+  display: none;
+ }
 
-  
+ .show{
+  display: block;
+ }
+
   /* Responsive design */
   @media (max-width: 768px) {
     .profile-management .container {
+      display: flex;
       flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    } 
+    .profile-management .container .contents{
+      padding-top: 3em;
     }
-  
+    .container .profile {
+      width: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .container .profile .profile-container{
+      width: 100%;
+      height: 0%;
+      padding: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
     .profile-management .tabs {
       border-right: none;
-      border-top: 1px solid #ddd;
-      padding-top: 1rem;
+      border-top: none;
+      padding-top: 0rem;
       padding-right: 0;
+      top: -.5em;
     }
-  
+     .profile-management .profile-tab-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding-left: 0em;
+      color: #fefefe;
+    }
     .profile-management .tab-container {
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
+      padding-left: 8em;
     }
-  
     .profile-management .tab-container button {
       flex: 1 1 45%;
       text-align: center;
     }
   }
+
   
