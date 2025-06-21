@@ -12,6 +12,7 @@
   z-index: 99999;
   transition: all .5s ease-in-out;
   font-family: 'Roboto', sans-serif;
+  animation: fallD .5s forwards ease;
 }
 
 .navbar .container {
@@ -164,7 +165,7 @@ background-color: #050606;
   top: 19vh;
   right: 2em;
   z-index: 99;
-  background: rgba(76, 4, 4, 0.587);
+  background: rgba(159, 157, 157, 0.103);
   animation: fallD .5s forwards ease-in-out;
 }
 .profile-dropdown-menu img{
