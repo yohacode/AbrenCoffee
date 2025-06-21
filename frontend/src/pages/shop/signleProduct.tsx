@@ -41,7 +41,6 @@ const SingleProduct: React.FC<SingleProductProps> = ({ handleAddToCart }) => {
       try {
         const response = await axios.get<Product>(`http://127.0.0.1:8000/products/detail/${id}/`);
         setProduct(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error('Error fetching product:', error);
         setError('Failed to load product.');
@@ -61,7 +60,6 @@ const SingleProduct: React.FC<SingleProductProps> = ({ handleAddToCart }) => {
             withCredentials: true,
         };
         const response = await axios.get('http://127.0.0.1:8000/cart/', config);
-        console.log(response.data)
         setCart(response.data);
     };
 

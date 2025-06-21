@@ -97,7 +97,6 @@ const Wishlist: React.FC = () => {
                     />
                   <div className="wish-item-info">
                     <span className="cart-item-name">{item.product.name} - ${item.product.price}</span>
-                    <span className="cart-item-price"></span>
                     <div className="cart-item-controls">
                       <button onClick={() => addItem({ ...item.product, stock: 1, quantity: 1 })}>Add to Cart</button>
                       <button onClick={() => navigate(`/product/${item.product.id}`)}>View</button>

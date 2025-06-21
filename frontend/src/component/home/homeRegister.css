@@ -35,7 +35,7 @@
 
 .home-register .section-register {
   width: 100%;
-  background: rgba(125, 31, 31, 0.557); /* add opacity for better contrast */
+  background: rgba(125, 31, 31, 0.087); /* add opacity for better contrast */
   display: flex;
   flex-direction: column;
   justify-content: center;

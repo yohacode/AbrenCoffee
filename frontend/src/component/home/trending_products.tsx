@@ -23,7 +23,6 @@ const Trending_products: React.FC = () => {
   const lastScrollY = useRef<number>(0);
   const maxItems = 3;
 
-
   const handleScrollChange = () => {
     const currentScrollY = window.scrollY;
 
