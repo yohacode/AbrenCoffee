@@ -10,7 +10,6 @@
     background: rgba(192, 191, 191, 0.922);
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(2px);
     z-index: 3000;
 }
 .category-form {
@@ -96,13 +95,9 @@
     }
   }
 
-.category-create{
+.category-form .close-btn{
     position: absolute;
-}
-
-.category-create .close-btn{
-    position: absolute;
-    top: 1em;
+    top: 10em;
     right: 2em;
 }
   

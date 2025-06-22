@@ -9,6 +9,8 @@ interface Product {
   name: string;
   price: number;
   category: string;
+  description: string;
+  image: string;
   stock: string;
   quantity: number;
   created_at: string;
@@ -25,6 +27,9 @@ const ProductUpdate:React.FC = () => {
   const [category, setCategory] = useState('');
   const [stock, setStock] = useState('');
   const [quantity, setQuantity] = useState(0);
+  const [description, setDescription] = useState('');
+  const [image, setImage] = useState<File | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -42,6 +47,8 @@ const ProductUpdate:React.FC = () => {
         setCategory(data.category);
         setStock(data.stock);
         setQuantity(data.quantity);
+        setDescription(data.description);
+        setPreviewImage(data.image.startsWith('http') ? data.image : `${import.meta.env.VITE_BACKEND_URL}${data.image}`);
       } catch {
         toast.error('Fetch failed: ');
       } finally {
@@ -54,6 +61,19 @@ const ProductUpdate:React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('category', category);
+    formData.append('stock', stock);
+    formData.append('price', price.toString());
+    formData.append('quantity', quantity.toString());
+
+    if (image) {
+      formData.append('image', image);
+    }
     try {
       const token = localStorage.getItem('access_token');
       await axios.put(
@@ -62,7 +82,7 @@ const ProductUpdate:React.FC = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       toast.success('Product updated successfully');
-      navigate(`/products/${id}`);
+      navigate(-2);
     } catch {
       toast.error('Update failed: ');
     }
@@ -91,6 +111,36 @@ const ProductUpdate:React.FC = () => {
             title='price'
             value={price} 
             onChange={e => setPrice(parseFloat(e.target.value))} required />
+        </div>
+
+        <div className="form-group">
+          <label>Image</label>
+          {previewImage && (
+            <img
+              src={previewImage}
+              alt="Preview"
+              style={{ width: '120px', marginBottom: '8px', borderRadius: '6px' }}
+            />
+          )}
+          <input 
+            type="file"
+            title='image'
+            onChange={e => {
+              const file = e.target.files?.[0];
+              if (file) {
+                setImage(file);
+                setPreviewImage(URL.createObjectURL(file));
+              }
+            }} required />
+        </div>
+
+        <div className="form-group">
+          <label>Description</label>
+          <input 
+            type="text"
+            title='description'
+            value={description}
+            onChange={e => setDescription(e.target.value)} required />
         </div>
 
         <div className="form-group">

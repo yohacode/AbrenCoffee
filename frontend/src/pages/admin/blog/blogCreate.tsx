@@ -63,7 +63,6 @@ const BlogCreate: React.FC = () => {
     }
   };
 
-  
   const handleCategoryChange = (
     selected: MultiValue<{ value: number; label: string }>
   ) => {
@@ -123,11 +122,23 @@ const BlogCreate: React.FC = () => {
     setIsOpen(!isOpen);
   }
 
+  const handleOutsideClick = (e: MouseEvent) => {
+    if (e.target instanceof HTMLDivElement && e.target.classList.contains('category-create')) {
+      onClose();
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleOutsideClick);
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
   const CategoryCreate = () =>{
       return(
           <div className='category-create'>
-              <button className="close-btn" onClick={onClose}>×</button>
-              <CreateCategory />
+              <CreateCategory isOpen={isOpen} onClose={onClose} />
           </div>
       )
   }

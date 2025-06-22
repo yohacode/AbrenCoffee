@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from '../../utils/axios';
 import './overview.css';
-import { motion } from 'framer-motion';
 import {
     LineChart,
     Line,
@@ -78,7 +77,6 @@ const Overview:React.FC = () => {
                 setDailySales(salesPerDayRes.data.sales_per_day || []);
                 setRefunds(refundsRes.data);
             } catch {
-
                 toast.error('Error fetching admin data:');
                 setError('Failed to load admin statistics.');
             } finally {
@@ -118,45 +116,41 @@ const Overview:React.FC = () => {
     <div className='overview'>
         <div className="cards-container ">
             {error && <div className="alert alert-danger w-100 text-center">{error}</div>}
-            {isLoading ? (
-                <>Loading Faild. Refresh the page!</>
-            ) : (
                 <div className="cards">
-                    <motion.div className="card">
+                    <div className="card">
                         <p>{products}</p>
                         <h2>Total Products</h2>
                         <small className={stock < 10 ? 'less-stock' : ''}>
                             <p>Stock</p>
                             <p>{stock}</p>
                         </small>
-                    </motion.div>                  
-                    <motion.div className="card">
+                    </div>                  
+                    <div className="card">
                         <p>${sales}</p>
                         <h2>Total Sales</h2>
                         <small>
                             <p>Refund</p>
                             <p>${refunds}</p>
                         </small>
-                    </motion.div>
-                    <motion.div className="card">
+                    </div>
+                    <div className="card">
                         <p>{users}</p>
                         <h2>Total Users</h2>
                         <small>
                             <p>New</p>
                             <p>0</p>
                         </small>
-                    </motion.div>
-                    <motion.div className="card">
+                    </div>
+                    <div className="card">
                         <p>{orders > 0 ? orders.toLocaleString() : '0'}</p>
                         <h2>Total Orders</h2>
                         <small>
                             <p>Completed</p>
                             <p>{completedOrders}</p>
                         </small>
-                    </motion.div>
+                    </div>
                 </div>
-            )}
-            
+    
             <div className="users-top-products">
                 <div className="top-products">
                     <div className="top-product-head">

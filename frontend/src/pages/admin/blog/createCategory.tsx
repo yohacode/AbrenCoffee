@@ -3,16 +3,18 @@ import axios from '../../../utils/axios';
 import { toast } from 'react-toastify';
 import './createCategory.css';
 
+interface Category {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
-const CreateCategory: React.FC = () => {
+const CreateCategory: React.FC<Category> = ({ onClose, isOpen }) => {
   const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [formData, setFormData] = useState({
     name: '',
-
   });
-
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, type, value, checked, files } = e.target;
@@ -56,10 +58,14 @@ const CreateCategory: React.FC = () => {
     }
   };
   
+  if (!isOpen) return null;
 
   return (
     <>
+      <div className={`category-create ${isOpen ? 'open' : ''}`}>
         <form onSubmit={handleSubmit} className="category-form">
+          <button className="close-btn" onClick={onClose}>×</button>
+          
           <h2>Create Blog Category</h2>
 
           <div className="form-group">
@@ -78,6 +84,7 @@ const CreateCategory: React.FC = () => {
               {loading ? 'Submitting...' : 'Create Blog Category'}
           </button>
         </form>
+      </div>
     </>
     
   );

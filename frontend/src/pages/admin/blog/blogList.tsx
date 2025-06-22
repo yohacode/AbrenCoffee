@@ -6,12 +6,17 @@ import ConfirmModal from '../../../component/confirmDelete';
 import { FaEye } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
+interface Category {
+  id: number;
+  name: string;
+}
+
 interface Blog {
   id: number;
   title: string;
   content: string;
   created_at: string;
-  category: string;
+  category: Category;
   category_name: string;
   tags: string[];
   author: number;

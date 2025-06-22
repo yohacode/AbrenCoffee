@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { FaEye } from 'react-icons/fa';
 import ConfirmModal from '../../../component/confirmDelete';
 
+
 interface Product {
   id: string;
   name:string;
   price: number;
   category: string;
+  category_name: string;
   stock: string;
   quantity: number;
   created_at: string;
@@ -32,6 +34,7 @@ const ProductList: React.FC = () => {
       });
 
       setProducts(response.data);
+      console.log(response.data);
     };
 
     fetchAllProducts();
@@ -100,7 +103,7 @@ const ProductList: React.FC = () => {
                   <td>{indexOfFirstProduct + index + 1}</td>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
-                  <td>{product.category}</td>
+                  <td>{product.category_name}</td>
                   <td className={product.stock.length < 10 ? 'less-stock' : ''}>{product.stock}</td>
                   <td>{product.quantity}kg</td>
                   <td>{product.created_at}</td>
