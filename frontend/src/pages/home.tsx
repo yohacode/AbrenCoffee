@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './home.css'; // Make sure this path matches your file structure
 import { Link} from 'react-router-dom';
-import Trending_products from '../component/home/trending_products';
+import Trending_products from './home/trending_products';
 
-import HomeBlog from '../component/home/homeBlog';
-import HappyCustomers from '../component/home/happyCustomers';
-import HomeRegister from '../component/home/homeRegister';
+import HomeBlog from './home/homeBlog';
+import HappyCustomers from './home/happyCustomers';
+import HomeRegister from './home/homeRegister';
 
 import bg1 from '../assets/images/images/bg_1.jpg';
 import bg2 from '../assets/images/images/bg_2.jpg';
 import bg3 from '../assets/images/images/bg_3.jpg';
-import OurStory from '../component/home/ourstory';
-import CounterSection from '../component/home/countersection';
+import OurStory from './home/ourstory';
+import CounterSection from './home/countersection';
 
 const Home: React.FC = () => {
     const [current, setCurrent] = useState(0);

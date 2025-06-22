@@ -10,8 +10,8 @@ import usImage from '../assets/images/images/ytr.jpg';
 
 import team1 from '../assets/images/customer.jpg';
 import team2 from '../assets/images/happy.jpeg';
-import HomeRegister from '../component/home/homeRegister';
-import OurStory from '../component/home/ourstory';
+import HomeRegister from './home/homeRegister';
+import OurStory from './home/ourstory';
 
 const About:React.FC = () => {
   return (

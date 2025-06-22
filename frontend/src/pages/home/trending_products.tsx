@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from '../../utils/axios';
-import { useCart } from '../../pages/shop/useCart'; // ✅ Import global cart context
+import { useCart } from '../shop/useCart'; // ✅ Import global cart context
 import { useNavigate } from 'react-router-dom';
 import './trending_products.css';
 import { toast } from 'react-toastify';
-import WishButton from '../wishButton';
+import WishButton from '../../component/wishButton';
 
 interface Product {
     id: number;

@@ -20,13 +20,8 @@
   position: absolute;
   width: 16em;
   height: 50%;
-  background: url(../../assets/images/images/bg_1.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   border-radius: .6em;
-  box-shadow: 0 8px 16px rgba(35, 35, 35, 0.705);
+  box-shadow: 0 8px 16px rgba(110, 110, 110, 0.705);
   transition: transform 0.8s ease, opacity 0.5s;
   opacity: 0;
   z-index: 0;

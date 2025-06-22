@@ -70,12 +70,6 @@ class Order(models.Model):
     def __str__(self):
         return f"Order {self.id} - User: {self.user.username if self.user else 'Guest'} - Status: {self.status}"
     
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['user'], condition=Q(status='pending'), name='unique_pending_order_user'),
-            models.UniqueConstraint(fields=['session_key'], condition=Q(user=None, status='pending'), name='unique_pending_order_session')
-        ]
-
 
 class OrderItem(models.Model):
     DELIVERY_FREQUENCIES = [

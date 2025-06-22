@@ -2,7 +2,7 @@ import React from 'react';
 import { FaCcStripe, FaPaypal } from 'react-icons/fa';
 import { SiWish} from 'react-icons/si';
 import './PaymentMethods.css';
-import axios from '../../utils/axios';
+import axios from '../../../utils/axios';
 
 interface Cart {
   total_price: number;
@@ -38,10 +38,12 @@ const PaymentMethods: React.FC<Props> = ({ cart, email, loading, setLoading, pho
   
       const { url } = response.data;
       if (url) {
-        window.location.href = url;
+        const safeUrl = url.startsWith('http') ? url : `https://${url}`;
+        window.location.href = safeUrl;
       } else {
         console.error('Missing Stripe redirect URL.');
       }
+
     } catch (err) {
       console.error(err);
       alert('Stripe payment failed.');

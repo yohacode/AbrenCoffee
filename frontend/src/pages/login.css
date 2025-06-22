@@ -97,8 +97,8 @@
     position: relative;
     margin: auto;
     margin-top: 12em;
-    width: 5em;
-    height: 5em;
+    width: 3.5em;
+    height: 3.5em;
     border: .5em solid #033aa1;
     animation: rotate 3s forwards infinite ease-in-out;
     transition: animation .5s ease;
@@ -107,9 +107,9 @@
 
   .main .inner{
     margin: auto;
-    margin-top: .8em;
-    width: 2.5em;
-    height: 2.5em;
+    margin-top: .6em;
+    width: 1.5em;
+    height: 1.5em;
     border: .5em solid #2996a0;
     animation: rotate 2s forwards infinite ease;
     transition: animation .5s easeout;

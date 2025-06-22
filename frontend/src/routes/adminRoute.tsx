@@ -18,7 +18,8 @@ const InvoiceDetail = lazy(() => import('../pages/admin/invoice/invoiceDetail'))
 const Report = lazy(() => import('../pages/admin/report/report'));
 const BlogCreate = lazy(() => import('../pages/admin/blog/blogCreate'));
 const BlogList = lazy(() => import('../pages/admin/blog/blogList'));
-const BlogUpdate = lazy(() => import('../pages/admin/blog/blogUpdate'));
+const BlogUpdate = lazy(() => import('../pages/admin/blog/blogEdit'));
+const BlogDetail = lazy(() => import('../pages/admin/blog/blogDetail'));
 
 const OrderList = lazy(() => import('../pages/admin/orders/orderList'));
 const OrderCreate = lazy(() => import('../pages/admin/orders/orderCreate'));
@@ -60,6 +61,7 @@ const AdminRoutes = () => {
           <Route index element={<OrderList />} />
           <Route path="add" element={<OrderCreate />} />
           <Route path="detail/:id" element={<OrderDetail />} />
+          <Route path="update/:id" element={<BlogUpdate />} />
         </Route>
 
         {/* Invoices */}
@@ -73,6 +75,7 @@ const AdminRoutes = () => {
         <Route path="blog" element={<BlogManagement />}>
           <Route index element={<BlogList />} />
           <Route path="add" element={<BlogCreate />} />
+          <Route path="detail/:id" element={<BlogDetail />} />
           <Route path="update/:id" element={<BlogUpdate />} />
         </Route>
 

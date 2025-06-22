@@ -10,7 +10,7 @@ from rest_framework import filters
 from django.db.models import Sum, Count, Avg
 from rest_framework.response import Response
 from .models import Product  # Assuming you have these models
-from .serializers import TransactionSerializer, ProductCategorySerializer
+from .serializers import TransactionSerializer, ProductCategorySerializer, ProductUpdateSerializer
 
 class ProductCategoryCreateView(APIView):
 
@@ -80,7 +80,7 @@ class ProductUpdate(APIView):
     
     def put(self, request, pk, format=None):
         product = get_product_or_404(pk)
-        serializer = ProductSerializer(product, data=request.data)
+        serializer = ProductUpdateSerializer(product, data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

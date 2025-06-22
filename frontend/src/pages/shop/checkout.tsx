@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import { toast } from 'react-toastify';
-import ShippingFormData from '../../component/checkout/ShippingForm';
-import Review from '../../component/checkout/Review';
-import PaymentMethods from '../../component/checkout/PaymentMethods';
-import '../../component/checkout/CheckoutStepper.css';
+import ShippingFormData from './checkout/ShippingForm';
+import Review from './checkout/Review';
+import PaymentMethods from './checkout/PaymentMethods';
+import './checkout/CheckoutStepper.css';
 import './checkout.css';
 import { useNavVisibility } from '../../context/NavVisibilityContext';
 

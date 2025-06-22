@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../utils/axios';
 import './single_product.css';
+import { useCart } from './useCart';
 
 interface Product {
   id: number;
@@ -13,25 +14,23 @@ interface Product {
   description: string;
 }
 
-interface SingleProductProps {
-  handleAddToCart: (product: Product) => void;
+interface CartItem {
+  product: Product;
+  quantity: number;
 }
 
-const SingleProduct: React.FC<SingleProductProps> = ({ handleAddToCart }) => {
-  interface CartItem {
-    product: Product;
-    quantity: number;
-  }
-  
-  interface Cart {
-    cart_items: CartItem[];
-  }
-  
+interface Cart {
+  cart_items: CartItem[];
+}
+
+const SingleProduct: React.FC = () => {
+  // Initialize cart state
   const [cart, setCart] = useState<Cart | null>(null);
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const { addItem } = useCart(); // ✅ Use global cart context
 
   // Determine if the product is out of stock
   const isOutOfStock = product?.stock === 0;
@@ -39,7 +38,7 @@ const SingleProduct: React.FC<SingleProductProps> = ({ handleAddToCart }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get<Product>(`http://127.0.0.1:8000/products/detail/${id}/`);
+        const response = await axios.get<Product>(`/products/detail/${id}/`);
         setProduct(response.data);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -59,7 +58,7 @@ const SingleProduct: React.FC<SingleProductProps> = ({ handleAddToCart }) => {
             headers: token ? { Authorization: `Bearer ${token}` } : {},
             withCredentials: true,
         };
-        const response = await axios.get('http://127.0.0.1:8000/cart/', config);
+        const response = await axios.get('/cart/', config);
         setCart(response.data);
     };
 
@@ -91,7 +90,7 @@ const SingleProduct: React.FC<SingleProductProps> = ({ handleAddToCart }) => {
                 <p>Stock: {product.stock}</p>
                 <button
                     className='addCart'
-                    onClick={() => handleAddToCart(product)}  // Pass the correct product to the handler
+                    onClick={() => addItem(product)}  // Pass the correct product to the handler
                     disabled={loading || isOutOfStock}
                     type="button"
                     >

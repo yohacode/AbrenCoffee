@@ -9,6 +9,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     overflow: hidden;
   }
   
@@ -31,6 +32,7 @@
     color: rgb(255, 255, 255);
     padding: 8em;
     position: relative;
+    animation: fallD .5s forwards ease;
   }
   .about-hero::after{
     content: '';

@@ -17,7 +17,7 @@ interface Blog {
   title: string;
   image: File | string;
   content: string;
-  categories: number[];
+  category: number;
   is_published: boolean;
 }
 
@@ -32,7 +32,7 @@ const BlogCreate: React.FC = () => {
     title: '',
     image: '',
     content: '',
-    categories: [],
+    category: 1,
     is_published: false,
   });
 
@@ -84,9 +84,7 @@ const BlogCreate: React.FC = () => {
     form.append('content', formData.content);
     form.append('is_published', String(formData.is_published));
 
-    formData.categories.forEach(catId =>
-      form.append('categories', String(catId))
-    );
+    form.append('category', String(formData.category));
 
     if (formData.image instanceof File) {
       form.append('image', formData.image);
@@ -105,7 +103,7 @@ const BlogCreate: React.FC = () => {
         title: '',
         image: '',
         content: '',
-        categories: [],
+        category: 1,
         is_published: false,
       });
       if (fileInputRef.current) fileInputRef.current.value = '';

@@ -30,7 +30,7 @@ class OrderCreateView(APIView):
         shipping_address = get_or_create_shipping_address(request)
         if not shipping_address:
             return Response({"error": "Shipping address is required"}, status=status.HTTP_400_BAD_REQUEST)
-        
+
         user = request.user if request.user.is_authenticated else None
         session_key = None
         if not user:
@@ -38,37 +38,45 @@ class OrderCreateView(APIView):
                 request.session.save()
             session_key = request.session.session_key
 
-        # Calculate the total from the cart
-        total_price = get_cart_total(request, user=user, session_key=session_key)  # Replace with your actual logic
+        # Get existing pending order (if any)
+        order = None
+        if user:
+            order = Order.objects.filter(user=user, status='pending').first()
+        else:
+            order = Order.objects.filter(user=None, session_key=session_key, status='pending').first()
 
-        order, created = Order.objects.get_or_create(
-            user=user,
-            session_key=None if user else session_key,
-            status='pending',
-            defaults={
-                'shipping_address': shipping_address,
-                'total_price': total_price,
-            }
-        )
+        # Create new if no pending order exists
+        created = False
+        if not order:
+            order = Order.objects.create(
+                user=user,
+                session_key=None if user else session_key,
+                status='pending',
+                shipping_address=shipping_address,
+                total_price=get_cart_total(request, user=user, session_key=session_key)
+            )
+            created = True
+        else:
+            order.shipping_address = shipping_address
+            order.total_price = get_cart_total(request, user=user, session_key=session_key)
+            order.save()
 
-        # If the order already existed, optionally update shipping and recalculate total
-        order.shipping_address = shipping_address
-        order.total_price = get_cart_total(request, user=user, session_key=session_key)
-        order.save()
+        # Handle cart items
         order_items = []
         cart_items = get_cart_data(request)
         for item in cart_items:
             product = get_object_or_404(Product, id=item['product_id'])
             frequency = item.get('delivery_frequency', 'none')
-            order_item, created = OrderItem.objects.get_or_create(
+
+            order_item, item_created = OrderItem.objects.get_or_create(
                 order=order,
                 product=product,
-                defaults={'quantity': item['quantity'], 'price': product.price},
-                delivery_frequency=frequency,
+                defaults={'quantity': item['quantity'], 'price': product.price, 'delivery_frequency': frequency},
             )
-            if not created:
+            if not item_created:
                 order_item.quantity += item['quantity']
                 order_item.save()
+
             order_items.append(order_item)
 
             product.stock -= item['quantity']
@@ -80,6 +88,7 @@ class OrderCreateView(APIView):
             'total_price': order.total_price,
             'created': created,
         }, status=status.HTTP_200_OK)
+
 
 class OrderListView(APIView):
     permission_classes = [IsAuthenticated]

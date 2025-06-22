@@ -4,20 +4,21 @@ import { toast } from 'react-toastify';
 import './BlogList.css';
 import ConfirmModal from '../../../component/confirmDelete';
 import { FaEye } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 interface Blog {
   id: number;
   title: string;
   content: string;
   created_at: string;
-  categories: string[];
-  categories_name: string[];
+  category: string;
+  category_name: string;
   tags: string[];
   author: number;
   author_username?: string;
 }
-
 const BlogList: React.FC = () => {
+  const navigate = useNavigate();
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -46,13 +47,13 @@ const BlogList: React.FC = () => {
     setShowConfirm(false);
     const token = localStorage.getItem('access_token');
     try {
-      await axios.delete(`/products/delete/${id}/`, {
+      await axios.delete(`/blog/delete/${id}/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      toast.success('✅ Invoice deleted successfully!');
+      toast.success('✅ Blog deleted successfully!');
       setBlogs(blogs.filter((blog) => blog.id !== id));
     } catch {
-      toast.error('❌ Failed to delete invoice.');
+      toast.error('❌ Failed to delete blog.');
     }
   };
 
@@ -71,7 +72,7 @@ const BlogList: React.FC = () => {
       <h2>All Blogs</h2>
 
       {/* Search Input */}
-      <div style={{ marginBottom: '1rem' }}>
+      <div>
         <input
           type="text"
           placeholder="Search by title..."
@@ -89,7 +90,7 @@ const BlogList: React.FC = () => {
               <th>#</th>
               <th>Title</th>
               <th>Author</th>
-              <th>Categories</th>
+              <th>Category</th>
               <th>Created At</th>
               <th>Actions</th>
             </tr>
@@ -101,13 +102,13 @@ const BlogList: React.FC = () => {
                   <td>{indexOfFirstBlog + index + 1}</td>
                   <td>{blog.title}</td>
                   <td>{blog.author_username || `User ${blog.author}`}</td>
-                  <td>{(blog.categories_name || []).join(', ')}</td>
+                  <td>{blog.category_name}</td>
                   <td>{new Date(blog.created_at).toLocaleString()}</td>
                   <td>
                     <button
                       title='edit'
                       className="btn-edit"
-                      onClick={() => alert(`Navigate to edit blog ${blog.id}`)}
+                      onClick={() => navigate(`/admin/blog/detail/${blog.id}`)}
                     >
                       <FaEye />
                     </button>

@@ -11,9 +11,9 @@ from .views import (
 
 urlpatterns = [
     # Custom payment endpoints
-    path("stripe/", include("djstripe.urls", namespace="djstripe")),
+    path("dj-stripe/", include("djstripe.urls", namespace="djstripe")),
     path('webhooks/stripe/', stripe_webhook_view, name='stripe-webhook'),
-    path('stripe/setup/', StripeCheckoutView.as_view(), name='stripe-checkout'),
+    path('stripe/', StripeCheckoutView.as_view(), name='stripe-checkout'),
 
     path('paypal/setup/', PayPalSetupView.as_view(), name='paypal-checkout'),
     path('paypal/webhook/', PayPalWebhookView.as_view(), name='paypal-webhook'),

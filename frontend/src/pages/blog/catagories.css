@@ -16,7 +16,7 @@
 .blog-categories ul li .li{
     padding: .5em;
     line-height: 3em;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     text-decoration: none;
 }
 .blog-categories ul li:hover{
@@ -36,3 +36,4 @@
     border: 'none';
     cursor: 'pointer';
 }
+

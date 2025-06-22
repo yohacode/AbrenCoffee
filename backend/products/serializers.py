@@ -52,6 +52,12 @@ class ProductSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Stock cannot be negative.")
         return value
  
+class ProductUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['id', 'name', 'category', 'stock', 'quantity', 'description', 'price', 'discount', 'image']
+        read_only_fields = ('id', 'created_at', 'updated_at')
+
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction

@@ -1,28 +1,33 @@
-import React, { useEffect, useRef, useState } from 'react';
+// src/components/blog/Blog.tsx
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import axios from '../../utils/axios';
-import Categories from './catagories';
-import { useParams } from 'react-router-dom';
+import Categories, { BlogCategory } from './catagories';
+import { useNavigate, useParams } from 'react-router-dom';
 import './blog.css';
 
 interface BlogDetail {
+  id: number;
   title: string;
   image: string;
   content: string;
   author: string;
   author_username: string;
   created_at: number;
-  categories: string[];
+  category: string;
+  category_name: string;
 }
 
-const Blog:React.FC = () => {
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://127.0.0.1:8000';
+
+const Blog: React.FC = () => {
   const [loading, setLoading] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [blogItems, setBlogItems] = useState<BlogDetail[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const { name } = useParams();
+  const navigate = useNavigate();
   const lastScrollY = useRef(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // Track scroll direction
   const handleScrollChange = () => {
     const currentScrollY = window.scrollY;
     setIsScrolled(currentScrollY > lastScrollY.current);
@@ -47,6 +52,7 @@ const Blog:React.FC = () => {
           withCredentials: true,
         });
         setBlogItems(response.data);
+        console.log('Blog data fetched successfully:', response.data);
       } catch (error) {
         console.error('Failed to fetch blog data:', error);
       } finally {
@@ -57,46 +63,26 @@ const Blog:React.FC = () => {
     fetchBlogData();
   }, []);
 
-  const filteredItems = selectedCategory
-    ? blogItems.filter((item) => item.categories.includes(selectedCategory))
-    : blogItems;
-
-  const renderBlogItems = () => {
-    if (loading) return <p className="blog-loading">Loading posts...</p>;
-
-    if (filteredItems.length === 0) {
-      return <p className="blog-empty">No blog posts found in this category.</p>;
-    }
-
-    return (
-      <div className="blog-grid">
-        {filteredItems
-          .filter((b) => b.image)
-          .map((b) => {
-            const imageUrl = b.image.startsWith('http')
-              ? b.image
-              : `http://127.0.0.1:8000${b.image}`;
-
-            return (
-              <article className="blog-card" key={b.title}>
-                <img src={imageUrl} alt={b.title} className="blog-img" />
-                <div className="blog-content">
-                  <h2 className="blog-title">{b.title}</h2>
-                  <p className="blog-meta">
-                    By <strong>{b.author_username}</strong> ·{' '}
-                    {new Date(b.created_at).toLocaleDateString()}
-                  </p>
-                  <p className="blog-snippet">
-                    {b.content.slice(0, 220)}...
-                    <span className="blog-readmore"> Read more</span>
-                  </p>
-                </div>
-              </article>
-            );
-          })}
-      </div>
-    );
+  const handleCategorySelect = (category: string) => {
+    setSelectedCategory(category);
+    navigate(`/blog/category/${category}`);
   };
+
+  const filteredItems = useMemo(() => {
+    return selectedCategory
+      ? blogItems.filter((item) =>
+          item.category.includes(selectedCategory)
+        )
+      : blogItems;
+  }, [selectedCategory, blogItems]);
+
+  const allCategories: BlogCategory[] = useMemo(() => {
+    const uniqueNames = [...new Set(blogItems.flatMap((item) => item.category_name))];
+    return uniqueNames.map((name) => ({
+      name,
+      link: `/blog/category/${name}`,
+    }));
+  }, [blogItems]);
 
   return (
     <section className="blog">
@@ -107,9 +93,46 @@ const Blog:React.FC = () => {
             Explore expert takes, brewing tips, and stories behind your favorite blends.
           </p>
         </div>
+        <Categories categories={allCategories} setCategory={handleCategorySelect} />
       </header>
-      <Categories setCategory={setSelectedCategory} />
-      <main className="blog-container">{renderBlogItems()}</main>
+
+      <main className="blog-container">
+        {loading ? (
+          <p className="blog-loading">Loading posts...</p>
+        ) : filteredItems.length === 0 ? (
+          <p className="blog-empty">No blog posts found in this category.</p>
+        ) : (
+          <div className="blog-grid">
+            {filteredItems
+              .filter((b) => b.image)
+              .map((b) => {
+                const imageUrl = b.image.startsWith('http') ? b.image : `${BASE_URL}${b.image}`;
+                return (
+                  <article className="blog-card" key={b.id}>
+                    <img src={imageUrl} alt={b.title} className="blog-img" />
+                    <div className="blog-content">
+                      <h2 className="blog-title">{b.title}</h2>
+                      <p className='category'>{b.category_name}</p>
+                      <p className="blog-meta">
+                        By <strong>{b.author_username}</strong> ·{' '}
+                        {new Date(b.created_at).toLocaleDateString()}
+                      </p>
+                      <p className="blog-snippet">
+                        {b.content.slice(0, 220)}...
+                        <button
+                          className="blog-readmore"
+                          onClick={() => navigate(`/blogDetail/${b.id}`)}
+                        >
+                          Read more
+                        </button>
+                      </p>
+                    </div>
+                  </article>
+                );
+              })}
+          </div>
+        )}
+      </main>
     </section>
   );
 };

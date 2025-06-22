@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Blog, Category
-from .serializers import BlogSerializer, BlogCreateSerializer, CategorySerializer
+from .serializers import BlogSerializer, BlogCreateSerializer, CategorySerializer, BlogUpdateSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly,AllowAny,IsAuthenticated,IsAdminUser
 from django.shortcuts import get_object_or_404
 
@@ -68,10 +68,7 @@ class BlogUpdate(APIView):
 
     def put(self, request, pk, format=None):
         blog = get_object_or_404(Blog, pk=pk)
-        if blog.author != request.user:
-            return Response({'detail': 'Permission Denied.'}, status=status.HTTP_403_FORBIDDEN)
-
-        serializer = BlogCreateSerializer(blog, data=request.data)
+        serializer = BlogUpdateSerializer(blog, data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(BlogSerializer(blog).data)
@@ -90,14 +87,11 @@ class BlogDelete(APIView):
 
     def delete(self, request, pk, format=None):
         blog = get_object_or_404(Blog, pk=pk)
-        if blog.author != request.user:
-            return Response({'detail': 'Permission Denied.'}, status=status.HTTP_403_FORBIDDEN)
 
         blog.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 class CategoriesView(APIView):
-
     def get(self, request):
         category = Category.objects.all()
 

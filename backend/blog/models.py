@@ -17,13 +17,12 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
-    
 
 
 class Blog(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
-    categories = models.ManyToManyField(Category, verbose_name=("Categories"))
+    category = models.ForeignKey(Category, verbose_name=("Category"), on_delete=models.CASCADE)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='blogs')
     image = models.ImageField(upload_to='blog_images/', blank=True, null=True, default='blog_images/default.jpg')
     tags = models.ForeignKey(Tag, verbose_name=("Tag"), on_delete=models.CASCADE, null=True, blank=Tag)

@@ -1,19 +1,20 @@
 .services {
-    background-color: #fefaf6;
     padding: 0;
     margin: 0;
     height: auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #3e2c1c;
     background: url(../assets/images/images/bg_4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
   }
   
   .services-container {
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
-    background: #fffefc00;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   }
   
   .service-hero {
@@ -27,6 +28,8 @@
     align-items: start;
     color: rgb(255, 255, 255);
     padding: 8em;
+    position: relative;
+    animation: fallD .5s forwards ease;
   }
 
   .service-hero::after {
@@ -67,6 +70,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    z-index: 9;
   }
   
   .service-card {
@@ -77,6 +81,7 @@
     border-radius: 10px;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.331);
     transition: all 0.3s ease;
+    z-index: 9;
   }
   
   .service-card:hover {
@@ -138,27 +143,28 @@
   margin-bottom: 1rem;
 }
 
-.why-choose-us {
+.services .why-choose-us {
   background-color: #ffffff00;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: row;
+  padding: 0 3em;
 }
-.why-choose-us img{
+.services .why-choose-us img{
   width: 50%;
 }
-.why-choose-us .content{
+.services .why-choose-us .content{
   width: 50%;
   text-align: start;
   padding: 2em;
   color: white;
 }
-.why-choose-us h2 {
+.services .why-choose-us h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 2rem;
 }
-.why-choose-us ul {
+.services .why-choose-us ul {
   list-style: none;
   padding-left: 8em;
   display: grid;
@@ -169,7 +175,7 @@
   margin-right: 0.5rem;
 }
 
-.services-cta {
+.services .services-cta {
   text-align: center;
   height: 60vh;
   padding-top: 8em;
@@ -208,12 +214,17 @@
   display: flex;
   flex-direction: column;
   gap: 2em;
-  max-width: 800px;
+  width: 70%;
   margin: auto;
+  padding-bottom: 2em;
+}
+.testimonials-section h2{
+  font-size: 2rem;
+  color: #e1e1e0;
 }
 
 .testimonial-card {
-  background: #f4f4f4;
+  background: #d1d1d1;
   padding: 1.5em;
   border-radius: 8px;
 }
@@ -229,7 +240,7 @@
   color: #333;
 }
 
-@media (max-width: 898px) {
+@media (max-width: 780px) {
    .service-hero {
     height: 100vh;
     padding: 2em;
@@ -239,7 +250,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     gap: 2em;
-    width: 100%;
+    width: 90%;
     height: auto;
     padding-top: 4em;
     padding-bottom: 2em;
@@ -254,19 +265,23 @@
     transition: all 0.3s ease;
   }
   
-  .why-choose-us {
+  .services .why-choose-us {
     padding-top: 3em;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .why-choose-us .content{
-    width: 90%;
+  .services .why-choose-us .content{
+    width: 100%;
     text-align: start;
-    padding: 2em;
+    padding: 0em;
   }
-  .why-choose-us ul {
+  .services .why-choose-us ul {
+    width: 90%;
     padding-left: 4em;
+  }
+  .services .why-choose-us img{
+    width: 90%;
   }
   .services-cta {
     padding-top: 4em;

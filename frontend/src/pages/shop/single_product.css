@@ -24,9 +24,9 @@
 }
 .single-product .single-product-header{
     width: 100%;
-    background: rgb(133, 28, 14);
+    background: rgba(133, 28, 14, 0.45);
     padding: 0em;
-    margin-top: 5em;
+    margin-top: 4.5em;
     color: white;
 }
 .single-product .product-grid{

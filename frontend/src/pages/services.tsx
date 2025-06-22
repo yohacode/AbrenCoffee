@@ -79,7 +79,6 @@ const Services:React.FC = () => {
               <li><FaCheckCircle className="check-icon" /> Seamless integration with your operations</li>
             </ul>
           </div>
-          
         </div>
 
         {/* Call to Action */}

@@ -9,7 +9,6 @@ import Layout from './layout';
 import Cart from './pages/shop/cart';
 import AdminRoutes from './routes/adminRoute';
 
-
 // Lazy loaded pages
 const Home = lazy(() => import('./pages/home'));
 const About = lazy(() => import('./pages/about'));
@@ -30,9 +29,9 @@ const BlogDetail = lazy(() => import('./pages/blog/blogDetail'));
 
 const Profile = lazy(() => import('./pages/profile/profileManagement'));
 
-
 // Protected route wrapper
 import type { ReactElement } from 'react';
+import BlogUpdate from './pages/admin/blog/blogEdit';
 
 const ProtectedRoute = ({ element }: { element: ReactElement }) => {
   const isLoggedIn = localStorage.getItem('access_token');
@@ -113,13 +112,14 @@ const App = () => {
               <Route path="/services" element={<Services />} />
               <Route path="/subscription" element={<Subscription />} />
               <Route path="/shop" element={<Shop />} />
-              <Route path="/product/:id" element={<SingleProduct handleAddToCart={(product) => console.log('Add to cart:', product)} />} />
+              <Route path="/product/:id" element={<SingleProduct />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/checkout/:step" element={<Checkout />} /> 
               <Route path="/success" element={<PaymentSuccess />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:category" element={<Blog />} />
-              <Route path="/blog/:id" element={<BlogDetail />} />
+              <Route path="/blogDetail/:id" element={<BlogDetail />} />
+              <Route path="/blog/edit/:id" element={<ProtectedRoute element={<BlogUpdate />} />} />
               <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
 
               {/* Admin Panel (Protected) */}
