@@ -100,7 +100,6 @@ class CategoriesView(APIView):
     
 
 class CreateCategoryView(APIView):
-    permission_classes = [IsAdminUser]
 
     def post(self, request):
         serializer = CategorySerializer(data=request.data, context={'request': request})

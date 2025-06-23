@@ -20,7 +20,7 @@ const Categories: React.FC<CategoriesProps> = ({ categories, setCategory }) => {
       <ul>
         {categories.map((c) => (
           <li key={c.name}>
-            <button className="li" onClick={() => setCategory(c.name)}>
+            <button className="li" onClick={() => setCategory(c.link)}>
               {c.name}
             </button>
           </li>

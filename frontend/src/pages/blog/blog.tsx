@@ -40,7 +40,7 @@ const Blog: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (name) setSelectedCategory(name);
+    if (name) setSelectedCategory(decodeURIComponent(name));
   }, [name]);
 
   useEffect(() => {
@@ -52,7 +52,6 @@ const Blog: React.FC = () => {
           withCredentials: true,
         });
         setBlogItems(response.data);
-        console.log('Blog data fetched successfully:', response.data);
       } catch (error) {
         console.error('Failed to fetch blog data:', error);
       } finally {
@@ -71,7 +70,7 @@ const Blog: React.FC = () => {
   const filteredItems = useMemo(() => {
     return selectedCategory
       ? blogItems.filter((item) =>
-          item.category.includes(selectedCategory)
+          item.category_name.toLowerCase().includes(selectedCategory.toLowerCase())
         )
       : blogItems;
   }, [selectedCategory, blogItems]);
@@ -79,8 +78,8 @@ const Blog: React.FC = () => {
   const allCategories: BlogCategory[] = useMemo(() => {
     const uniqueNames = [...new Set(blogItems.flatMap((item) => item.category_name))];
     return uniqueNames.map((name) => ({
-      name,
-      link: `/blog/category/${name}`,
+      name: name,
+      link: encodeURIComponent(name),
     }));
   }, [blogItems]);
 
@@ -93,10 +92,13 @@ const Blog: React.FC = () => {
             Explore expert takes, brewing tips, and stories behind your favorite blends.
           </p>
         </div>
-        <Categories categories={allCategories} setCategory={handleCategorySelect} />
       </header>
 
       <main className="blog-container">
+        <Categories 
+          categories={allCategories} 
+          setCategory={handleCategorySelect} 
+          />
         {loading ? (
           <p className="blog-loading">Loading posts...</p>
         ) : filteredItems.length === 0 ? (
@@ -108,7 +110,7 @@ const Blog: React.FC = () => {
               .map((b) => {
                 const imageUrl = b.image.startsWith('http') ? b.image : `${BASE_URL}${b.image}`;
                 return (
-                  <article className="blog-card" key={b.id}>
+                  <article className="blog-card" key={b.id} onClick={() => navigate(`/blogDetail/${b.id}`)}>
                     <img src={imageUrl} alt={b.title} className="blog-img" />
                     <div className="blog-content">
                       <h2 className="blog-title">{b.title}</h2>
@@ -118,14 +120,14 @@ const Blog: React.FC = () => {
                         {new Date(b.created_at).toLocaleDateString()}
                       </p>
                       <p className="blog-snippet">
-                        {b.content.slice(0, 220)}...
-                        <button
+                        {b.content.slice(0, 320)}...
+                      </p>
+                      <button
                           className="blog-readmore"
                           onClick={() => navigate(`/blogDetail/${b.id}`)}
                         >
                           Read more
                         </button>
-                      </p>
                     </div>
                   </article>
                 );

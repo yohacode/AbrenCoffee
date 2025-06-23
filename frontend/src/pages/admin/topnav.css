@@ -12,7 +12,7 @@
   position:sticky;
   top: .5em;
   left: 14.2em;
-  width: calc(100% - 3em);
+  width: calc(100% - 5em);
   display: flex;
   justify-content: space-between;
   align-items: center;

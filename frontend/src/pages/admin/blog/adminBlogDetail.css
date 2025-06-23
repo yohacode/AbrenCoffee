@@ -39,6 +39,7 @@
     width: 55%;
     gap: .3em;
     text-align: justify;
+    font-family:'Trebuchet MS', sans-serif;
   }
   .blog-detail-card p {
     margin: 0.1rem 0;

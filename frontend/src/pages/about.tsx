@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { FaUserFriends, FaHandshake, FaLightbulb } from 'react-icons/fa';
 import value from '../assets/images/our-core-values.png';
 import img1 from '../assets/images/images/menu-4.jpg';
-import usImage from '../assets/images/images/ytr.jpg';
+import usImage from '../assets/images/images/poiu.jpg';
 
 import team1 from '../assets/images/customer.jpg';
 import team2 from '../assets/images/happy.jpeg';

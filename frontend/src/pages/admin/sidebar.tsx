@@ -69,7 +69,7 @@ const Sidebar: React.FC = () => {
           </ul>
         </nav>
       </aside>
-      <div className={isClicked ? 'back-button slide-in' : "back-button"} onClick={() => handleClicked()}>
+      <div className={isClicked ? 'back-button' : "back-button"} onClick={() => handleClicked()}>
         {isClicked ? <FaAnglesRight /> : <FaAnglesLeft/>}
       </div>
     </>   

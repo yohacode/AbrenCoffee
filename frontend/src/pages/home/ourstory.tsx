@@ -3,7 +3,7 @@ import './ourstory.css';
 
 const OurStory: React.FC = () => {
   return (
-    <section className="ftco-about d-md-flex">
+    <section className="ftco-about">
       <div className="one-half img"></div>
       <div className="one-half ftco-animate">
         <div className="overlap glass-effect">

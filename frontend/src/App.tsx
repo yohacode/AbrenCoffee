@@ -92,7 +92,7 @@ const App = () => {
     <NavVisibilityProvider>
       <Router>
         <Cart isOpen={isCartOpen} onClose={closeCart} />
-        <ToastContainer position="top-right" autoClose={3000} />
+        <ToastContainer position="bottom-right" autoClose={3000} />
         <Suspense fallback={<div className="main">Loading Page...</div>}>
           <ScrollToTop />
           <Layout

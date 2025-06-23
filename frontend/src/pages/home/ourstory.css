@@ -99,8 +99,10 @@
 /* Responsive */
 @media (max-width: 768px) {
   .ftco-about {
+    display: flex;
     flex-direction: column;
     width: 100%;
+    height: auto;
   }
 
   .overlap{
@@ -108,19 +110,19 @@
   }
 
   .one-half.img {
+    width: 100%;
     height: 60vh;
   }
 
   .one-half.ftco-animate {
+    width: 100%;
     padding: 0rem;
   }
 }
 @media (max-width: 420px) {
   .ftco-about {
-    display: block;
+    display: flex;
     flex-direction: column;
-    width: 100%;
-    height: auto;
   }
 
   .overlap{

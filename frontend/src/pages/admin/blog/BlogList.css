@@ -68,31 +68,25 @@
     font-size: 0.9rem;
     transition: background-color 0.2s ease;
   }
-  
   .btn-edit {
     background-color: #17a2b8;
     color: white;
   }
-  
   .btn-edit:hover {
     background-color: #138496;
   }
-  
   .btn-delete {
     background-color: #dc3545;
     color: white;
   }
-  
   .btn-delete:hover {
     background-color: #bd2130;
   }
-  
   .pagination {
     display: flex;
     justify-content: center;
     margin-top: 1.5rem;
   }
-  
   .pagination button {
     margin: 0 0.3rem;
     padding: 0.5rem 0.75rem;
@@ -103,18 +97,14 @@
     font-size: 1rem;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
-  
   .pagination button.active {
     background-color: #007bff;
     color: white;
     border-color: #007bff;
   }
-  
   .pagination button:hover:not(.active) {
     background-color: #f1f1f1;
   }
-  
-
   @media screen and (max-width: 768px) {
     .blog-list {
       margin-top: 2em;
@@ -126,18 +116,15 @@
  .blog-table {
     margin-top: 0rem;
   }
-  
   .blog-list table {
     width: 80%;
     border-collapse: collapse;
     background-color: white;
     border-radius: 8px;
   }
-  
   .blog-list th, td {
     text-align: left;
     padding: 0.5rem .5rem;
     border-bottom: 1px solid #eee;
-  }
-    
-  }
+  }  
+}
