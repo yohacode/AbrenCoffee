@@ -80,3 +80,38 @@ table {
     width: 20vh;
   }
   
+  @media screen and (max-width: 768px) {
+    .user-management {
+      width: 90%;
+      margin-top: 0em;
+      padding: 1rem;
+    }
+    .user-management .users-list{
+      margin: auto;
+      width: 90%;
+      padding-top: 2em;
+      padding: 2em;
+    }
+    .user-management table,
+    .user-management table thead,
+    .user-management table tbody,
+    .user-management table th,
+    .user-management table td,
+    .user-management table tr {
+      display: block;
+    }
+    .user-management th,
+    .user-management td{
+        flex-wrap: wrap;
+        padding: 12px 15px;
+        text-align: left;
+        color: #050505;
+        border-bottom: 1px solid #e2e8f0; /* slate-200 */
+    }
+
+    .user-management thead {
+        background-color: #e2e8f0; /* slate-200 */
+        color: #1e293b; /* slate-800 */
+    }
+    
+  }

@@ -7,8 +7,8 @@
 .order-management .order-list{
         margin: auto;
         width: 100%;
+        padding: 1em;
         height: auto;
-        padding: 2em;
         color: #e5e8ec;
         border-radius: 1em;
         background: rgb(255, 255, 255);
@@ -42,4 +42,50 @@
 .order-management td:first-child {
         font-weight: bold;
         color: #050505; /* slate-500 */
+}
+
+@media screen and (max-width: 768px) {
+  .order-list table,
+  .order-list thead,
+  .order-list tbody,
+  .order-list th,
+  .order-list td,
+  .order-list tr {
+    display: block;
+  }
+
+  .order-list thead {
+    display: none;
+  }
+
+  .order-list tr {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .order-list td {
+    position: relative;
+    padding: 10px;
+    text-align: right;
+    border: none;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .order-list td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 600;
+    color: #475569;
+    text-align: left;
+  }
+
+  .order-list td:last-child {
+    border-bottom: none;
+  }
 }

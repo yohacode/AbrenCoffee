@@ -6,8 +6,8 @@
   border-radius: .6em;
   box-shadow: 0 0 10px #e4e4e4;
   background-color: #f8fafc;
-  overflow-x: auto;
   max-width: 100%;
+  margin: auto;
 }
 
 .product-list h1 {

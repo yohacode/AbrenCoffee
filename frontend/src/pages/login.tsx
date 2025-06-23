@@ -20,7 +20,7 @@ const Login: React.FC = () => {
           withCredentials: true
         });
         if (response.data.isAuthenticated) {
-          navigate('/'); // Redirect if already logged in
+          navigate(-1); // Redirect if already logged in
         } 
       } catch{
         toast.error("Session check failed:");
