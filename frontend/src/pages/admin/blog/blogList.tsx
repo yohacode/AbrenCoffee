@@ -83,7 +83,7 @@ const BlogList: React.FC = () => {
           placeholder="Search by title..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="form-input"
+          className="search-input"
         />
       </div>
 

@@ -82,7 +82,7 @@ table {
   
   @media screen and (max-width: 768px) {
     .user-management {
-      width: 90%;
+      width: 95%;
       margin-top: 0em;
       padding: 1rem;
     }

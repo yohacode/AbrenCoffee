@@ -136,7 +136,35 @@ margin-top: 1em;
     .report-container {
             padding: 0em;
     }
+    .report-table {
+      width: 100%;
+      display: block;
+    }
+    .report-table th,
+    .report-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
     
+    .report-table th {
+      background-color: #fafafa;
+      font-weight: bold;
+    }
+    
+    .report-table tr:hover {
+      background-color: #f1f1f1;
+    }
+    
+    .pagination {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .pagination button {
+      width: 100%;
+      margin-bottom: 8px;
+    }
   }
   
   /* Handle extreme small screens */

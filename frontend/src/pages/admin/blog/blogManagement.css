@@ -27,11 +27,7 @@
     background-color: #007bff;
     color: white;
   }
-  
-  
-  
- 
-  
+
   .blog-management .blog-table table {
     width: 100%;
     border-collapse: collapse;
@@ -97,6 +93,7 @@
   
     @media screen and (max-width: 768px) {
     .blog-management {
+      width: 95%;
       margin-top: 2em;
       padding: 0rem;
     }
@@ -104,6 +101,26 @@
   .blog-management  .tab-container {
     margin-bottom: 1rem;
   }
+  .blog-management table,
+    .blog-management table thead,
+    .blog-management table tbody,
+    .blog-management table th,
+    .blog-management table td,
+    .blog-management table tr {
+      display: block;
+    }
+    .blog-management th,
+    .blog-management td{
+        flex-wrap: wrap;
+        padding: 12px 15px;
+        text-align: left;
+        color: #050505;
+        border-bottom: 1px solid #e2e8f0; /* slate-200 */
+    }
 
+    .blog-management thead {
+        background-color: #e2e8f0; /* slate-200 */
+        color: #1e293b; /* slate-800 */
+    }
     
   }
