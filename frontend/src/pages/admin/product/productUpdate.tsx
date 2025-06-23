@@ -72,6 +72,7 @@ const ProductUpdate:React.FC = () => {
     formData.append('stock', stock);
     formData.append('price', price.toString());
     formData.append('quantity', quantity.toString());
+    formData.append('is_subscription', isSubscription ? 'true' : 'false');
 
     if (image) {
       formData.append('image', image);
@@ -80,7 +81,7 @@ const ProductUpdate:React.FC = () => {
       const token = localStorage.getItem('access_token');
       await axios.put(
         `/products/update/${id}`,
-        { name, price, category, stock, quantity },
+        formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       toast.success('Product updated successfully');
@@ -121,7 +122,7 @@ const ProductUpdate:React.FC = () => {
             <img
               src={previewImage}
               alt="Preview"
-              style={{ width: '120px', marginBottom: '8px', borderRadius: '6px' }}
+              style={{ width: '12em', marginBottom: '8px', borderRadius: '6px' }}
             />
           )}
           <input 
@@ -178,6 +179,7 @@ const ProductUpdate:React.FC = () => {
             type="checkbox"
             title='is_subscription'
             checked={isSubscription}
+            value={isSubscription ? 'true' : 'false'}
             onChange={e => setIsSubscription(e.target.checked)} />
         </div>
 

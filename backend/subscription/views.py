@@ -1,8 +1,10 @@
 # views.py
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework import status
+from rest_framework import generics
 from .models import Subscription
 from products.models import Product
 from .stripe_utils import create_stripe_subscription
@@ -100,3 +102,18 @@ def cancel_subscription(request, pk):
     sub.save()
     return Response({"status": "cancelled"})
 
+class AdminSubscriptionListView(generics.ListAPIView):
+    permission_classes = [IsAdminUser]
+    serializer_class = SubscriptionSerializer
+    queryset = Subscription.objects.select_related('user').all()
+
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def cancel_subscription(request, pk):
+    try:
+        subscription = Subscription.objects.get(pk=pk)
+        subscription.active = False
+        subscription.save()
+        return Response({"detail": "Subscription cancelled."}, status=status.HTTP_200_OK)
+    except Subscription.DoesNotExist:
+        return Response({"detail": "Subscription not found."}, status=status.HTTP_404_NOT_FOUND)

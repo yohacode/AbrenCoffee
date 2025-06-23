@@ -112,9 +112,9 @@ const App = () => {
 
               <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
               {/* Shop Routes */}
-              <Route path='/*' element={<Shop />} />
+              <Route path='/shop/*' element={<Shop />} />
               {/* Blog Routes */}
-              <Route path="/*"  element={<Blog />} />
+              <Route path="/blog/*"  element={<Blog />} />
               {/* Admin Panel (Protected) */}
               <Route path="/*" element={<ProtectedRoute element={<AdminRoutes />} />} />
             </Routes>
