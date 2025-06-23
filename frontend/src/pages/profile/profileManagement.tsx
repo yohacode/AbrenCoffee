@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Wishlist from './profileWishlist';
 import { FaBars } from 'react-icons/fa';
+import userImage from '../../assets/images/images/menu-4.jpg';
 
 interface User {
     id: number;
@@ -128,7 +129,16 @@ const ProfileManagement:React.FC = () => {
           </div>
           <div className="profile">
             <div className="profile-container">
-                <img src={`http://127.0.0.1:8000${user?.profile_image}`} alt="Profile" />  
+                <img
+                  src={
+                    user?.profile_image
+                      ? `${import.meta.env.VITE_API_BASE_URL}/${user.profile_image}`
+                      : userImage
+                  }
+                  alt="Profile"
+                  className="proImage"
+                  loading="lazy"
+                />  
             </div> 
           </div>
           <div className="contents">

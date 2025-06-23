@@ -74,10 +74,8 @@ const TopNav: React.FC = () => {
       ),
       path: '#',
       sublinks: [
-        { name: 'Profile', path: '/admin/profile' },
-        { name: 'Settings', path: '/admin/settings' },
-        { name: 'Reports', path: '/admin/reports' },
-        { name: 'Logout', path: '/admin/logout' },
+        { name: 'Profile', path: '/profile' },
+        { name: 'Logout', path: '/logout' },
         { name: 'Help', path: '/admin/help' },
       ],
     },

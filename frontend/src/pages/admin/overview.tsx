@@ -109,7 +109,7 @@ const Overview: React.FC = () => {
   const indexOfFirstSale = indexOfLastSale - productsPerPage;
   const currentSales = filteredSales.slice(indexOfFirstSale, indexOfLastSale);
 
-  if (isLoading) return <div className="main">Loading...</div>;
+  if (isLoading) return <div className="overview loading">Loading...</div>;
 
   return (
     <div className='overview'>

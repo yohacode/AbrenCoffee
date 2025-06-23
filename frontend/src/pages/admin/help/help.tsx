@@ -9,6 +9,33 @@ const Help: React.FC = () => {
         Welcome to the Abren Coffee Admin Panel! Here’s a quick guide to help you manage your store efficiently.
       </p>
 
+      <div className="help-section">
+        <h2>📊 Overview Dashboard</h2>
+        <ul>
+          <li>
+            <strong>Total Products:</strong> Displays the total number of products listed in the store.
+          </li>
+          <li>
+            <strong>Stock:</strong> Indicates the current inventory. If stock is low (&lt; 10), it’s highlighted.
+          </li>
+          <li>
+            <strong>Sales:</strong> Shows total sales revenue, including refund details.
+          </li>
+          <li>
+            <strong>Orders:</strong> Total number of placed orders with a count of completed ones.
+          </li>
+          <li>
+            <strong>Users:</strong> Displays the total number of registered users.
+          </li>
+          <li>
+            <strong>Top Products:</strong> Sorted list based on popularity and sales. Use the search bar to filter.
+          </li>
+          <li>
+            <strong>Sales Per Day:</strong> Shows a daily breakdown of sales in both table and line chart formats.
+          </li>
+        </ul>
+      </div>
+
       <section className="help-section">
         <h2>📦 Product Management</h2>
         <ul>
@@ -43,6 +70,30 @@ const Help: React.FC = () => {
           <li><strong>Admin Roles:</strong> Only superusers can manage roles and permissions.</li>
         </ul>
       </section>
+
+      <div className="help-section">
+        <h2>🧾 Invoice System</h2>
+        <ul>
+          <li>
+            <strong>Invoice Generation:</strong> Automatically created when an order is placed and paid.
+          </li>
+          <li>
+            <strong>Invoice Details:</strong> Includes order ID, customer info, products, quantities, prices, and totals.
+          </li>
+          <li>
+            <strong>Download PDF:</strong> Admins and customers can download invoices for records and tax purposes.
+          </li>
+          <li>
+            <strong>Invoice Status:</strong> Reflects payment completion, pending status, or failed payments.
+          </li>
+          <li>
+            <strong>Search & Filter:</strong> Quickly find invoices by customer name, order ID, or date range.
+          </li>
+          <li>
+            <strong>Manual Edits:</strong> (Optional) Admins can correct or resend invoices in case of customer issues.
+          </li>
+        </ul>
+      </div>
 
       <section className="help-section">
         <h2>🛠️ Troubleshooting</h2>

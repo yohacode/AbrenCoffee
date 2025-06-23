@@ -232,9 +232,6 @@
     display: block;
   }
   .back-button{
-    position: absolute;
-    top: 2em;
-    right: 2em;
     transition: all .5s ease;
   }
   .back-button.slide-in{
@@ -252,9 +249,6 @@
 }
 
 .back-button{
-  position: absolute;
-  top: 3.5em;
-  left: 11em;
   z-index: 20;
   font-size: 1.2rem;
   cursor: pointer;
@@ -277,6 +271,5 @@
     transform: translateX(2rem);
   }100%{
     transform: translateX(0rem);
-
   }
 }

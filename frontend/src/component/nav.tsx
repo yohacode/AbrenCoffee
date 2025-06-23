@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { useCart } from '../pages/shop/useCart';
 import './nav.css';
 import logo from '../assets/images/images/logo.png';
+import userImage from '../assets/images/images/menu-4.jpg';
 
 interface NavProps {
   onCartClick: () => void;
@@ -168,7 +169,16 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
   ].filter((item): item is { name: string; to: string; onClick?: () => Promise<void> } => item !== null);
 
   const sideLinks = [
-    { link: '#', icon: isLoggedIn ? <img src={`${import.meta.env.VITE_API_BASE_URL}/${user?.profile_image}`} alt="" className='proImage'/> : <FaUser />, onClick: () => setIsProfileOpen(prev => !prev) },
+    { link: '#', icon: isLoggedIn ? <img
+      src={
+        user?.profile_image
+          ? `${import.meta.env.VITE_API_BASE_URL}/${user.profile_image}`
+          : userImage
+      }
+      alt="Profile"
+      className="proImage"
+      loading="lazy"
+    /> : <FaUser />, onClick: () => setIsProfileOpen(prev => !prev) },
     { link: '#', icon: <FaShoppingCart />, onClick: onCartClick },
   ];
 

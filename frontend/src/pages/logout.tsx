@@ -6,7 +6,6 @@ const Logout: React.FC = () => {
 
     useEffect(() => {
         localStorage.removeItem('access_token');
-
         navigate('/');
     }, [navigate]);
 

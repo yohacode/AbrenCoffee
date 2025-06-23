@@ -46,7 +46,6 @@ class Product(models.Model):
             return self.price - (self.price * (self.discount / 100))
         return self.price
 
-
 class Transaction(models.Model):
     TRANSACTION_CHOICES = [
         ("sale", "Sale"),
@@ -61,7 +60,6 @@ class Transaction(models.Model):
     def __str__(self):
         return f"{self.transaction_type} - {self.product.name} ({self.amount})"
     
-
 class Discount(models.Model):
     DISCOUNT_TYPES = [
         ('subscription', 'Subscription'),

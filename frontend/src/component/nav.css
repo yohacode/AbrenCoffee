@@ -67,7 +67,9 @@ background-color: #050606;
 .navbar .navbar-collapse
 .navbar.scroll .container .collapse .navbar-nav .nav-link,
 .navbar.scroll .carts .bag,
-.navbar.scroll .carts .icon-shopping_cart {
+.navbar.scroll .carts .icon-shopping_cart,
+.navbar.scroll .dropdown-menu,
+.navbar.scroll .profile-dropdown-menu {
   color: #e5e5e5 !important;
 }
 
@@ -184,7 +186,7 @@ background-color: #050606;
   right: 5em;
   width: 30vh;
   height: auto;
-  color: #e6e6e6;
+  color: #e6e6e6 !important;
   background: rgba(28, 28, 28, 0.945);
   transition: all .5s ease;
 }
@@ -212,7 +214,6 @@ background-color: #050606;
   text-decoration: none;
 }
 .navbar.scroll .profile-dropdown-menu .dropdown-item {
-  color: #000000;
   transition: all 0.3s ease;
   text-decoration: none;
 }

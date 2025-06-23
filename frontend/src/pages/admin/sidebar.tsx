@@ -41,7 +41,10 @@ const Sidebar: React.FC = () => {
 
   return (
     <>     
-      <aside className={isClicked ? "sidebar shrink" : 'sidebar'}>    
+      <aside className={isClicked ? "sidebar shrink" : 'sidebar'}> 
+        <div className={isClicked ? 'back-button' : "back-button"} onClick={() => handleClicked()}>
+          {isClicked ? <FaAnglesRight /> : <FaAnglesLeft/>}
+        </div>   
         <div className="sidebar-header">
           <Link to={'/'}><img src={logo} alt="" /></Link>
         </div>
@@ -69,9 +72,6 @@ const Sidebar: React.FC = () => {
           </ul>
         </nav>
       </aside>
-      <div className={isClicked ? 'back-button' : "back-button"} onClick={() => handleClicked()}>
-        {isClicked ? <FaAnglesRight /> : <FaAnglesLeft/>}
-      </div>
     </>   
   );
 };

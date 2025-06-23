@@ -55,6 +55,9 @@
     font-size: 2rem;
   }
 
+  .help-section{
+    padding: 0;
+  }
   .help-section h2 {
     font-size: 1.2rem;
   }
