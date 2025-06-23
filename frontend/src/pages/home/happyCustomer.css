@@ -13,24 +13,33 @@
 .slider h1{
     margin-top: -14em;
     z-index: 3;
-    font-family: 'Great Vibes', 'Gabriola', cursive;
+    font-family: "Great Vibes", cursive;
+    font-size: 40px;
+    margin-bottom: -34px;
+    color :rgb(196, 155, 99);
+
 }
 
-.slider .card {
+.card {
   position: absolute;
   width: 16em;
   height: 50%;
+  background: url(../../assets/images/images/bob.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   border-radius: .6em;
-  box-shadow: 0 8px 16px rgba(110, 110, 110, 0.705);
+  box-shadow: 0 8px 16px rgba(145, 142, 142, 0.705);
   transition: transform 0.8s ease, opacity 0.5s;
-  opacity: 0;
+  opacity: 0.5;
   z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
   text-align: center;
-  color: #fff;
+  color: #fffafa;
 }
 
 .slider::after{
@@ -44,7 +53,7 @@
   z-index: 1;
 }
 
-.slider img {
+.card img {
   width: 13em;
   height: 13em;
   border-radius: 50%;
@@ -52,38 +61,38 @@
   margin-bottom: .5rem;
 }
 
-.slider .card.active {
+.card.active {
   transform: translateX(0) scale(1);
   z-index: 3;
   opacity: 1;
 }
 
-.slider .card.prev {
+.card.prev {
   transform: translateX(-95%) scale(0.8);
   z-index: 2;
   opacity: 0.6;
 }
 
-.slider .card.next {
+.card.next {
   transform: translateX(95%) scale(0.8);
   z-index: 2;
   opacity: 0.6;
 }
 
-.slider .card.hidden {
+.card.hidden {
   transform: scale(0);
   opacity: 0;
   z-index: 1;
 }
 
 @media (max-width: 768px) {
-  .slider .card {
+  .card {
     width: 90%;
     height: auto;
   }
 
-  .slider .card.prev,
-  .slider .card.next {
+  .card.prev,
+  .card.next {
     display: none;
   }
 }
@@ -92,14 +101,14 @@
     height: 100vh;
     padding: 0em;
   }
-  .slider .card {
+  .card {
     width: 90%;
     height: auto;
     border-radius: .2em;
   }
 
-  .slider .card.prev,
-  .slider .card.next {
+  .card.prev,
+  .card.next {
     display: none;
   }
 }
