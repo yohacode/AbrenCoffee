@@ -13,6 +13,8 @@ interface Product {
   stock: string;
   image: string;
   created_at: string;
+  is_subscription: boolean;
+  quantity: number;
 }
 
 const ProductDetail:React.FC = () => {
@@ -37,6 +39,7 @@ const ProductDetail:React.FC = () => {
 
         if (response.status !== 200) throw new Error('Product not found');
         setProduct(response.data);
+        console.log('Product fetched:', response.data);
       } catch (err: unknown) {
         if (err instanceof Error) {
           toast.error('Fetch failed: ' + err.message);
@@ -95,6 +98,8 @@ const ProductDetail:React.FC = () => {
           <p><strong>Category:</strong> {product.category}</p>
           <p><strong>Price:</strong> ${product.price}</p>
           <p><strong>Stock:</strong> {product.stock}</p>
+          <p><strong>Is Subscription:</strong> {product.is_subscription ? 'Yes' : 'No'}</p>
+          <p><strong>Quantity:</strong> {product.quantity}g</p>
           <p><strong>Created At:</strong> {new Date(product.created_at).toLocaleString()}</p>
         </div>
       </div>

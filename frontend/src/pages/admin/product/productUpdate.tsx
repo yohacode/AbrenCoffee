@@ -14,6 +14,7 @@ interface Product {
   stock: string;
   quantity: number;
   created_at: string;
+  is_subscription: boolean;
 }
 
 const ProductUpdate:React.FC = () => {
@@ -21,7 +22,7 @@ const ProductUpdate:React.FC = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
-
+  const [isSubscription, setIsSubscription] = useState(false);
   const [name, setName] = useState('');
   const [price, setPrice] = useState<number>(0);
   const [category, setCategory] = useState('');
@@ -48,6 +49,7 @@ const ProductUpdate:React.FC = () => {
         setStock(data.stock);
         setQuantity(data.quantity);
         setDescription(data.description);
+        setIsSubscription(data.is_subscription);
         setPreviewImage(data.image.startsWith('http') ? data.image : `${import.meta.env.VITE_BACKEND_URL}${data.image}`);
       } catch {
         toast.error('Fetch failed: ');
@@ -168,6 +170,15 @@ const ProductUpdate:React.FC = () => {
             title='quantity'
             value={quantity}
             onChange={e => setQuantity(Number(e.target.value))} required />
+        </div>
+
+        <div className="form-group">
+          <label>Is Subscription</label>
+          <input 
+            type="checkbox"
+            title='is_subscription'
+            checked={isSubscription}
+            onChange={e => setIsSubscription(e.target.checked)} />
         </div>
 
         <button type="submit" className="submit-button">Update Product</button>

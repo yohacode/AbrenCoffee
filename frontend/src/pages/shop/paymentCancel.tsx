@@ -11,7 +11,7 @@ const PaymentCancel:React.FC = () => {
               headers: token ? { Authorization: `Bearer ${token}` } : {},
               withCredentials: true,
             });
-            toast.success('✅ Payment cancled successful!');
+            toast.success('✅ Payment canceled successfully!');
           } catch {
             toast.error('⚠️ Payment succeeded but failed to clear cart.');
           }

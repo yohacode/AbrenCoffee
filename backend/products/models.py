@@ -20,7 +20,10 @@ class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name=("Category"), blank=True, on_delete=models.CASCADE)
     description = models.CharField(("Description"), max_length=50, blank=True)
     discount = models.DecimalField("Discount", max_digits=5, decimal_places=2, blank=True, null=True)    
-    is_subscription = models.BooleanField(default=False, blank=True, null=True)
+    is_subscription = models.BooleanField(default=False)
+    stripe_price_id = models.CharField(max_length=100, blank=True, null=True)
+    paypal_plan_id = models.CharField(max_length=100, blank=True, null=True)
+
     delivery_frequency = models.CharField(
             max_length=10,
             choices=DELIVERY_CHOICES,

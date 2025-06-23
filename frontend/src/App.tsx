@@ -20,18 +20,12 @@ const Services = lazy(() => import('./pages/services'));
 const Subscription = lazy(() => import('./pages/subscription'));
 
 const Shop = lazy(() => import('./pages/shop/shop'));
-const SingleProduct = lazy(() => import('./pages/shop/signleProduct'));
-const Checkout = lazy(() => import('./pages/shop/checkout'));
-const PaymentSuccess = lazy(() => import('./pages/shop/pymentSuccess'));
-
 const Blog = lazy(() => import('./pages/blog/blog'));
-const BlogDetail = lazy(() => import('./pages/blog/blogDetail'));
 
 const Profile = lazy(() => import('./pages/profile/profileManagement'));
 
 // Protected route wrapper
 import type { ReactElement } from 'react';
-import BlogUpdate from './pages/admin/blog/blogEdit';
 
 const ProtectedRoute = ({ element }: { element: ReactElement }) => {
   const isLoggedIn = localStorage.getItem('access_token');
@@ -111,17 +105,12 @@ const App = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/services" element={<Services />} />
               <Route path="/subscription" element={<Subscription />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/product/:id" element={<SingleProduct />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/checkout/:step" element={<Checkout />} /> 
-              <Route path="/success" element={<PaymentSuccess />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:category" element={<Blog />} />
-              <Route path="/blogDetail/:id" element={<BlogDetail />} />
-              <Route path="/blog/edit/:id" element={<ProtectedRoute element={<BlogUpdate />} />} />
-              <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
 
+              <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+              {/* Shop Routes */}
+              <Route path='/*' element={<Shop />} />
+              {/* Blog Routes */}
+              <Route path="/*"  element={<Blog />} />
               {/* Admin Panel (Protected) */}
               <Route path="/*" element={<ProtectedRoute element={<AdminRoutes />} />} />
             </Routes>

@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'payment',
     'frontend',
     'wishlist',
+    'subscription',
     'whitenoise.runserver_nostatic',
     
     'rest_framework',
