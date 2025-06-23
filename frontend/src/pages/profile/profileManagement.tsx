@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import Wishlist from './profileWishlist';
 import { FaBars } from 'react-icons/fa';
 import userImage from '../../assets/images/images/menu-4.jpg';
+import MySubscriptions from './MySubscriptions';
 
 interface User {
     id: number;
@@ -80,6 +81,7 @@ const ProfileManagement:React.FC = () => {
         { name: 'orders'},
         { name: 'wishlist' },
         { name: 'invoices' },
+        { name: 'subscriptions' },
       ].filter(button => button.name);
 
       return (
@@ -114,6 +116,8 @@ const ProfileManagement:React.FC = () => {
           return <Wishlist />
         case 'orders':
           return <ProfileOrderList />
+        case 'subscriptions':
+          return <MySubscriptions />
         default:
           return <Profile />;
       }

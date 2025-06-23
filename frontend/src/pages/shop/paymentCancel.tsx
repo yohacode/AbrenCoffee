@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import { toast } from 'react-toastify';
+import './paymentCancel.css'; // Import external CSS
 
 const PaymentCancel:React.FC = () => {
     useEffect(() => {
@@ -21,8 +22,9 @@ const PaymentCancel:React.FC = () => {
       }, []);
     
   return (
-    <div className='cancled' style={{ padding: '2rem', textAlign: 'center' , margin: '14em auto'}}>
-      <h1>Payment was cancled!</h1>
+    <div className='canceled'>
+      <h1>Payment was <span>canceled!</span></h1>
+      <button onClick={() => window.location.href = '/'}>Back to home</button>
     </div>
   )
 }

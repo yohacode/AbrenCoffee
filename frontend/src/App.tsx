@@ -26,6 +26,8 @@ const Profile = lazy(() => import('./pages/profile/profileManagement'));
 
 // Protected route wrapper
 import type { ReactElement } from 'react';
+import PaymentSuccess from './pages/shop/pymentSuccess';
+import PaymentCancel from './pages/shop/paymentCancel';
 
 const ProtectedRoute = ({ element }: { element: ReactElement }) => {
   const isLoggedIn = localStorage.getItem('access_token');
@@ -105,6 +107,8 @@ const App = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/services" element={<Services />} />
               <Route path="/subscription" element={<Subscription />} />
+              <Route path="/success" element={<PaymentSuccess />} />
+              <Route path="/cancel" element={<PaymentCancel />} />
 
               <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
               {/* Shop Routes */}

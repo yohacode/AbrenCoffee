@@ -2,16 +2,18 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
 from .models import Subscription
 from products.models import Product
 from .stripe_utils import create_stripe_subscription
 from .paypal_utils import create_paypal_subscription  # Add this import if the function exists in paypal_utils.py
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import json
 import stripe
 from users.models import CustomUser
 from django.conf import settings
+from .serializers import SubscriptionSerializer
 
 @csrf_exempt
 def stripe_webhook(request):
@@ -36,21 +38,31 @@ def stripe_webhook(request):
         )
     return HttpResponse(status=200)
 
+# subscriptions/views.py
+
 @csrf_exempt
 def paypal_webhook(request):
-    data = json.loads(request.body)
-    event_type = data.get("event_type")
-    resource = data.get("resource", {})
-    if event_type == "BILLING.SUBSCRIPTION.ACTIVATED":
-        email = resource["subscriber"]["email_address"]
-        CustomUser.objects.filter(email=email).first()
-        Subscription.objects.create(
-            user=CustomUser.objects.get(email=email),
-            provider='paypal',
-            external_id=resource["id"],
-            active=True
-        )
-    return HttpResponse(status=200)
+    payload = json.loads(request.body)
+    event_type = payload.get("event_type")
+    subscription_id = payload.get("resource", {}).get("id")
+
+    if not subscription_id:
+        return JsonResponse({"error": "No subscription ID"}, status=400)
+
+    try:
+        sub = Subscription.objects.get(external_id=subscription_id, provider="paypal")
+    except Subscription.DoesNotExist:
+        sub = None
+
+    if event_type == "BILLING.SUBSCRIPTION.ACTIVATED" and sub:
+        sub.active = True
+        sub.save()
+
+    elif event_type in ["BILLING.SUBSCRIPTION.CANCELLED", "BILLING.SUBSCRIPTION.SUSPENDED"] and sub:
+        sub.active = False
+        sub.save()
+
+    return JsonResponse({"status": "received"})
 
 class CreateSubscriptionView(APIView):
     permission_classes = [IsAuthenticated]
@@ -69,4 +81,22 @@ class CreateSubscriptionView(APIView):
             return Response({"error": f"{provider.title()} is not implemented yet."}, status=501)
         return Response({"error": "Unsupported provider"}, status=400)
 
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def my_subscriptions(request):
+    subs = Subscription.objects.filter(user=request.user)
+    return Response(SubscriptionSerializer(subs, many=True).data)
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def cancel_subscription(request, pk):
+    sub = Subscription.objects.get(id=pk, user=request.user)
+
+    # Cancel on PayPal
+    from .paypal_utils import cancel_paypal_subscription
+    cancel_paypal_subscription(sub.external_id)
+
+    sub.active = False
+    sub.save()
+    return Response({"status": "cancelled"})
 

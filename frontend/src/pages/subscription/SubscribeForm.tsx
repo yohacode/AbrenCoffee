@@ -1,6 +1,8 @@
 import React, { useState} from 'react';
 import axios from '../../utils/axios';
 import './subscriptionForm.css';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductWithFrequency extends Product {
   frequency: string; // Adjust the type as needed
@@ -22,6 +24,7 @@ interface Product {
 const SubscribeForm: React.FC<SubscribeFormProps> = ({ selectedProducts }) => {
   const [provider, setProvider] = useState<'stripe' | 'paypal'>('stripe');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubscribe = async () => {
     if (selectedProducts.length === 0) {
@@ -46,9 +49,9 @@ const SubscribeForm: React.FC<SubscribeFormProps> = ({ selectedProducts }) => {
       } else {
         alert('No checkout URL returned.');
       }
-    } catch (error) {
-      console.error('Subscription error:', error);
-      alert('Failed to subscribe.');
+    } catch {
+      toast.error('Failed to subscribe. Login First!');
+      navigate('/login');
     } finally {
       setLoading(false);
     }

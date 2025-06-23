@@ -24,7 +24,7 @@ const PaymentSuccess: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="payment-success">
       <h1>🎉 Thank You for Your Purchase!</h1>
       <p>Your payment has been successfully processed.</p>
       {cleared ? (
