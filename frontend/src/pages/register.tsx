@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from '../utils/axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import './register.css'
 
 const Register: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
@@ -34,15 +35,15 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className='login-container'>
-      <form onSubmit={handleRegister} className="login-box">
+    <div className='register-container'>
+      <form onSubmit={handleRegister} className="register-box">
         <input
           type="text"
           name="username"
           value={formData.username}
           onChange={handleChange}
           placeholder="Username"
-          className="login-input"
+          className="register-input"
           required
         />
         <input
@@ -51,7 +52,7 @@ const Register: React.FC = () => {
           value={formData.email}
           onChange={handleChange}
           placeholder="Email"
-          className="login-input"
+          className="register-input"
           required
         />
         <input
@@ -60,10 +61,10 @@ const Register: React.FC = () => {
           value={formData.password}
           onChange={handleChange}
           placeholder="Password"
-          className="login-input"
+          className="register-input"
           required
         />
-        <button type="submit" className="login-button" disabled={loading}>
+        <button type="submit" className="register-button" disabled={loading}>
           {loading ? 'Registering...' : 'Submit'}
         </button>
         {error && <p className="error-text">{error}</p>}

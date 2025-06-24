@@ -15,7 +15,6 @@ const About = lazy(() => import('./pages/about'));
 const Contact = lazy(() => import('./pages/contact'));
 const Login = lazy(() => import('./pages/login'));
 const Logout = lazy(() => import('./pages/logout'));
-const Register = lazy(() => import('./pages/register'));
 const Services = lazy(() => import('./pages/services'));
 const Subscription = lazy(() => import('./pages/subscription'));
 
@@ -28,6 +27,7 @@ const Profile = lazy(() => import('./pages/profile/profileManagement'));
 import type { ReactElement } from 'react';
 import PaymentSuccess from './pages/shop/pymentSuccess';
 import PaymentCancel from './pages/shop/paymentCancel';
+import Register from './pages/register';
 
 const ProtectedRoute = ({ element }: { element: ReactElement }) => {
   const isLoggedIn = localStorage.getItem('access_token');

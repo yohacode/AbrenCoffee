@@ -63,7 +63,7 @@
   display: none;
  }
 
- .show{
+ .tabs.show{
   display: block;
  }
 
@@ -79,7 +79,7 @@
       text-align: center;
     } 
     .profile-management .container .contents{
-      padding-top: 3em;
+      padding-top: 0em;
     }
     .container .profile {
       width: 100%;
@@ -101,13 +101,23 @@
       position: relative;
     }
     .profile-management .tabs {
+      position: relative;
+      display: flex;
       border-right: none;
       border-top: none;
       padding-top: 0rem;
       padding-right: 0;
       top: -.5em;
+      transition: all .5s ease-in-out;
     }
-     .profile-management .profile-tab-container {
+    .profile-management .tabs.show {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 0em;
+      transition: all .5s ease;
+    }
+    .profile-management .profile-tab-container {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -116,6 +126,7 @@
       color: #fefefe;
     }
     .profile-management .tab-container {
+      display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
@@ -124,6 +135,9 @@
     .profile-management .tab-container button {
       flex: 1 1 45%;
       text-align: center;
+    }
+    .container .bars{
+      display: flex;
     }
   }
 

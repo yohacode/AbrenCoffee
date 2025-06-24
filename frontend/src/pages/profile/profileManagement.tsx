@@ -9,7 +9,7 @@ import ProfileOrderList from './profileOrders';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Wishlist from './profileWishlist';
-import { FaBars } from 'react-icons/fa';
+import { FaArrowDown, FaArrowUp} from 'react-icons/fa';
 import userImage from '../../assets/images/images/menu-4.jpg';
 import MySubscriptions from './MySubscriptions';
 
@@ -128,8 +128,11 @@ const ProfileManagement:React.FC = () => {
     return (
       <div className="profile-management">
         <div className="container">
+          <div className={isClicked ? "tabs show" : "tabs"}>
+            {renderTabs()}
+          </div>
           <div className="bars" onClick={handleToggleClicked}>
-            <FaBars />
+            {isClicked ? <FaArrowDown/> : <FaArrowUp/>}
           </div>
           <div className="profile">
             <div className="profile-container">
@@ -148,9 +151,7 @@ const ProfileManagement:React.FC = () => {
           <div className="contents">
             {renderContent()}
           </div>
-          <div className="tabs">
-            {renderTabs()}
-          </div>
+          
         </div>
       </div>
     );
