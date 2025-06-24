@@ -138,8 +138,6 @@
   width: 100%;
   padding: 2em;
   margin-left: 0em;
-  top: 19vh;
-  left: 0;
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.596);
@@ -231,6 +229,7 @@
   color: #111;
   display: flex;
   align-items: center;
+  margin: auto;
   border-radius: 6px;
   transition: all 0.5s ease-in-out;
 }
@@ -239,6 +238,7 @@
   font-size: 1em;
   color: #f1f1f1;
   margin-right: 5em;
+  margin: auto;
 }
 .navbar .container .side span,
 .navbar.scroll .container .side span {
@@ -356,8 +356,7 @@
 
   .dropdown-menu {
     margin-left: 0em;
-    top: 12vh;
-    left: 0;
+    
   }
   .profile-dropdown-menu {
     display: block;
@@ -365,8 +364,7 @@
     height: 25vh;
     margin-right: -1.5em;
     font-size: .9rem;
-    top: 19vh;
-    right: 2em;
+    
     z-index: 99;
     background: rgba(159, 157, 157, 0.103);
     animation: fallD .5s forwards ease-in-out;
@@ -377,7 +375,8 @@
     margin-left: -1.5em;
   }
   .dropdown-menu .dropdown-img{
-    display: none;
+    width: 5em;
+    height: 5em;
   }
   .dropdown-menu ul li {
     text-align: start;
@@ -420,6 +419,8 @@
     display: flex;
     gap: 2em;
     margin-left: -1.5em;
+    justify-content: start;
+    align-items: start;
   }
   .navbar.scroll .dropdown-menu {
     position: absolute;
@@ -437,8 +438,9 @@
     background: rgba(28, 28, 28, 0.945);
     transition: all .5s ease;
   }
-  .dropdown-menu .dropdown-img{
-    display: none;
+  .dropdown-menu .dropdown-img .product-nav-img img{
+    width: 4em;
+    height: 4em;
   }
   .dropdown-menu ul li {
     text-align: start;

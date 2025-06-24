@@ -214,7 +214,6 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
           <Link className="navbar-brand" to="/">
             <img src={logo} alt="CoffeeBlend Logo" />
           </Link>
-
           <div className={isClicked ? "collapse" : "collapse navbar-collapse"} id="ftco-nav">
             <ul className="navbar-nav ">
               <li className="nav-item dropdown">
@@ -251,7 +250,6 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
 
             </ul>
           </div>
-
           <div className="side">
               {isProfileOpen && (
                 <div className="profile-dropdown-menu">
@@ -280,7 +278,6 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
                 </div>
               ))}
           </div>
-
           <div className="navbar-toggle" onClick={handleToggleClicked}>
             {isClicked ? <FaTimes /> : <FaBars /> }
           </div>
