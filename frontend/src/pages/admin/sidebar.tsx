@@ -35,6 +35,7 @@ const Sidebar: React.FC = () => {
     { name: 'Orders', path: '/admin/orders', icon: <FaCartPlus /> },
     { name: 'Invoices', path: '/admin/invoices', icon: <FaFileInvoice /> },
     { name: 'Blog', path: '/admin/blog', icon: <FaGear /> },
+    { name: 'Subscriptions', path: '/admin/subscriptions', icon: <FaClipboard /> },
     { name: 'Report', path: '/admin/report', icon: <FaClipboard /> },
     { name: 'Help', path: '/admin/help', icon: <FaArrowRightToCity /> }
   ];
@@ -43,8 +44,8 @@ const Sidebar: React.FC = () => {
     <>     
       <aside className={isClicked ? "sidebar shrink" : 'sidebar'}> 
         <div className={isClicked ? 'back-button' : "back-button"} onClick={() => handleClicked()}>
-          {isClicked ? <FaAnglesRight /> : <FaAnglesLeft/>}
-        </div>   
+          {isClicked ? <FaAnglesRight /> : <FaAnglesLeft />}
+        </div>
         <div className="sidebar-header">
           <Link to={'/'}><img src={logo} alt="" /></Link>
         </div>

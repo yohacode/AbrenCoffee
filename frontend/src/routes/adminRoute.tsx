@@ -1,6 +1,7 @@
 // src/routes/AdminRoutes.js
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import AdminSubscriptions from '../pages/admin/subscription/adminSubscription';
 
 // Lazy-loaded pages
 const Overview = lazy(() => import('../pages/admin/overview'));
@@ -82,6 +83,7 @@ const AdminRoutes = () => {
         {/* Other */}
         <Route path="report" element={<Report />} />
         <Route path="help" element={<Help />} />
+        <Route path="subscriptions" element={<AdminSubscriptions />} />
       </Route>
     </Routes>
   );
