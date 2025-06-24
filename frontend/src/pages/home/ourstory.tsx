@@ -5,9 +5,9 @@ const OurStory: React.FC = () => {
   return (
     <section className="ftco-about">
       <div className="one-half img"></div>
-      <div className="one-half ftco-animate">
+      <div className="ftco-animate ">
         <div className="overlap glass-effect">
-          <div className="heading-section ftco-animate">
+          <div className="heading-section">
             <span className="subheading">Discover</span>
             <h2 className="mb-4">Our Story</h2>
           </div>

@@ -179,7 +179,9 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
       className="proImage"
       loading="lazy"
     /> : <FaUser />, onClick: () => setIsProfileOpen(prev => !prev) },
-    { link: '#', icon: <FaShoppingCart />, onClick: onCartClick },
+    { link: '#', icon: <><div className="cart">
+              <small>{cartItemCount}</small>
+            </div><FaShoppingCart /></>, onClick: onCartClick },
   ];
 
   const navShopProduct = () => {
@@ -277,9 +279,6 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
                   </Link>
                 </div>
               ))}
-            <div className="cart">
-              <small>{cartItemCount}</small>
-            </div>
           </div>
         </div>
         <div className="navbar-toggle" onClick={handleToggleClicked}>
