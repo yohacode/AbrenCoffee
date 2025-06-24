@@ -29,7 +29,7 @@
 .navbar.scroll {
 background-color: #050606;
   color: #ebebebe4;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   border-bottom: none;
   transform: translateY(0);
   opacity: 1;
@@ -442,7 +442,7 @@ background-color: #050606;
   }
   .navbar-toggle{
     display: block;
-    margin-right: 2em;
+    margin-right: 0em;
     font-size: 1.2rem;
     cursor: pointer;
     color: #f1f1f1;
@@ -468,14 +468,11 @@ background-color: #050606;
   .navbar-collapse {
     display: none;
   }
-  
-
   .dropdown-menu ul {
     display: flex;
     gap: 2em;
     margin-left: -1.5em;
   }
-
   .navbar.scroll .dropdown-menu {
     position: absolute;
     top: 0vh;
@@ -531,7 +528,7 @@ background-color: #050606;
   }
   .navbar-toggle{
     display: block;
-    margin-right: 2em;
+    margin-right: 0em;
     font-size: 1.2rem;
     cursor: pointer;
     color: #f1f1f1;
