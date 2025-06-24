@@ -35,6 +35,7 @@
   position: relative;
   z-index: 3;
   margin: auto;
+  padding: 2em;
 }
 .footer__row {
   display: flex;
@@ -42,6 +43,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 2rem;
+  margin: auto;
 }
 
 .footer__column {
