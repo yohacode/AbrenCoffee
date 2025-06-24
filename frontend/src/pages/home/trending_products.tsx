@@ -3,7 +3,6 @@ import axios from '../../utils/axios';
 import { useCart } from '../shop/useCart'; // ✅ Import global cart context
 import { useNavigate } from 'react-router-dom';
 import './trending_products.css';
-import { toast } from 'react-toastify';
 import WishButton from '../../component/wishButton';
 
 interface Product {
@@ -42,12 +41,8 @@ const Trending_products: React.FC = () => {
 
   useEffect(() => {
     const fetchInitialData = async () => {
-      try {
         const productsResponse = await axios.get<Product[]>('/products/list/');
         setProducts(productsResponse.data.slice(0, maxItems));
-      } catch {
-        toast.error('Failed to load products. Please try again later.');
-      }
     };
 
     fetchInitialData();
