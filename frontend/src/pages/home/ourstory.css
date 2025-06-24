@@ -136,31 +136,8 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .ftco-about {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
 
-  .overlap{
-    width: 90%;
-  }
-
-  .one-half.img {
-    width: 100%;
-    height: 60vh;
-  }
-  .one-half.ftco-animate {
-    width: 100%;
-    padding: 0rem;
-  }
-}
-@media (max-width: 420px) {
+@media (max-width: 420px) and (max-width: 768px) {
   .ftco-about {
     display: flex;
     flex-direction: column;
