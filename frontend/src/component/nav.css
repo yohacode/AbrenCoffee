@@ -85,6 +85,7 @@
   line-height: inherit;
   white-space: nowrap; 
   color: #e3e2e2;
+  margin: auto;
 }
 .navbar-brand:hover, .navbar-brand:focus {
     text-decoration: none;
