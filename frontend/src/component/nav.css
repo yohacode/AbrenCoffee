@@ -17,7 +17,6 @@
 .navbar .container {
   display: flex;
   flex-direction: row;
-  padding: 0em 2em;
   width: 100%;
   align-items: center;
   justify-content: space-between;
@@ -28,6 +27,8 @@
   border-bottom: none;
   transform: translateY(0);
   opacity: 1;
+}
+.navbar.scroll .container{
 }
 .navbar .navbar-brand img{
   width: 5em;
@@ -296,6 +297,7 @@
 }
 .navbar-toggle{
   display: none;
+  padding: .5em;
 }
 /* Animations */
 @keyframes fallD {
@@ -334,12 +336,6 @@
     display: flex;
     flex-direction: row;
   }
-
-  .navbar .container {
-    display: flex;
-    margin: auto;
-  }
-
   .navbar-nav {
     position: absolute;
     inset: 0;
