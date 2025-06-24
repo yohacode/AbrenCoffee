@@ -110,20 +110,10 @@ const ProductCard = ({
       <h3>{product.name}</h3>
       <p className="price">${product.price.toFixed(2)}</p>
 
-      <button
-        className="addCart"
-        onClick={() => onAddToCart({ ...product, delivery_frequency: frequency })}
-        disabled={isLoading || isOutOfStock}
-      >
-        {isLoading ? 'Adding...' : isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
-      </button>
-
       <div className="cart-item-controls">
         <button onClick={() => onUpdateQuantity(product.id, quantity - 1)} disabled={quantity <= 1}>➖</button>
         <button onClick={() => onUpdateQuantity(product.id, quantity + 1)}>➕</button>
         <button onClick={() => onRemove(product.id)}>🗑️</button>
-
-        
       </div>
       <select
           value={frequency}
@@ -135,6 +125,13 @@ const ProductCard = ({
           <option value="daily">Daily</option>
           <option value="monthly">Monthly</option>
         </select>
+        <button
+          className="addCart"
+          onClick={() => onAddToCart({ ...product, delivery_frequency: frequency })}
+          disabled={isLoading || isOutOfStock}
+        >
+          {isLoading ? 'Adding...' : isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+        </button>
     </article>
   );
 };
