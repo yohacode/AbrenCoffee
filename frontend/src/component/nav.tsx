@@ -280,9 +280,10 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
                 </div>
               ))}
           </div>
-        </div>
-        <div className="navbar-toggle" onClick={handleToggleClicked}>
-          {isClicked ? <FaTimes /> : <FaBars /> }
+
+          <div className="navbar-toggle" onClick={handleToggleClicked}>
+            {isClicked ? <FaTimes /> : <FaBars /> }
+          </div>
         </div>
       </nav>
   );

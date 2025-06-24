@@ -17,6 +17,7 @@
 .navbar .container {
   display: flex;
   flex-direction: row;
+  padding: 0em 2em;
   width: 100%;
   align-items: center;
   justify-content: space-between;
@@ -24,7 +25,6 @@
 .navbar.scroll {
   background-color: #050606;
   color: #ebebebe4;
-  padding: 0rem;
   border-bottom: none;
   transform: translateY(0);
   opacity: 1;
@@ -50,8 +50,8 @@
   transition: all 0.3s ease;
 }
 .scroll .navbar-brand img {
-  height: 2em !important;
-  width: 2em !important;
+  height: 2.5em !important;
+  width: 2.5em !important;
 }
 .navbar .navbar-collapse
 .navbar.scroll .container .collapse .navbar-nav .nav-link,
