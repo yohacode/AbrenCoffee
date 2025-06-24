@@ -190,7 +190,7 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
         {products.length > 0 ? (
           <div className="product-imgs">
             {products.map((product) => (
-                <div className="product-nav-img" key={product.id} onClick={() => navigate(`/product/${product.id}`)}>
+                <div className="product-nav-img" key={product.id} onClick={() => navigate(`/shop/product/${product.id}`)}>
                   <img src={product.image} alt="" />
                 </div>             
             ))}
