@@ -190,6 +190,10 @@
   color: #fff;
 }
 
+.item-card h3{
+  color: #cdcdcd;
+}
+
 /* Price display */
 .price {
   font-size: 1rem;
@@ -251,8 +255,17 @@
   font-weight: 500;
   min-width: 24px;
   text-align: center;
+  color: #fff;
 }
 
+.frequency-select{
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
 @media (max-width: 898px) {
    .subscription-hero{
     height: 100vh;

@@ -85,7 +85,7 @@ const Services:React.FC = () => {
         <div className="services-cta">
           <h2>Ready to transform your coffee and commerce experience?</h2>
           <p>Contact our team to get started with a custom plan tailored to your needs.</p>
-          <button className="cta-button">Contact Us</button>
+          <button className="cta-button" onClick={() => window.location.href = '/contact'}>Contact Us</button>
         </div>
 
         <section className="testimonials-section" data-aos="fade-up">

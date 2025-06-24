@@ -51,11 +51,11 @@ const plans = [
 ];
 
 const PAYMENT_LINKS = [
-  { href: 'https://www.facebook.com/abren', icon: <FaCcMastercard /> },
-  { href: 'https://www.instagram.com/abren', icon: <FaCcVisa /> },
-  { href: 'https://www.tiktok.com/@abren', icon: <FaCcAmazonPay /> },
-  { href: 'https://www.twitch.tv/abren', icon: <FaCcPaypal /> },
-  { href: 'https://x.com/abren', icon: <FaCcStripe /> },
+  { href: 'https://www.facebook.com/abrenCoffee', icon: <FaCcMastercard /> },
+  { href: 'https://www.instagram.com/abrenCoffee', icon: <FaCcVisa /> },
+  { href: 'https://www.tiktok.com/@abrenCoffee', icon: <FaCcAmazonPay /> },
+  { href: 'https://www.twitch.tv/abrenCoffee', icon: <FaCcPaypal /> },
+  { href: 'https://x.com/abrenCoffee', icon: <FaCcStripe /> },
 ];
 
 const PaymentLinks = () => (
@@ -123,7 +123,9 @@ const ProductCard = ({
         <button onClick={() => onUpdateQuantity(product.id, quantity + 1)}>➕</button>
         <button onClick={() => onRemove(product.id)}>🗑️</button>
 
-        <select
+        
+      </div>
+      <select
           value={frequency}
           onChange={(e) => onFrequencyChange(product.id, e.target.value)}
           className="frequency-select"
@@ -133,7 +135,6 @@ const ProductCard = ({
           <option value="daily">Daily</option>
           <option value="monthly">Monthly</option>
         </select>
-      </div>
     </article>
   );
 };
@@ -141,7 +142,6 @@ const ProductCard = ({
 const Subscription: React.FC = () => {
   const [selectedFrequencies, setSelectedFrequencies] = useState<{ [id: number]: string }>({});
   const [products, setProducts] = useState<ProductWithFrequency[]>([]);
-  const [error, setError] = useState<string | null>(null);
   const [loadingIds, setLoadingIds] = useState<Set<number>>(new Set());
   const { removeItem, updateItemQuantity, cartItemCount, addItem } = useCart();
 
@@ -158,7 +158,7 @@ const Subscription: React.FC = () => {
           }));
         setProducts(subscriptionProducts);
       })
-      .catch(() => setError('Failed to load subscription products.'));
+      .catch(() => console.error('Failed to load subscription products.'));
   }, []);
 
   const handleFrequencyChange = useCallback((id: number, freq: string) => {
@@ -230,7 +230,6 @@ const Subscription: React.FC = () => {
           />
         )}
 
-        {error && <p className="error-message">{error}</p>}
       </div>
     </div>
   );
