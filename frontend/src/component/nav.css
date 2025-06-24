@@ -14,42 +14,33 @@
   font-family: 'Roboto', sans-serif;
   animation: fallD .5s forwards ease;
 }
-
 .navbar .container {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding-left: 0em;
 }
-
-
-/* Scroll State */
 .navbar.scroll {
-background-color: #050606;
+  background-color: #050606;
   color: #ebebebe4;
-  padding: 1rem;
+  padding: 0rem;
   border-bottom: none;
   transform: translateY(0);
   opacity: 1;
 }
-
 .navbar .navbar-brand img{
   width: 5em;
   height: 5em;
 }
-
 .navbar.scroll img, .navbar img {
   height: 1.5em;
   width: auto;
   border-radius: 50%;
 }
-
 .navbar.scroll img:hover, .navbar img:hover {
   scale: 1.2;
 }
-
 .scroll {
   padding-top: 5px !important;
   padding-bottom: 5px !important;
@@ -58,12 +49,10 @@ background-color: #050606;
 .navbar .navbar-brand img {
   transition: all 0.3s ease;
 }
-
 .scroll .navbar-brand img {
   height: 2em !important;
   width: 2em !important;
 }
-
 .navbar .navbar-collapse
 .navbar.scroll .container .collapse .navbar-nav .nav-link,
 .navbar.scroll .carts .bag,
@@ -72,11 +61,9 @@ background-color: #050606;
 .navbar.scroll .profile-dropdown-menu {
   color: #e5e5e5 !important;
 }
-
 .navbar.scroll .nav_second {
   display: none;
 }
-
 .nav_second {
   display: flex;
   flex-direction: row;
@@ -85,17 +72,14 @@ background-color: #050606;
   color: #e3e3e3;
   z-index: 1000;
 }
-
 /* Brand */
 .ftco-navbar-light {
   background: rgba(0, 0, 0, 0.9) !important;
   padding: 0;
   transition: all 0.3s ease;
 }
-
 .navbar-brand {
   display: inline-block;
-  margin-left: 2rem;
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap; 
@@ -245,43 +229,35 @@ background-color: #050606;
   color: #111;
   display: flex;
   align-items: center;
-  margin-right: 4em;
   border-radius: 6px;
   transition: all 0.5s ease-in-out;
 }
-
 .navbar.scroll .container .side {
   background: transparent;
   font-size: 1em;
   color: #f1f1f1;
   margin-right: 5em;
 }
-
 .navbar .container .side span,
 .navbar.scroll .container .side span {
   padding: 0.3em;
   border-radius: 6px;
   transition: all 0.5s ease-in-out;
 }
-
 .navbar .container .side span {
   color: #e4e4e4;
 }
-
 .navbar .container .side span:hover {
   background: #000;
   color: #e4e4e4;
 }
-
 .navbar.scroll .container .side span {
   color: #e3e3e3;
 }
-
 .navbar.scroll .container .side span:hover {
   background: #1b1b1b;
   color: #e8e8e8;
 }
-
 .navbar .container .cart,
 .navbar.scroll .container .cart {
   position: absolute;
@@ -293,17 +269,14 @@ background-color: #050606;
   z-index: 9;
   transition: all .5s ease;
 }
-
 .navbar .container .cart {
   top: 4em;
   right: 6.4em;
 }
-
 .navbar.scroll .container .cart {
   top: 2em;
   right: 9.4em;
 }
-
 /* Hover animation for links */
 .nav-link:after {
   content: '';
@@ -313,11 +286,9 @@ background-color: #050606;
   background: #c8a97e;
   transition: width 0.3s;
 }
-
 .navbar-toggle{
   display: none;
 }
-
 /* Animations */
 @keyframes fallD {
   0% {
@@ -329,15 +300,13 @@ background-color: #050606;
     transform: translateY(0);
   }
 }
-
 /* Mobile Responsive */
 @media (max-width: 991.98px) {
   .navbar-collapse {
     background: #00000036;
-    padding: 20px;
-    margin-top: 15px;
+    padding: 0;
+    margin-top: 0;
   }
-
   .nav-item {
     margin: 5px 0;
   }
@@ -397,38 +366,31 @@ background-color: #050606;
     background: rgba(159, 157, 157, 0.103);
     animation: fallD .5s forwards ease-in-out;
   }
-
   .dropdown-menu ul {
     display: flex;
     gap: 2em;
     margin-left: -1.5em;
   }
-
   .dropdown-menu .dropdown-img{
     display: none;
   }
-
   .dropdown-menu ul li {
     text-align: start;
     line-height: 2.4em;
   }
-
   .dropdown-item {
     color: #fff;
     padding-bottom: 1vh;
     transition: all 0.3s ease;
   }
-
   .navbar .container .cart {
     top: 3.7em;
     right: 12.4em;
   }
-
   .navbar.scroll .container .cart {
     top: 2em;
     right: 14.4em;
   }
-
   .navbar .container .cart,
   .navbar.scroll .container .cart {
     position: absolute;
@@ -489,32 +451,26 @@ background-color: #050606;
     background: rgba(28, 28, 28, 0.945);
     transition: all .5s ease;
   }
-
   .dropdown-menu .dropdown-img{
     display: none;
   }
-
   .dropdown-menu ul li {
     text-align: start;
     line-height: 2.4em;
   }
-
   .dropdown-item {
     color: #fff;
     padding-bottom: 1vh;
     transition: all 0.3s ease;
   }
-
   .navbar .container .cart {
     top: 3.7em;
     right: 12.4em;
   }
-
   .navbar.scroll .container .cart {
     top: 2em;
     right: 14.4em;
   }
-
   .navbar .container .cart,
   .navbar.scroll .container .cart {
     position: absolute;
@@ -535,3 +491,4 @@ background-color: #050606;
     transition: all .5s ease-in-out;
   }
 }
+
