@@ -6,6 +6,7 @@ interface Blog {
   title: string;
   date: string;
   author: string;
+  author_username: string;
   comments: number;
   image: string;
 }
@@ -78,7 +79,7 @@ const Footer: React.FC = () => {
                     <a href="#">{blog.title}</a>
                     <div className="footer__meta">
                       <span>📅 {blog.date}</span>
-                      <span>👤 {blog.author}</span>
+                      <span>👤 {blog.author_username}</span>
                       <span>💬 {blog.comments}</span>
                     </div>
                   </div>

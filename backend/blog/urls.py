@@ -1,5 +1,9 @@
 from django.urls import path
-from .views import BlogList, BlogDetail, BlogCreate, BlogUpdate, BlogDelete, CategoriesView, CreateCategoryView
+from .views import (BlogList, 
+                    BlogDetail, BlogCreate, 
+                    BlogUpdate, BlogDelete,
+                    CategoriesView, CreateCategoryView,
+                    CommentCreateView)
 
 urlpatterns = [
     path('list/', BlogList.as_view(), name='blog-list'),
@@ -10,4 +14,6 @@ urlpatterns = [
 
     path('category/', CategoriesView.as_view(), name='category'),
     path('category/create/', CreateCategoryView.as_view(), name='create-category'),
+
+    path('comment/create/<int:pk>/', CommentCreateView.as_view(), name='create-comment-detail'),
 ]

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Blog, Category
+from .models import Blog, Category, Comments
 from django.conf import settings
 from users.models import CustomUser
 
@@ -65,4 +65,16 @@ class BlogUpdateSerializer(serializers.ModelSerializer):
             validated_data['author'] = request.user
         return super().update(instance, validated_data)
     
+class CommentsSerializer(serializers.ModelSerializer):
+    author_username = serializers.CharField(source='author.username', read_only=True)
+
+    class Meta:
+        model = Comments
+        fields = ['id', 'blog', 'author', 'author_username', 'content', 'created_at']
+        read_only_fields = ['id', 'blog', 'author', 'created_at']
+    
+    def create(self, validated_data):
+        request = self.context.get('request')
+        validated_data['author'] = request.user  # Set the author to the current user
+        return super().create(validated_data)
     

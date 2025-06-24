@@ -47,5 +47,9 @@ class Blog(models.Model):
         return f"/blog/{self.id}/"
     
 
-    
 
+class Comments(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
