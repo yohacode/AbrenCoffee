@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import './MySubscriptions.css';
-import { toast } from 'react-toastify';
 
 interface Subscription {
   id: number;
@@ -13,36 +12,25 @@ interface Subscription {
 
 const MySubscriptions: React.FC = () => {
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
-  const [loading, setLoading] = useState(false);
 
   const fetchSubscriptions = async () => {
-    try {
-      setLoading(true);
       const res = await axios.get<Subscription[]>('/my-subscriptions/');
       setSubscriptions(res.data);
-    } catch {
-      toast.error('Failed to load subscriptions');
-    } finally {
-      setLoading(false);
-    }
+    
   };
 
   const cancelSubscription = async (id: number) => {
-    try {
+
       await axios.post(`/subscriptions/${id}/cancel/`);
       setSubscriptions((prev) =>
         prev.map((s) => (s.id === id ? { ...s, active: false } : s))
       );
-    } catch {
-      toast.error('Failed to cancel subscription');
-    }
+    
   };
 
   useEffect(() => {
     fetchSubscriptions();
   }, []);
-
-  if (loading) return <p>Loading subscriptions...</p>;
 
   return (
     <div className="subscription-dashboard">

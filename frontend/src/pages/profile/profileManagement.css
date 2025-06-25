@@ -30,6 +30,7 @@
     left: 0em;
     width: 100%;
     background-color: #421d1d;
+    z-index: 9;
   } 
   .profile-management .profile-tab-container {
     display: flex;

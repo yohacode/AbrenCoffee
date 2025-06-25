@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
-import { toast } from 'react-toastify';
 import './profileInvoice.css';
 
 interface Invoice {
@@ -12,22 +11,13 @@ interface Invoice {
 
 const ProfileInvoices: React.FC = () => {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
-  const [loading, setLoading] = useState(false);
 
   const fetchInvoices = async () => {
-    setLoading(true);
-    try {
       const token = localStorage.getItem('access_token');
       const response = await axios.get('/orders/invoices/user/', {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
       setInvoices(response.data);
-      console.log('Invoices loaded:', response.data);
-    } catch (err) {
-      console.error('Error loading invoices:', err);
-      toast.error('❌ Failed to load invoices');
-    }
-    setLoading(false);
   };
 
   useEffect(() => {
@@ -37,10 +27,7 @@ const ProfileInvoices: React.FC = () => {
   return (
     <div className="invoices-container">
       <h1>All Invoices</h1>
-  
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
+
         <table className="invoices-table">
           <thead>
             <tr>
@@ -76,8 +63,8 @@ const ProfileInvoices: React.FC = () => {
             ))}
           </tbody>
         </table>
-      )}
-      {invoices.length === 0 && !loading && (
+
+      {invoices.length === 0 && (
         <p>No invoices found.</p>
       )}
     </div>

@@ -44,7 +44,7 @@
     object-fit: cover;
     margin-bottom: 1.5rem;
     border: 3px solid #d8d8d8;
-    z-index: 4;
+    z-index: 10;
   }
   
   .profile-detail {

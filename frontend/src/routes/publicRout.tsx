@@ -11,10 +11,9 @@ import Logout from '../pages/logout';
 import Services from '../pages/services';
 import Subscription from '../pages/subscription';
 import Blog from '../pages/blog/blog';
-import Profile from '../pages/profile/profile';
-// Lazy loaded pages
 // Protected route wrapper
 import type { ReactElement } from 'react';
+import ProfileManagement from '../pages/profile/profileManagement';
 
 const ProtectedRoute = ({ element }: { element: ReactElement }) => {
   const isLoggedIn = localStorage.getItem('access_token');
@@ -35,7 +34,7 @@ const PublicRoutes = () => {
         <Route path="/success" element={<PaymentSuccess />} />
         <Route path="/cancel" element={<PaymentCancel />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
+        <Route path="/profile" element={<ProtectedRoute element={<ProfileManagement />} />} />
     </Routes>
   );
 };
