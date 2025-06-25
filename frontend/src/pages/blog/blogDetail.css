@@ -3,7 +3,6 @@
   height: auto;
   margin: 0;
   padding-top: 6.5em;
-  padding-bottom: 5em;
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.6;
   background: url(../../assets/images/images/bg_4.png);
@@ -85,7 +84,7 @@
   height: 6em;
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: center;
   gap: 1em;
 }
 .related-blog-card img{

@@ -1,11 +1,10 @@
 // BlogComment.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './blogComment.css';
 
 interface Comment {
   id: number;
   content: string;
-  guest_session_id: string;
   author: string;
   author_username: string;
   created_at: number;
@@ -18,6 +17,21 @@ interface BlogCommentProps {
 
 const BlogComment: React.FC<BlogCommentProps> = ({ comments, onCommentSubmit }) => {
   const [newComment, setNewComment] = React.useState('');
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(()=>{
+    const checkStatus = async () =>{
+      if (!isLoggedIn) return;
+      const token = localStorage.getItem('access_token');
+      if (!token){
+        setIsLoggedIn(false);
+      } else {
+        setIsLoggedIn(true);
+      }
+    };
+    checkStatus();
+  }, [isLoggedIn]);
 
   const handleCommentSubmit = () => {
     if (newComment.trim()) {
@@ -33,7 +47,7 @@ const BlogComment: React.FC<BlogCommentProps> = ({ comments, onCommentSubmit }) 
         {comments.map((comment) => (
           <li className="comment-item" key={comment.id}>
             <div className="comment-meta">
-              <strong>{comment.author_username ? comment.author_username : comment.guest_session_id}</strong> ·{' '}
+              <strong>{comment.author_username}</strong> ·{' '}
               {new Date(comment.created_at).toLocaleDateString()}
             </div>
             <div className="comment-text">{comment.content}</div>
@@ -52,7 +66,7 @@ const BlogComment: React.FC<BlogCommentProps> = ({ comments, onCommentSubmit }) 
         onClick={handleCommentSubmit}
         disabled={!newComment.trim()}
       >
-        Submit
+        {isLoggedIn ? 'Submit' : 'Login to comment'}
       </button>
     </div>
   );

@@ -22,7 +22,6 @@ interface Comment {
   id: number;
   content: string;
   author: string;
-  guest_session_id:string;
   author_username: string;
   created_at: string | number;
 }
@@ -35,6 +34,7 @@ const PublicBlogDetail: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  
   useEffect(() => {
     const fetchBlog = async () => {
       try {
@@ -124,15 +124,22 @@ const PublicBlogDetail: React.FC = () => {
         />
         <div className="related-blogs">
           <h4>Related Blogs</h4>
-          {blogItems.map((blog)=> (
-            <div className="related-blog-card">
-              <img src={`http://127.0.0.1:8000${blog.image}`} alt="" />
-              <div className="related-blog-info">
-                <p>{blog.author_username}</p>
-                <p>comments {comments.length}</p>
-              </div>
-            </div>
-          ))}
+          {blogItems.length < 0 ? (
+              <p>No blogs found!</p>
+          ) : (
+              <>
+                {blogItems.map((blog)=> (
+                  <div className="related-blog-card">
+                    <img src={`http://127.0.0.1:8000${blog.image}`} alt="" />
+                    <div className="related-blog-info">
+                      <p>{blog.author_username}</p>
+                      <p>comments {comments.length}</p>
+                    </div>
+                  </div>
+                ))}
+              </>
+          )}
+          
         </div>
       </section>
     </article>

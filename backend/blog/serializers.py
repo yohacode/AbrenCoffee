@@ -70,25 +70,12 @@ class CommentsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comments
-        fields = ['id', 'author', 'guest_session_id','author_username', 'content', 'created_at']
-        read_only_fields = ['id', 'guest_session_id', 'author', 'created_at']
+        fields = ['id', 'author', 'author_username', 'content', 'created_at']
+        read_only_fields = ['id', 'author', 'created_at']
     
-    def get_author_username(self, obj):
-        if obj.author:
-            return obj.author.username
-        return f"Guest ({obj.guest_session_id['anonymus']})"
-
     def create(self, validated_data):
-        request = self.context['request']
-        user = request.user if request.user.is_authenticated else None
-
-        validated_data['author'] = user
-
-        if not user:
-            session = request.session
-            if not session.session_key:
-                session.save()  # ensure session exists
-            validated_data['guest_session_id'] = session.session_key
-
+        request = self.context.get('request')
+        validated_data['author'] = request.user  # Set the author to the current user
         return super().create(validated_data)
+    
     
