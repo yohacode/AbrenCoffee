@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
+import axios from '../../utils/axios';
+import { useParams } from 'react-router-dom';
+import { FaHeart, FaLaugh, FaSadCry, FaThumbsDown, FaThumbsUp } from 'react-icons/fa';
 interface ReactionProps {
   blogId: string;
 }
@@ -9,21 +11,30 @@ interface ReactionSummary {
   count: number;
 }
 
-const reactionTypes = ["like", "love", "funny", "sad", "angry"];
+const reactionTypes = [
+  { type: 'like', icon: <FaThumbsUp /> },
+  { type: 'dislike', icon: <FaThumbsDown /> },
+  { type: 'love', icon: <FaHeart /> },
+  { type: 'sad', icon: <FaSadCry /> },
+  { type: 'funny', icon: <FaLaugh /> },
+];
 
 const BlogReactions: React.FC<ReactionProps> = ({ blogId }) => {
   const [reactions, setReactions] = useState<ReactionSummary[]>([]);
   const [userReaction, setUserReaction] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const { id } = useParams<{ id: string }>();
+
 
   // 🔁 Fetch reactions and user reaction
   const fetchReactions = async () => {
+
     try {
       const token = localStorage.getItem('access_token');
-      const res = await fetch(`http://127.0.0.1:8000/api/blog/detail/${blogId}/`, {
+      const res = await axios.get(`/blog/detail/${id}/`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
-      const data = await res.json();
+      const data = res.data;
       const { reactions, user_reaction } = data[0];
       setReactions(reactions || []);
       setUserReaction(user_reaction || null);
@@ -45,21 +56,23 @@ const BlogReactions: React.FC<ReactionProps> = ({ blogId }) => {
     try {
       if (userReaction === reaction) {
         // 🔄 Undo reaction
-        await fetch(`http://127.0.0.1:8000/api/blog/reaction/delete/${blogId}/`, {
-          method: 'DELETE',
+        await axios.delete(`/blog/reaction/delete/${blogId}/`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUserReaction(null);
       } else {
         // ✅ React / update
-        await fetch(`http://127.0.0.1:8000/api/blog/reaction/create/${blogId}/`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ reaction }),
-        });
+        await axios.post(
+            `/blog/reaction/create/${blogId}/`,
+            { reaction },
+            {
+                headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
         setUserReaction(reaction);
       }
       fetchReactions(); // Refresh totals
@@ -71,20 +84,19 @@ const BlogReactions: React.FC<ReactionProps> = ({ blogId }) => {
   };
 
   return (
-    <div className="reaction-buttons">
-      <h4>Reactions</h4>
-      {reactionTypes.map((reaction) => {
-        const count = reactions.find(r => r.reaction === reaction)?.count || 0;
-        const isActive = userReaction === reaction;
+    <div className="blog-reactions">
+      {reactionTypes.map(({ type, icon }) => {
+        const count = reactions.find(r => r.reaction === type)?.count || 0;
+        const isActive = userReaction === type;
 
         return (
           <button
-            key={reaction}
-            onClick={() => handleReaction(reaction)}
+            key={type}
+            onClick={() => handleReaction(type)}
             disabled={loading}
             className={isActive ? 'selected-reaction' : ''}
           >
-            {reaction} {count > 0 && `(${count})`}
+            {icon} {count > 0 && `(${count})`}
           </button>
         );
       })}

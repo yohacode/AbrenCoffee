@@ -63,15 +63,17 @@ class Comments(models.Model):
 class Reactions(models.Model):
     reactions = {
         "Like": 'like',
-        "UnLike": 'unlike',
-        "Love": 'love'
+        "disLike": 'dislike',
+        "Love": 'love',
+        'Sad': 'sad',
+        'Funny': 'funny',
     }
-    blog = models.ForeignKey(Blog, verbose_name=("Blog"), on_delete=models.CASCADE)
-    author = models.ForeignKey(CustomUser, verbose_name=("Author"), on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, verbose_name=("Blog"), on_delete=models.CASCADE, unique=True)
+    author = models.ForeignKey(CustomUser, verbose_name=("Author"), on_delete=models.CASCADE, blank=True, null=True)
     reaction = models.CharField(("Reactions"), max_length=50, choices=reactions, blank=True, null=True)
     created_at = models.DateTimeField(("Created at"), auto_now=False, auto_now_add=True)
 
     def __str__(self):
-        return self.author
+        return self.author.username
     
 

@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Blog, Category, Comments, Reactions
 from .serializers import BlogSerializer, BlogCreateSerializer, CategorySerializer, BlogUpdateSerializer,CommentsSerializer, ReactionsSerializer
-from rest_framework.permissions import AllowAny,IsAdminUser
+from rest_framework.permissions import AllowAny,IsAdminUser, IsAuthenticated
 from django.shortcuts import get_object_or_404
 
 class BlogList(APIView):
@@ -121,7 +121,7 @@ class CommentCreateView(APIView):
     permission_classes = [AllowAny]  # You can use AllowAny if guests are allowed
 
     def post(self, request, pk):
-        blog = get_object_or_404(Blog, pk=pk)
+        blog = get_object_or_404(Blog, id=pk)
         serializer = CommentsSerializer(data=request.data, context={'request': request})
 
         if serializer.is_valid():
@@ -129,4 +129,26 @@ class CommentCreateView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ReactionCreateView(APIView):
+    permission_classes = [IsAuthenticated]  # You can use AllowAny if guests are allowed
+
+    def post(self, request, pk):
+        blog = get_object_or_404(Blog, id=pk)
+        serializer = ReactionsSerializer(data=request.data, context={'request': request})
+
+        if serializer.is_valid():
+            serializer.save(blog=blog, author=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ReactionDeleteView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, pk):
+        reaction = Reactions.objects.filter(id=pk)
+        reaction.delete()
+        return Response(status=status.HTTP_200_OK)
+
 

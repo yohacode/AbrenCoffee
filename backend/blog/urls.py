@@ -3,7 +3,8 @@ from .views import (BlogList,
                     BlogDetail, BlogCreate, 
                     BlogUpdate, BlogDelete,
                     CategoriesView, CreateCategoryView,
-                    CommentCreateView)
+                    CommentCreateView,ReactionCreateView,
+                    ReactionDeleteView)
 
 urlpatterns = [
     path('list/', BlogList.as_view(), name='blog-list'),
@@ -16,4 +17,8 @@ urlpatterns = [
     path('category/create/', CreateCategoryView.as_view(), name='create-category'),
 
     path('comment/create/<int:pk>/', CommentCreateView.as_view(), name='create-comment-detail'),
+    path('reaction/create/<int:pk>/', ReactionCreateView.as_view(), name='create-reaction'),
+    path('reaction/delete/<int:pk>/', ReactionDeleteView.as_view(), name='delete-reaction'),
+
+    
 ]

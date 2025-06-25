@@ -66,7 +66,7 @@ const BlogComment: React.FC<BlogCommentProps> = ({ comments, onCommentSubmit }) 
         onClick={handleCommentSubmit}
         disabled={!newComment.trim()}
       >
-        {isLoggedIn ? 'Submit' : 'Login to comment'}
+        {isLoggedIn ? 'Submit' : 'comment'}
       </button>
     </div>
   );
