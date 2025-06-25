@@ -4,6 +4,7 @@ import axios from '../../utils/axios';
 import './blogDetail.css';
 import Backbutton from '../../component/backbutton';
 import BlogComment from '../../component/blogComment';
+import BlogReactions from './BlogReactions';
 
 interface BlogDetail {
   id: number;
@@ -43,7 +44,7 @@ const PublicBlogDetail: React.FC = () => {
         const result = res.data[0];
         setBlog(result.blog);
         setComments(result.comments || []);
-        console.log('Blog fetched:', result.comments);
+       
       } catch (err) {
         console.error('Failed to fetch blog detail:', err);
         setError('Failed to load the blog post. Please try again.');
@@ -113,7 +114,15 @@ const PublicBlogDetail: React.FC = () => {
             By <strong>{blog.author_username}</strong> ·{' '}
             {new Date(blog.created_at).toLocaleDateString()}
           </p>
-          {blog.content}
+          <p>
+            {blog.content}
+          </p>
+          <BlogReactions
+            blogId={id!} // or String(id)
+            onReacted={() => {
+              // Refresh reaction counts if needed
+            }}
+          />
         </div>
         <BlogComment 
           comments={comments.map(comment => ({
@@ -124,7 +133,7 @@ const PublicBlogDetail: React.FC = () => {
         />
         <div className="related-blogs">
           <h4>Related Blogs</h4>
-          {blogItems.length < 0 ? (
+          {blogItems.length === 0 ? (
               <p>No blogs found!</p>
           ) : (
               <>

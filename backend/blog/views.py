@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Blog, Category, Comments
-from .serializers import BlogSerializer, BlogCreateSerializer, CategorySerializer, BlogUpdateSerializer,CommentsSerializer
+from .models import Blog, Category, Comments, Reactions
+from .serializers import BlogSerializer, BlogCreateSerializer, CategorySerializer, BlogUpdateSerializer,CommentsSerializer, ReactionsSerializer
 from rest_framework.permissions import AllowAny,IsAdminUser
 from django.shortcuts import get_object_or_404
 
@@ -33,14 +33,16 @@ class BlogDetail(APIView):
 
     def get(self, request, pk, format=None):
         blog = get_object_or_404(Blog, pk=pk)
+        blog_reactions = Reactions.objects.filter(blog=blog).order_by('created_at')
         blog_comments = Comments.objects.filter(blog=blog).order_by('created_at')
         serializer = BlogSerializer(blog)
         commnetSerializer = CommentsSerializer(blog_comments, many=True)
-
+        reactionsSerializer = ReactionsSerializer(blog_reactions, many=True)
         data = []
         data.append({
             "blog": serializer.data,
             "comments": commnetSerializer.data,
+            "reactions": reactionsSerializer.data
         })
         return Response(data, status=status.HTTP_200_OK)
 
@@ -127,3 +129,4 @@ class CommentCreateView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

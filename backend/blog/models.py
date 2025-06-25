@@ -60,3 +60,18 @@ class Comments(models.Model):
     def is_guest(self):
         return self.author is None
 
+class Reactions(models.Model):
+    reactions = {
+        "Like": 'like',
+        "UnLike": 'unlike',
+        "Love": 'love'
+    }
+    blog = models.ForeignKey(Blog, verbose_name=("Blog"), on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, verbose_name=("Author"), on_delete=models.CASCADE)
+    reaction = models.CharField(("Reactions"), max_length=50, choices=reactions, blank=True, null=True)
+    created_at = models.DateTimeField(("Created at"), auto_now=False, auto_now_add=True)
+
+    def __str__(self):
+        return self.author
+    
+

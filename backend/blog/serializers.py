@@ -1,7 +1,5 @@
 from rest_framework import serializers
-from .models import Blog, Category, Comments
-from django.conf import settings
-from users.models import CustomUser
+from .models import Blog, Category, Comments, Reactions
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -78,4 +76,17 @@ class CommentsSerializer(serializers.ModelSerializer):
         validated_data['author'] = request.user  # Set the author to the current user
         return super().create(validated_data)
     
+
+class ReactionsSerializer(serializers.ModelSerializer):
+    author_username = serializers.CharField(source='author.username', read_only=True)
+
+    class Meta:
+        model = Reactions
+        fields = ['id', 'author', 'author_username', 'reactions', 'created_at']
+        read_only_fields = ['id', 'author','author_username', 'created_at']
+    
+    def create(self, validated_data):
+        request = self.context.get('request')
+        validated_data['author'] = request.user  # Set the author to the current user
+        return super().create(validated_data)
     
