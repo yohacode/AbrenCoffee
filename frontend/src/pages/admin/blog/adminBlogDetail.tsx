@@ -91,7 +91,7 @@ const AdminBlogDetail:React.FC = () => {
   if (!blog) return <div>No blog data available</div>;
 
   return (
-    <div className="blog-detail">
+    <div className="admin-blog-detail">
       <h2><strong>Title:</strong> {blog.title}</h2>
       <div className="blog-detail-card">
         <img src={`http://127.0.0.1:8000/${blog.image}`} alt="" />

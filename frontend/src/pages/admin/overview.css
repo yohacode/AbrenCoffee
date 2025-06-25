@@ -36,7 +36,7 @@
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(151, 151, 151, 0.308);
-    padding: 1.4em;
+    padding: 1.2em;
     gap: .5em;
     margin: auto;
     text-align: center;
@@ -51,7 +51,7 @@
 
 .overview .card h2 {
     font-size: .8rem;
-    color: #333;
+    color: #000000;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
@@ -76,7 +76,7 @@
 .overview .card small p {
     margin: 4px 0;
     font-size: 0.9rem;
-    color: #7f7f7fde;
+    color: #313131de;
 }
 
 .overview .card .less-stock p{
