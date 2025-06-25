@@ -91,6 +91,18 @@
   width: 6em;
   height: 6em;
 }
+.reaction-buttons button {
+  margin: 4px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.selected-reaction {
+  background-color: #007bff;
+  color: white;
+}
+
 @media (max-width: 780px) {
   .blog-detail-body{
     display: flex;

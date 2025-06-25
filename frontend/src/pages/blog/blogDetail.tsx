@@ -119,9 +119,6 @@ const PublicBlogDetail: React.FC = () => {
           </p>
           <BlogReactions
             blogId={id!} // or String(id)
-            onReacted={() => {
-              // Refresh reaction counts if needed
-            }}
           />
         </div>
         <BlogComment 
