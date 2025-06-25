@@ -107,6 +107,21 @@ class CreateCategoryView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
 
+class CommentView(APIView):
+    """
+    Handles the retrieval of comments for a specific blog post.
+    This view allows users to retrieve all comments associated with a blog post.
+    Methods:
+        get(request, pk, format=None): Retrieves comments for a blog post by its primary key (pk).
+    """
+
+    permission_classes = [AllowAny]
+
+    def get(self, request, pk, format=None):
+        blog = get_object_or_404(Blog, pk=pk)
+        comments = Comments.objects.filter(blog=blog)
+        serializer = CommentsSerializer(comments, many=True)
+        return Response(serializer.data)
 
 class CommentCreateView(APIView):
     """
@@ -118,13 +133,13 @@ class CommentCreateView(APIView):
         post(request, pk, format=None): Processes the creation of a new comment.
     """
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def post(self, request, pk, format=None):
-        blog = get_object_or_404(Blog, pk=pk)
+        comments = get_object_or_404(Comments, pk=pk)
         serializer = CommentsSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
-            serializer.save(blog=blog, author=request.user)
+            serializer.save(comments=comments, author=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     

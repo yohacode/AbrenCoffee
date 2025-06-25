@@ -19,7 +19,7 @@ interface BlogDetail {
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://127.0.0.1:8000';
 
-const Blog: React.FC = () => {
+const PublicBlog: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [blogItems, setBlogItems] = useState<BlogDetail[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -110,7 +110,7 @@ const Blog: React.FC = () => {
               .map((b) => {
                 const imageUrl = b.image.startsWith('http') ? b.image : `${BASE_URL}${b.image}`;
                 return (
-                  <article className="blog-card" key={b.id} onClick={() => navigate(`/blogDetail/${b.id}`)}>
+                  <article className="blog-card" key={b.id} onClick={() => navigate(`/blog/detail/${b.id}`)}>
                     <img src={imageUrl} alt={b.title} className="blog-img" />
                     <div className="blog-content">
                       <h2 className="blog-title">{b.title}</h2>
@@ -124,7 +124,7 @@ const Blog: React.FC = () => {
                       </p>
                       <button
                           className="blog-readmore"
-                          onClick={() => navigate(`/blogDetail/${b.id}`)}
+                          onClick={() => navigate(`blog/detail/${b.id}`)}
                         >
                           Read more
                         </button>
@@ -139,4 +139,4 @@ const Blog: React.FC = () => {
   );
 };
 
-export default Blog;
+export default PublicBlog;

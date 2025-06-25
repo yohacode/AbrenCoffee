@@ -9,12 +9,10 @@ import Checkout from '../pages/shop/checkout';
 const ShopRoutes = () => {
   return (
     <Routes>
-        <Route path="/shop" element={<Shop />}>
-            <Route index element={<Shop />} />
-            <Route path="/product/:id" element={<SingleProduct />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/checkout/:step" element={<Checkout />} /> 
-        </Route>
+      <Route index element={<Shop />} />
+      <Route path="/product/:id" element={<SingleProduct />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/checkout/:step" element={<Checkout />} /> 
     </Routes>
   );
 };

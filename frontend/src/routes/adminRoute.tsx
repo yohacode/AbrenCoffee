@@ -1,4 +1,4 @@
-// src/routes/AdminRoutes.js
+// src/routes/AdminRoutes.tsx
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AdminSubscriptions from '../pages/admin/subscription/adminSubscription';
@@ -20,7 +20,7 @@ const Report = lazy(() => import('../pages/admin/report/report'));
 const BlogCreate = lazy(() => import('../pages/admin/blog/blogCreate'));
 const BlogList = lazy(() => import('../pages/admin/blog/blogList'));
 const BlogUpdate = lazy(() => import('../pages/admin/blog/blogEdit'));
-const BlogDetail = lazy(() => import('../pages/admin/blog/blogDetail'));
+const BlogDetail = lazy(() => import('../pages/admin/blog/adminBlogDetail'));
 
 const OrderList = lazy(() => import('../pages/admin/orders/orderList'));
 const OrderCreate = lazy(() => import('../pages/admin/orders/orderCreate'));
@@ -37,7 +37,7 @@ const AdminPage = lazy(() => import('../pages/admin/adminPage'));
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route path="/admin" element={<AdminPage />}>
+      <Route path="/" element={<AdminPage />}>
         <Route index element={<Overview />} />
         <Route path="overview" element={<Overview />} />
 

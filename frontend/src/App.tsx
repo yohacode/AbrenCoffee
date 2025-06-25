@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
@@ -9,25 +9,13 @@ import Layout from './layout';
 import Cart from './pages/shop/cart';
 import AdminRoutes from './routes/adminRoute';
 
-// Lazy loaded pages
-const Home = lazy(() => import('./pages/home'));
-const About = lazy(() => import('./pages/about'));
-const Contact = lazy(() => import('./pages/contact'));
-const Login = lazy(() => import('./pages/login'));
-const Logout = lazy(() => import('./pages/logout'));
-const Services = lazy(() => import('./pages/services'));
-const Subscription = lazy(() => import('./pages/subscription'));
-
-const Shop = lazy(() => import('./pages/shop/shop'));
-const Blog = lazy(() => import('./pages/blog/blog'));
-
-const Profile = lazy(() => import('./pages/profile/profileManagement'));
 
 // Protected route wrapper
 import type { ReactElement } from 'react';
-import PaymentSuccess from './pages/shop/pymentSuccess';
-import PaymentCancel from './pages/shop/paymentCancel';
-import Register from './pages/register';
+
+import BlogRoutes from './routes/blogRoute';
+import ShopRoutes from './routes/shopRoute';
+import PublicRoutes from './routes/publicRout';
 
 const ProtectedRoute = ({ element }: { element: ReactElement }) => {
   const isLoggedIn = localStorage.getItem('access_token');
@@ -98,27 +86,16 @@ const App = () => {
             isLoggedIn={!!localStorage.getItem('access_token')}
           >
             <Routes>
-              {/* Public Routes */}
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/subscription" element={<Subscription />} />
-              <Route path="/success" element={<PaymentSuccess />} />
-              <Route path="/cancel" element={<PaymentCancel />} />
-
-              <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
-              {/* Shop Routes */}
-              <Route path='/shop/*' element={<Shop />} />
-              {/* Blog Routes */}
-              <Route path="/blog/*"  element={<Blog />} />
               {/* Admin Panel (Protected) */}
-              <Route path="/*" element={<ProtectedRoute element={<AdminRoutes />} />} />
-            </Routes>
+              <Route path="/admin/*" element={<ProtectedRoute element={<AdminRoutes />} />} />
 
+              {/* Shop Routes */}
+              <Route path='/shop/*' element={<ShopRoutes />} />
+              {/* Blog Routes */}
+              <Route path="/blog/*"  element={<BlogRoutes />} />
+              {/* Public Routes */}
+              <Route path="/*" element={<PublicRoutes />} />
+            </Routes>
           </Layout>
         </Suspense>
       </Router>

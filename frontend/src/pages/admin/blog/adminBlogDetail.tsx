@@ -21,7 +21,7 @@ interface Blog {
   created_at: string;
 }
 
-const BlogDetail:React.FC = () => {
+const AdminBlogDetail:React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [blog, setBlog] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);
@@ -111,4 +111,4 @@ const BlogDetail:React.FC = () => {
   );
 };
 
-export default BlogDetail;
+export default AdminBlogDetail;

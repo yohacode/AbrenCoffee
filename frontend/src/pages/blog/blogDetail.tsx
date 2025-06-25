@@ -17,7 +17,7 @@ interface BlogDetail {
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://127.0.0.1:8000';
 
-const BlogDetail: React.FC = () => {
+const PublicBlogDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [blog, setBlog] = useState<BlogDetail | null>(null);
   const [loading, setLoading] = useState(true);
@@ -28,6 +28,7 @@ const BlogDetail: React.FC = () => {
       try {
         const res = await axios.get(`/blog/detail/${id}/`);
         setBlog(res.data);
+        console.log('Blog fetched:', res.data);
       } catch (err) {
         console.error('Failed to fetch blog detail:', err);
         setError('Failed to load the blog post. Please try again.');
@@ -65,4 +66,4 @@ const BlogDetail: React.FC = () => {
   );
 };
 
-export default BlogDetail;
+export default PublicBlogDetail;

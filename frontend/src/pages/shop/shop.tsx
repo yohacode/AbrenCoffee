@@ -42,7 +42,6 @@ const Shop: React.FC = () => {
    
   }, []);
 
-
   return (
     <div className="shop">
       <div className="container">
@@ -76,7 +75,7 @@ const Shop: React.FC = () => {
                 </button>
                 <button
                   className="viewCart"
-                  onClick={() => navigate(`/product/${product.id}`)}
+                  onClick={() => navigate(`/shop/product/${product.id}`)}
                   type="button"
                 >
                   View Product
