@@ -179,15 +179,12 @@
 .sidebar button:hover .sidebar-icon {
   transform: translateX(3px);
 }
-
-
 /* Footer */
 .sidebar-footer {
   margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid var(--sidebar-border);
 }
-
 /* Logout Button */
 .logout-button {
   background: none;
@@ -200,7 +197,6 @@
   cursor: pointer;
   font: inherit;
 }
-
 /* Toggle Button */
 .sidebar-toggle {
   position: fixed;
@@ -239,7 +235,6 @@
     translate: 5rem;
   }
 }
-
 /* Backdrop for Mobile */
 .sidebar-backdrop {
   position: fixed;
@@ -247,8 +242,8 @@
   background: rgba(0, 0, 0, 0.4);
   z-index: 900;
 }
-
-.back-button{
+.sidebar .back-button{
+  position: relative;
   z-index: 20;
   font-size: 1.2rem;
   cursor: pointer;

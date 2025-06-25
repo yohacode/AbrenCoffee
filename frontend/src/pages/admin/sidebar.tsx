@@ -43,7 +43,7 @@ const Sidebar: React.FC = () => {
   return (
     <>     
       <aside className={isClicked ? "sidebar shrink" : 'sidebar'}> 
-        <div className={isClicked ? 'back-button' : "back-button"} onClick={() => handleClicked()}>
+        <div className="sidebar-toggle" onClick={() => handleClicked()}>
           {isClicked ? <FaAnglesRight /> : <FaAnglesLeft />}
         </div>
         <div className="sidebar-header">
