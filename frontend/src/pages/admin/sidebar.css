@@ -179,12 +179,15 @@
 .sidebar button:hover .sidebar-icon {
   transform: translateX(3px);
 }
+
+
 /* Footer */
 .sidebar-footer {
   margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid var(--sidebar-border);
 }
+
 /* Logout Button */
 .logout-button {
   background: none;
@@ -197,11 +200,12 @@
   cursor: pointer;
   font: inherit;
 }
+
 /* Toggle Button */
 .sidebar-toggle {
   position: fixed;
   top: 1rem;
-  left: 1rem;
+  right: 1rem;
   z-index: 1100;
   background: var(--sidebar-bg);
   color: var(--sidebar-text);
@@ -223,18 +227,15 @@
     left: 0;
     transition: all .5s ease-in-out;
   }
+  .sidebar.shrink{
+    width: 60%;
+  }
   
   .name{
     display: block;
   }
-  .back-button{
-    transition: all .5s ease;
-  }
-  .back-button.slide-in{
-    transition: all .5s ease-in-out;
-    translate: 5rem;
-  }
 }
+
 /* Backdrop for Mobile */
 .sidebar-backdrop {
   position: fixed;
@@ -242,25 +243,6 @@
   background: rgba(0, 0, 0, 0.4);
   z-index: 900;
 }
-.sidebar .back-button{
-  position: relative;
-  z-index: 20;
-  font-size: 1.2rem;
-  cursor: pointer;
-  background-color:none;
-  display: flex;
-  flex-direction: row;
-  margin: auto;
-  color: #2c2c2c;
-  justify-content: center;
-  transition: all .4s ease-in-out;
-}
-
-.back-button.slide-in{
-  transition: all .5s ease-in-out;
-  translate: -5rem;
-}
-
 @keyframes slide-in{
   0%{
     transform: translateX(2rem);

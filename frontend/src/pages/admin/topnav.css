@@ -24,7 +24,10 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
-
+.topnav-left{
+  display: flex;
+  flex-direction: row;
+}
 /* --- LEFT HEADER --- */
 .topnav-left h2 {
   margin: 0;
@@ -40,14 +43,12 @@
   background: none;
   border: none;
   color: var(--topnav-text);
-  position: absolute;
-  right: 1.25rem;
-  top: 1rem;
   cursor: pointer;
 }
 
 /* --- RIGHT SIDE LINKS --- */
 .topnav-right {
+  margin-left: auto;
   display: flex;
   align-items: center;
 }
@@ -156,10 +157,9 @@
   }
 
   .topnav-right {
-    display: none;
+    display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 1rem;
   }
 
   .topnav-right.open {
@@ -168,7 +168,6 @@
 
   .topnav-links {
     flex-direction: column;
-    align-items: flex-start;
     width: 100%;
     gap: 10px;
   }

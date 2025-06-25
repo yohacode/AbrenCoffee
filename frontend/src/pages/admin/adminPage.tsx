@@ -8,7 +8,6 @@ import { Outlet, useNavigate, Navigate } from 'react-router-dom';
 import { useNavVisibility } from '../../context/NavVisibilityContext';
 import axios from '../../utils/axios';
 
-
 import Sidebar from './sidebar';
 
 interface User {
@@ -62,10 +61,8 @@ const AdminPage: React.FC = () => {
     fetchUser();
   }, [navigate]);
 
-
   if (loading) return <div className="main">Verifying admin access...</div>;
   if (!user || user.role !== 'admin') return <Navigate to="/" replace />;
-
 
   return (
     <div className="admin-page">

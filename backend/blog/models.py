@@ -49,7 +49,15 @@ class Blog(models.Model):
 
 
 class Comments(models.Model):
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
-    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments',blank=True, null=True)
+    guest_session_id = models.CharField(max_length=40, null=True, blank=True)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True, null=True)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_at',]
+
+    def is_guest(self):
+        return self.author is None
+

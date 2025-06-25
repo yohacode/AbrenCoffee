@@ -1,34 +1,28 @@
 .blog-comment-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
+    width: 50%0%;
+    margin: auto;
     background: #f9f9f9;
-    border-radius: 8px;
+    z-index: 4;
 }
-
 .blog-comment-container h3 {
     margin-bottom: 1rem;
     color: #333;
 }
-
 .comment-list {
     list-style: none;
     padding: 0;
     margin-bottom: 1rem;
 }
-
 .comment-item {
     background: #fff;
     margin-bottom: 0.5rem;
-    padding: 0.75rem 1rem;
     border-radius: 6px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     color: #444;
 }
 
 .comment-input {
-    width: 100%;
-    padding: 0.75rem;
+    width: 20%;
     border: 1px solid #ccc;
     border-radius: 6px;
     resize: vertical;
@@ -39,7 +33,6 @@
 .comment-submit {
     background-color: #1e4e8c;
     color: #fff;
-    padding: 0.6rem 1.2rem;
     font-size: 1rem;
     border: none;
     border-radius: 6px;
@@ -58,9 +51,7 @@
 
 .blog-comment-container {
   margin-top: 2rem;
-  padding: 1rem;
-  background: #f4f4f4;
-  border-radius: 8px;
+  background: #000000;
 }
 
 .comment-list {
@@ -86,8 +77,8 @@
 }
 
 .comment-input {
-  width: 100%;
-  padding: 0.75rem;
+  width: 95%;
+  padding: .5rem;
   margin-top: 1rem;
   border: 1px solid #ccc;
   border-radius: 6px;

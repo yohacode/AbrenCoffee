@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import { useNavigate, Link } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
 
 interface User {
   id: number;
@@ -15,7 +14,6 @@ interface User {
 }
 
 const TopNav: React.FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -74,8 +72,8 @@ const TopNav: React.FC = () => {
       ),
       path: '#',
       sublinks: [
-        { name: 'Profile', path: '/profile' },
-        { name: 'Logout', path: '/logout' },
+        { name: 'Profile', path: '/admin/profile' },
+        { name: 'Logout', path: '/admin/logout' },
         { name: 'Help', path: '/admin/help' },
       ],
     },
@@ -86,10 +84,7 @@ const TopNav: React.FC = () => {
       <div className="topnav-left">
         <h2>{user?.username}</h2>
       </div>
-      <button title="toggle" className="topnav-toggle" onClick={() => setMenuOpen(!menuOpen)}>
-        <FaBars />
-      </button>
-      <div className={`topnav-right ${menuOpen ? 'open' : ''}`}>
+      <div className={`topnav-right`}>
         <ul className="topnav-links">
           {mainLinks.map((link, index) => (
             <li key={index} className="topnav-item">

@@ -33,7 +33,6 @@
     background-color: #421d1d;
     z-index: 0;
   }
-  
   .profile-container img {
     position: absolute;
     top: 2em;
@@ -46,7 +45,6 @@
     border: 3px solid #d8d8d8;
     z-index: 10;
   }
-  
   .profile-detail {
     width: 100%;
     height: auto;

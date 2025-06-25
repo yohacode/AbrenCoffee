@@ -2,8 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Blog, Category, Comments
-from .serializers import BlogSerializer, BlogCreateSerializer, CategorySerializer, BlogUpdateSerializer, CommentsSerializer
-from rest_framework.permissions import IsAuthenticatedOrReadOnly,AllowAny,IsAuthenticated,IsAdminUser
+from .serializers import BlogSerializer, BlogCreateSerializer, CategorySerializer, BlogUpdateSerializer,CommentsSerializer
+from rest_framework.permissions import AllowAny,IsAdminUser
 from django.shortcuts import get_object_or_404
 
 class BlogList(APIView):
@@ -33,8 +33,16 @@ class BlogDetail(APIView):
 
     def get(self, request, pk, format=None):
         blog = get_object_or_404(Blog, pk=pk)
+        blog_comments = Comments.objects.filter(blog=blog)
         serializer = BlogSerializer(blog)
-        return Response(serializer.data)
+        commnetSerializer = CommentsSerializer(blog_comments, many=True)
+
+        data = []
+        data.append({
+            "blog": serializer.data,
+            "comments": commnetSerializer.data,
+        })
+        return Response(data, status=status.HTTP_200_OK)
 
 class BlogCreate(APIView):
     """
@@ -107,39 +115,15 @@ class CreateCategoryView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
 
-class CommentView(APIView):
-    """
-    Handles the retrieval of comments for a specific blog post.
-    This view allows users to retrieve all comments associated with a blog post.
-    Methods:
-        get(request, pk, format=None): Retrieves comments for a blog post by its primary key (pk).
-    """
-
-    permission_classes = [AllowAny]
-
-    def get(self, request, pk, format=None):
-        blog = get_object_or_404(Blog, pk=pk)
-        comments = Comments.objects.filter(blog=blog)
-        serializer = CommentsSerializer(comments, many=True)
-        return Response(serializer.data)
-
 class CommentCreateView(APIView):
-    """
-    Handles the creation of comments on blog posts.
-    This view allows authenticated users to create comments on specific blog posts.
-    If the request data is valid, a new comment is created and returned in the response.
-    Otherwise, validation errors are returned.
-    Methods:
-        post(request, pk, format=None): Processes the creation of a new comment.
-    """
+    permission_classes = [AllowAny]  # You can use AllowAny if guests are allowed
 
-    permission_classes = [AllowAny]
-
-    def post(self, request, pk, format=None):
-        comments = get_object_or_404(Comments, pk=pk)
+    def post(self, request, pk):
+        blog = get_object_or_404(Blog, pk=pk)
         serializer = CommentsSerializer(data=request.data, context={'request': request})
+
         if serializer.is_valid():
-            serializer.save(comments=comments, author=request.user)
+            serializer.save(blog=blog, author=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    

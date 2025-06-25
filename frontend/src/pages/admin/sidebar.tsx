@@ -41,11 +41,11 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <>     
-      <aside className={isClicked ? "sidebar shrink" : 'sidebar'}> 
+    <>    
         <div className="sidebar-toggle" onClick={() => handleClicked()}>
           {isClicked ? <FaAnglesRight /> : <FaAnglesLeft />}
-        </div>
+        </div> 
+      <aside className={isClicked ? "sidebar shrink" : 'sidebar'}> 
         <div className="sidebar-header">
           <Link to={'/'}><img src={logo} alt="" /></Link>
         </div>
