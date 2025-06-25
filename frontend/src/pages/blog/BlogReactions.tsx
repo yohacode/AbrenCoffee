@@ -78,7 +78,6 @@ const BlogReactions: React.FC<ReactionProps> = ({ blogId }) => {
 
   return (
     <div className="reaction-buttons">
-      <h4>Reactions</h4>
       <div className="reaction-list">
         {reactionTypes.map(({ type, emoji }) => {
           const count = reactions.find(r => r.reaction === type)?.count || 0;
@@ -91,7 +90,7 @@ const BlogReactions: React.FC<ReactionProps> = ({ blogId }) => {
               disabled={loading}
               className={`reaction-btn ${isActive ? 'active' : ''}`}
             >
-              {emoji} {count > 0 ? `(${count})` : ''}
+              {emoji} <small>{count > 0 ? `(${count})` : ''}</small>
             </button>
           );
         })}

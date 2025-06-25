@@ -42,7 +42,7 @@ class BlogDetail(APIView):
         data.append({
             "blog": serializer.data,
             "comments": commnetSerializer.data,
-            "reactions": reactionsSerializer.data
+            "reactions": reactionsSerializer.data,
         })
         return Response(data, status=status.HTTP_200_OK)
 
@@ -131,24 +131,38 @@ class CommentCreateView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ReactionCreateView(APIView):
-    permission_classes = [IsAuthenticated]  # You can use AllowAny if guests are allowed
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, pk):
         blog = get_object_or_404(Blog, id=pk)
+
+        # ✅ First validate the data
         serializer = ReactionsSerializer(data=request.data, context={'request': request})
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        if serializer.is_valid():
-            serializer.save(blog=blog, author=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        # ✅ Check if the user already reacted to this blog
+        existing_reaction = Reactions.objects.filter(blog=blog, author=request.user).first()
+        if existing_reaction:
+            # 🔁 Update the reaction type
+            existing_reaction.reaction = serializer.validated_data['reaction']
+            existing_reaction.save()
+            return Response(ReactionsSerializer(existing_reaction).data, status=status.HTTP_200_OK)
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+        # ✅ If no previous reaction, create a new one
+        new_reaction = serializer.save(blog=blog, author=request.user)
+        return Response(ReactionsSerializer(new_reaction).data, status=status.HTTP_201_CREATED)
+    
 class ReactionDeleteView(APIView):
     permission_classes = [IsAuthenticated]
 
     def delete(self, request, pk):
-        reaction = Reactions.objects.filter(id=pk)
-        reaction.delete()
-        return Response(status=status.HTTP_200_OK)
+        blog = get_object_or_404(Blog, id=pk)
 
+        reaction = Reactions.objects.filter(blog=blog, author=request.user).first()
+
+        if reaction:
+            reaction.delete()
+            return Response({"detail": "Reaction removed"}, status=status.HTTP_200_OK)
+        return Response({"detail": "No reaction found"}, status=status.HTTP_404_NOT_FOUND)
 

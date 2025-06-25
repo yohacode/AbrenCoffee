@@ -82,7 +82,7 @@ class ReactionsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Reactions
-        fields = ['id', 'author', 'author_username', 'reactions', 'created_at']
+        fields = ['id', 'author', 'author_username', 'reaction', 'created_at']
         read_only_fields = ['id', 'author','author_username', 'created_at']
     
     def create(self, validated_data):
