@@ -22,6 +22,7 @@ interface Comment {
   id: number;
   content: string;
   author: string;
+  guest_session_id:string;
   author_username: string;
   created_at: string | number;
 }
@@ -30,6 +31,7 @@ const PublicBlogDetail: React.FC = () => {
   const [comments, setComments] = useState<Comment[]>([]);
   const { id } = useParams<{ id: string }>();
   const [blog, setBlog] = useState<BlogDetail | null>(null);
+  const [blogItems, setBlogItems] = useState<BlogDetail[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -52,6 +54,26 @@ const PublicBlogDetail: React.FC = () => {
 
     if (id) fetchBlog();
   }, [id]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('access_token');
+    const fetchBlogData = async () => {
+      try {
+        const response = await axios.get('/blog/list/', {
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+          withCredentials: true,
+        });
+        setBlogItems(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Failed to fetch blog data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogData();
+  }, []);
 
   const handleCommentSubmit = async (commentText: string) => {
     if (!commentText.trim()) return;
@@ -88,7 +110,7 @@ const PublicBlogDetail: React.FC = () => {
         <img src={imageUrl} alt={blog.title} className="blog-detail-image" />
         <div className="blog-detail-content">
           <p className="blog-detail-meta">
-            By <strong>{blog.author_username ? blog.author_username : 'Anonymus'}</strong> ·{' '}
+            By <strong>{blog.author_username}</strong> ·{' '}
             {new Date(blog.created_at).toLocaleDateString()}
           </p>
           {blog.content}
@@ -96,11 +118,22 @@ const PublicBlogDetail: React.FC = () => {
         <BlogComment 
           comments={comments.map(comment => ({
             ...comment, 
-            
             created_at: typeof comment.created_at === 'string' ? Date.parse(comment.created_at) : comment.created_at
           }))}
           onCommentSubmit={handleCommentSubmit} 
         />
+        <div className="related-blogs">
+          <h4>Related Blogs</h4>
+          {blogItems.map((blog)=> (
+            <div className="related-blog-card">
+              <img src={`http://127.0.0.1:8000${blog.image}`} alt="" />
+              <div className="related-blog-info">
+                <p>{blog.author_username}</p>
+                <p>comments {comments.length}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
     </article>
   );

@@ -72,7 +72,26 @@
   background-color: rgba(0, 0, 0, 0.527);
   padding: .8em;
 }
-
+.related-blogs{
+  width: 40%;
+  height: auto;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+.related-blog-card{
+  width: 100%;
+  height: 6em;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 1em;
+}
+.related-blog-card img{
+  width: 6em;
+  height: 6em;
+}
 @media (max-width: 780px) {
   .blog-detail-body{
     display: flex;

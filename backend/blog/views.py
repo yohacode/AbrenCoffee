@@ -33,7 +33,7 @@ class BlogDetail(APIView):
 
     def get(self, request, pk, format=None):
         blog = get_object_or_404(Blog, pk=pk)
-        blog_comments = Comments.objects.filter(blog=blog)
+        blog_comments = Comments.objects.filter(blog=blog).order_by('created_at')
         serializer = BlogSerializer(blog)
         commnetSerializer = CommentsSerializer(blog_comments, many=True)
 

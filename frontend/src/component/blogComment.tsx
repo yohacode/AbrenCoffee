@@ -5,6 +5,7 @@ import './blogComment.css';
 interface Comment {
   id: number;
   content: string;
+  guest_session_id: string;
   author: string;
   author_username: string;
   created_at: number;
@@ -32,7 +33,7 @@ const BlogComment: React.FC<BlogCommentProps> = ({ comments, onCommentSubmit }) 
         {comments.map((comment) => (
           <li className="comment-item" key={comment.id}>
             <div className="comment-meta">
-              <strong>{comment.author_username}</strong> ·{' '}
+              <strong>{comment.author_username ? comment.author_username : comment.guest_session_id}</strong> ·{' '}
               {new Date(comment.created_at).toLocaleDateString()}
             </div>
             <div className="comment-text">{comment.content}</div>

@@ -70,8 +70,8 @@ class CommentsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comments
-        fields = ['id', 'author', 'author_username', 'content', 'created_at']
-        read_only_fields = ['id', 'author', 'created_at']
+        fields = ['id', 'author', 'guest_session_id','author_username', 'content', 'created_at']
+        read_only_fields = ['id', 'guest_session_id', 'author', 'created_at']
     
     def get_author_username(self, obj):
         if obj.author:
