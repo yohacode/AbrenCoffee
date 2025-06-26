@@ -45,7 +45,7 @@
 }
 
 .blog-detail-image {
-  width: 45%;
+  width: 47%;
   height: 70vh;
   margin-top: 1rem;
   border-radius: 8px;
@@ -65,7 +65,7 @@
   background-color: rgba(0, 0, 0, 0.505);
 }
 .blog-detail-content{
-    width: 45%;
+    width: 47%;
     height: 65vh;
     color: #d3d3d3;
     margin: auto;
