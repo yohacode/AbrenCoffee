@@ -5,6 +5,7 @@ from .models import Blog, Category, Comments, Reactions
 from .serializers import BlogSerializer, BlogCreateSerializer, CategorySerializer, BlogUpdateSerializer,CommentsSerializer, ReactionsSerializer
 from rest_framework.permissions import AllowAny,IsAdminUser, IsAuthenticated
 from django.shortcuts import get_object_or_404
+from django.db.models import Count
 
 class BlogList(APIView):
     """
@@ -34,17 +35,26 @@ class BlogDetail(APIView):
     def get(self, request, pk, format=None):
         blog = get_object_or_404(Blog, pk=pk)
         blog_reactions = Reactions.objects.filter(blog=blog).order_by('created_at')
+        reaction_summary = (
+            Reactions.objects
+            .filter(blog=blog)
+            .values('reaction')
+            .annotate(count=Count('reaction'))
+        )
+
         blog_comments = Comments.objects.filter(blog=blog).order_by('created_at')
         serializer = BlogSerializer(blog)
         commnetSerializer = CommentsSerializer(blog_comments, many=True)
         reactionsSerializer = ReactionsSerializer(blog_reactions, many=True)
-        data = []
-        data.append({
+        
+        response_data = {
             "blog": serializer.data,
             "comments": commnetSerializer.data,
             "reactions": reactionsSerializer.data,
-        })
-        return Response(data, status=status.HTTP_200_OK)
+            "reaction_count": blog_reactions.count(),
+            "reaction_summary": reaction_summary,
+        }
+        return Response(response_data, status=status.HTTP_200_OK) 
 
 class BlogCreate(APIView):
     """

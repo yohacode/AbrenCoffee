@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import { useParams } from 'react-router-dom';
-import './blogReactions.css'; // Optional for styling
+import './blogReactions.css';
 
 interface ReactionProps {
   blogId: string;
 }
 
 interface ReactionSummary {
-  reaction: string;
+  reaction: string; // updated from "reaction"
   count: number;
 }
 
@@ -32,9 +32,11 @@ const BlogReactions: React.FC<ReactionProps> = ({ blogId }) => {
       const res = await axios.get(`/blog/detail/${id}/`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
-      const data = res.data[0];
-      setReactions(data.reactions || []);
-      setUserReaction(data.user_reaction || null);
+      const data = res.data;
+      setReactions(data.reaction_summary || []);
+      console.log(data);
+      // Optional: Only if you send user's own reaction from backend
+      // setUserReaction(data.user_reaction || null);
     } catch (err) {
       console.error('Failed to fetch reactions:', err);
     }
@@ -78,7 +80,7 @@ const BlogReactions: React.FC<ReactionProps> = ({ blogId }) => {
 
   return (
     <div className="reaction-buttons">
-        <h4>Reactions</h4>
+      <h4>Reactions</h4>
       <div className="reaction-list">
         {reactionTypes.map(({ type, emoji }) => {
           const count = reactions.find(r => r.reaction === type)?.count || 0;
@@ -91,7 +93,7 @@ const BlogReactions: React.FC<ReactionProps> = ({ blogId }) => {
               disabled={loading}
               className={`reaction-btn ${isActive ? 'active' : ''}`}
             >
-              {emoji} <small>{count > 0 ? `(${count})` : ''}</small>
+              {emoji} <small>{count > 0 ? `${count}` : '0'}</small>
             </button>
           );
         })}

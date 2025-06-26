@@ -42,7 +42,7 @@ const PublicBlogDetail: React.FC = () => {
       try {
         const res = await axios.get(`/blog/detail/${id}/`);
 
-        const result = res.data[0];
+        const result = res.data;
         setBlog(result.blog);
         setComments(result.comments || []);
        
@@ -66,7 +66,6 @@ const PublicBlogDetail: React.FC = () => {
           withCredentials: true,
         });
         setBlogItems(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error('Failed to fetch blog data:', error);
       } finally {

@@ -61,7 +61,7 @@ class Comments(models.Model):
         return self.author is None
 
 class Reactions(models.Model):
-    reactions = [
+    type = [
         ('like', 'Like'),
         ('dislike', 'Dislike'),
         ('love', 'Love'),
@@ -70,7 +70,7 @@ class Reactions(models.Model):
     ]
     blog = models.ForeignKey(Blog, verbose_name=("Blog"), on_delete=models.CASCADE)
     author = models.ForeignKey(CustomUser, verbose_name=("Author"), on_delete=models.CASCADE, blank=True, null=True)
-    reaction = models.CharField(("Reactions"), max_length=50, choices=reactions, blank=True, null=True)
+    reaction = models.CharField(("Reactions"), max_length=50, choices=type, blank=True, null=True)
     created_at = models.DateTimeField(("Created at"), auto_now=False, auto_now_add=True)
 
     class Meta:
