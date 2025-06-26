@@ -1,9 +1,7 @@
 .slider {
   position: relative;
-  margin: auto;
   width: 60vh;
   height: 100vh;
-  perspective: 1000px;
   display: flex;
   padding: 0em;
   justify-content: center;

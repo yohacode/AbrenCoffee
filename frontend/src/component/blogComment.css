@@ -1,8 +1,9 @@
 .blog-comment-container {
     width: 50%;
     margin: auto;
+    padding: 1em;
     padding-bottom: 5em;
-    background: #f9f9f900;
+    background:  rgba(111, 50, 9, 0.824);
     z-index: 4;
 }
 .blog-comment-container h3 {
