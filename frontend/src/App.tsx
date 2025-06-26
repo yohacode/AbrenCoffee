@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+import axios from './utils/axios';
 
 import { ToastContainer } from 'react-toastify';
 import ScrollToTop from './routes/ScrollToTop';
@@ -40,21 +41,21 @@ const App = () => {
       }
 
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/auth/status/', {
-          headers: { Authorization: `Bearer ${accessToken}` },
-          credentials: 'include',
+        const response = await axios.get('/api/auth/status/', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          }
         });
 
-        const data = await response.json();
+        const data = response.data;
         if (!data.isAuthenticated && refreshToken) {
-          const refreshResponse = await fetch('http://127.0.0.1:8000/api/token/refresh/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ refresh: refreshToken }),
-            credentials: 'include',
+          const response = await axios.post('api/token/refresh/', {
+            headers: {
+            Authorization: `Bearer ${accessToken}`,
+          }
           });
 
-          const refreshData = await refreshResponse.json();
+          const refreshData = response.data;
           if (refreshData.access) {
             localStorage.setItem('access_token', refreshData.access);
           } else {
