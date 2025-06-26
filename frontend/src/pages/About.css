@@ -227,7 +227,7 @@
     height: auto;
     padding: 1em;
     padding-top: 4.5em;
-    letter-spacing: -0.08em;
+    word-spacing: -.2em;
   }
 
    .about-card{
@@ -239,7 +239,6 @@
   .about-card .about-card-detail{
     width: 90%;
     padding: 2em;
-    letter-spacing: -0.07em;
   }
  .about-card-values {
     display: flex;
