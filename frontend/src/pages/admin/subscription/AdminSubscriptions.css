@@ -42,3 +42,48 @@
 .filter-controls {
   margin: 1rem 0;
 }
+@media screen and (max-width: 768px) {
+  .admin-table,
+  .admin-table thead,
+  .admin-table tbody,
+  .admin-table th,
+  .admin-table td,
+  .admin-table tr {
+    display: block;
+  }
+
+  .admin-table thead {
+    display: block;
+  }
+
+  .admin-table tr {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .admin-table td {
+    position: relative;
+    padding: 10px;
+    text-align: right;
+    border: none;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .admin-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 600;
+    color: #475569;
+    text-align: left;
+  }
+
+  .admin-table td:last-child {
+    border-bottom: none;
+  }
+}
