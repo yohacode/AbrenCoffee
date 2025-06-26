@@ -7,7 +7,7 @@ import {
   FaCogs,
   FaCheckCircle
 } from 'react-icons/fa';
-import usImage from '../assets/images/images/ytr.jpg';
+import usImage from '../assets/images/images/poiu.jpg';
 
 const Services:React.FC = () => {
   const testimonials = [
