@@ -35,7 +35,6 @@ const PublicBlogDetail: React.FC = () => {
   const [blogItems, setBlogItems] = useState<BlogDetail[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
   
   useEffect(() => {
     const fetchBlog = async () => {

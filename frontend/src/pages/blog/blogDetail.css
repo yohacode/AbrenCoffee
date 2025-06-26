@@ -66,15 +66,17 @@
 }
 .blog-detail-content{
     width: 45%;
-    height: 70vh;
+    height: 65vh;
     color: #d3d3d3;
     margin: auto;
   text-align: justify;
-  background-color: rgba(111, 50, 9, 0.824);
+  background-color: rgba(134, 73, 32, 0.824);
+  border-radius: .7em;
   padding: .8em;
 }
 .blog-detail-content .blog-detail-dicription{
-      height: 30vh;
+  height: 30vh;
+  overflow-y: scroll;
 }
 .related-blogs{
   width: 40%;
