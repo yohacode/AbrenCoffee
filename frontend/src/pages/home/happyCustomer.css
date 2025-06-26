@@ -97,7 +97,7 @@
 @media (max-width: 420px) {
   .slider {
     height: 100vh;
-    padding: 0em;
+    padding: 1em;
   }
   .card {
     width: 90%;
