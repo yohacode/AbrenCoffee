@@ -115,7 +115,7 @@ const PublicBlogDetail: React.FC = () => {
             By <strong>{blog.author_username}</strong> ·{' '}
             {new Date(blog.created_at).toLocaleDateString()}
           </p>
-          <p>
+          <p className="blog-detail-dicription">
             {isClicked ? blog.content.slice(0, 1000) : blog.content.slice(0, 360)}
             <span onClick={()=> setIsClicked(!isClicked)}>{isClicked ? ' Less' : ' ...More'}</span>
           </p>
