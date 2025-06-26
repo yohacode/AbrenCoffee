@@ -42,7 +42,7 @@ const AdminBlogDetail:React.FC = () => {
         });
 
         if (response.status !== 200) throw new Error('Blog not found');
-        setBlog(response.data);
+        setBlog(response.data.blog);
       } catch (err: unknown) {
         if (err instanceof Error) {
           toast.error('Fetch failed: ' + err.message);

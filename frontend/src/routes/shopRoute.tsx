@@ -1,10 +1,11 @@
 // src/routes/AdminRoutes.js
 import { Routes, Route } from 'react-router-dom';
+import { lazy } from 'react';
 
 // Lazy-loaded pages
-import Shop from '../pages/shop/shop';
-import SingleProduct from '../pages/shop/signleProduct';
-import Checkout from '../pages/shop/checkout';
+const Shop = lazy(() => import('../pages/shop/shop'));
+const SingleProduct = lazy(() => import('../pages/shop/signleProduct'));
+const Checkout = lazy(() => import('../pages/shop/checkout'));
 
 const ShopRoutes = () => {
   return (

@@ -2,7 +2,7 @@
     padding: 2rem 0;
     width: 100%;
     height: auto;
-    z-index: 10;
+    z-index: 3;
     position: relative;
   }
 
@@ -20,7 +20,7 @@
   .home-blog .container{
     display: flex;
     flex-direction: column;
-    z-index: 30;
+    z-index: 3;
   }
   .home-blog .section-title {
     font-family: 'Great Vibes', 'Gabriola', cursive;

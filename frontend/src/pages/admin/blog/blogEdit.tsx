@@ -47,7 +47,7 @@ const BlogUpdate: React.FC = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        const data = res.data;
+        const data = res.data.blog;
         setBlog(data);
         setTitle(data.title);
         setContent(data.content);

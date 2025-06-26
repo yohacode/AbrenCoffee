@@ -22,8 +22,8 @@ const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://127.0.0.1:8000';
 const PublicBlog: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [blogItems, setBlogItems] = useState<BlogDetail[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const { name } = useParams();
+  const { id } = useParams();
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
   const navigate = useNavigate();
   const lastScrollY = useRef(0);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,16 +40,21 @@ const PublicBlog: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (name) setSelectedCategory(decodeURIComponent(name));
-  }, [name]);
+    if (id) {
+      setSelectedCategoryId(parseInt(id));
+    } else {
+      setSelectedCategoryId(null);
+    }
+  }, [id]);
 
   useEffect(() => {
     const token = localStorage.getItem('access_token');
-    const fetchBlogData = async () => {
+    const fetchBlogData = async (category?: number) => {
       try {
         const response = await axios.get('/blog/list/', {
           headers: token ? { Authorization: `Bearer ${token}` } : {},
           withCredentials: true,
+          params: category ? { category } : {},
         });
         setBlogItems(response.data);
       } catch (error) {
@@ -59,28 +64,36 @@ const PublicBlog: React.FC = () => {
       }
     };
 
-    fetchBlogData();
-  }, []);
+    fetchBlogData(selectedCategoryId !== null ? selectedCategoryId : undefined);
+  }, [selectedCategoryId]);
 
-  const handleCategorySelect = (category: string) => {
-    setSelectedCategory(category);
-    navigate(`/blog/category/${category}`);
+  const handleCategorySelect = (categoryId: number) => {
+    setSelectedCategoryId(categoryId);
+    navigate(`/blog/category/${categoryId}`);
   };
 
   const filteredItems = useMemo(() => {
-    return selectedCategory
+    return selectedCategoryId
       ? blogItems.filter((item) =>
-          item.category_name.toLowerCase().includes(selectedCategory.toLowerCase())
+          Number(item.category) === selectedCategoryId
         )
       : blogItems;
-  }, [selectedCategory, blogItems]);
+  }, [selectedCategoryId, blogItems]);
 
   const allCategories: BlogCategory[] = useMemo(() => {
-    const uniqueNames = [...new Set(blogItems.flatMap((item) => item.category_name))];
-    return uniqueNames.map((name) => ({
-      name: name,
-      link: encodeURIComponent(name),
-    }));
+    const uniqueCategories = [
+      ...new Map(
+        blogItems.map((item) => [
+          item.category,
+          {
+            id: Number(item.category),
+            name: item.category_name,
+            link: `/blog/category/${item.category}`,
+          },
+        ])
+      ).values(),
+    ];
+    return uniqueCategories;
   }, [blogItems]);
 
   return (
@@ -95,10 +108,14 @@ const PublicBlog: React.FC = () => {
       </header>
 
       <main className="blog-container">
-        <Categories 
+        <div className="blog-catagory-menu">
+          <button onClick={()=> setSelectedCategoryId(null)}>All Articles</button>
+          <Categories 
           categories={allCategories} 
           setCategory={handleCategorySelect} 
           />
+        </div>
+        
         {loading ? (
           <p className="blog-loading">Loading posts...</p>
         ) : filteredItems.length === 0 ? (

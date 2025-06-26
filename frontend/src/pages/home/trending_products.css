@@ -1,7 +1,7 @@
  .trending-products {
     display: flex;
     flex-direction: column;
-    z-index: 20;
+    z-index: 2;
     background: #edecec00;
     width: 100%;
     padding: 2em;

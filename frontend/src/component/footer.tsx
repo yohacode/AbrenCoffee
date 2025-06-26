@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
     const fetchBlogData = async () => {
       try {
         const response = await axios.get('/blog/list/');
-        setBlogItems(response.data);
+        setBlogItems(response.data.slice(0, 3));
       } catch (error) {
         console.error('Error fetching blogs:', error);
       }

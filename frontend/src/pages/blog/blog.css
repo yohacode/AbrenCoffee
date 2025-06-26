@@ -168,6 +168,13 @@
     height: 8vh;
     overflow: hidden;
   }
+  .blog-catagory-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
   @media (max-width: 780px) {
     .blog{
       height: auto;

@@ -18,7 +18,10 @@ class BlogList(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request, format=None):
-        blogs = Blog.objects.all().order_by('-created_at')
+        category_id = request.GET.get("category_id")
+        blogs = Blog.objects.all()
+        if category_id:
+            blogs = blogs.filter(category__id=category_id)
         serializer = BlogSerializer(blogs, many=True)
         return Response(serializer.data)
 
