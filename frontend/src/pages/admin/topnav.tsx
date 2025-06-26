@@ -73,7 +73,7 @@ const TopNav: React.FC = () => {
       path: '#',
       sublinks: [
         { name: 'Profile', path: '/admin/profile' },
-        { name: 'Logout', path: '/admin/logout' },
+        { name: 'Logout', path: '/logout' },
         { name: 'Help', path: '/admin/help' },
       ],
     },

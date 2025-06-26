@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './footer.css';
 import axios from '../utils/axios';
+import { useNavigate } from 'react-router-dom';
 
 interface Blog {
+  id: number;
   title: string;
   date: string;
   author: string;
@@ -14,6 +16,7 @@ interface Blog {
 const Footer: React.FC = () => {
   const [blogItems, setBlogItems] = useState<Blog[]>([]);
   const [showScroll, setShowScroll] = useState(false);
+  const navigate = useNavigate();
 
   // Example dynamic blog items (could come from props or API)
   useEffect(() => {
@@ -72,8 +75,8 @@ const Footer: React.FC = () => {
           <div className="footer__column">
             <h2 className="footer__heading">Recent Blog</h2>
             <div className="footer__blog">
-              {blogItems.map((blog, index) => (
-                <div className="footer__blog-item" key={index}>
+              {blogItems.map((blog) => (
+                <div className="footer__blog-item" key={blog.id} onClick={()=> navigate(`/blog/detail/${blog.id}`)}>
                   <img src={`http://127.0.0.1:8000/${blog.image}`} alt="" className="footer__blog-img" />
                   <div className="footer__blog-text">
                     <a href="#">{blog.title}</a>

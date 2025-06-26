@@ -168,8 +168,8 @@
   background: rgba(42, 42, 42, 0.895);
 }
 .navbar.scroll .profile-dropdown-menu {
-  top: 12vh;
-  right: 5em;
+  top: 14vh;
+  right: 6em;
   width: 30vh;
   height: auto;
   color: #e6e6e6 !important;
