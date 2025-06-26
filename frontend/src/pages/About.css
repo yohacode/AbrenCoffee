@@ -126,7 +126,6 @@
     padding: 2em;
     gap: 2em;
     color: #ffffff;
-    border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   }
   
@@ -219,7 +218,7 @@
       margin-right: 0.5rem;
     }
 
-@media (max-width: 898px) {
+@media screen and (max-width: 720px) {
   
   .about-hero{
     padding: 1em;
@@ -255,7 +254,8 @@
   }
   .about-card img{
     width: 40%;
-    height: 40vh;
+    height: 35vh;
+    margin-bottom: 2em;
   }
 
    .about-card-values img{
@@ -297,11 +297,10 @@
   }
   .about-container .why-choose-us ul {
     width: 90%;
-    padding-left: 3em;
+    padding-left: 1em;
   }
   .about-container .why-choose-us img{
     width: 95%;
     height: 40vh;
   }
-  
 }
