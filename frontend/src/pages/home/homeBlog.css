@@ -1,7 +1,7 @@
 .home-blog {
-    
     padding: 2rem 0;
     width: 100%;
+    height: 100vh;
     z-index: 10;
     position: relative;
   }
@@ -34,6 +34,7 @@
     font-size: 1rem;
     color: #ffffff;
     z-index: 30;
+    letter-spacing: var(--letter-spacing);
   }
   .home-blog-cards {
     display: flex;
@@ -52,12 +53,12 @@
     display: flex;
     flex-direction: column;
     width: 30%;
-    height: 60vh;
     margin: 0;
     padding: 0;
     align-items: center;
     justify-content: center;
     color: #fff;
+    cursor: pointer;
   }
   
   .home-blog-card:hover {

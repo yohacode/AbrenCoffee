@@ -42,7 +42,7 @@ const Home: React.FC = () => {
                 }}
             >
                 <span className="mb-4">Abren Coffee</span>
-                <p className="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <p className="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                 <Link to={'/shop'} className="shop-button">
                    Shop Now
                 </Link>

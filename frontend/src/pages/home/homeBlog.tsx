@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import './homeBlog.css';
+import { useNavigate} from 'react-router-dom';
 
 interface Blog {
   id: number;
@@ -16,6 +17,7 @@ const HomeBlog: React.FC = () => {
   const [blogItems, setBlogItems] = useState<Blog[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
   const blogPerPage = 3;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBlogData = async () => {
@@ -74,7 +76,7 @@ const HomeBlog: React.FC = () => {
               </button>
 
               {currentBlogs.map((blog) => (
-                <div key={blog.id} className="home-blog-card">
+                <div key={blog.id} className="home-blog-card" onClick={()=> navigate(`/blog/detail/${blog.id}`)}>
                   <div className="card-content">
                     <img
                     src={`http://127.0.0.1:8000/${blog.image}`}
@@ -85,9 +87,9 @@ const HomeBlog: React.FC = () => {
                       By {blog.author_username} ·{' '}
                       {new Date(blog.created_at).toLocaleDateString()}
                     </p>
-                    <p>{blog.content.slice(0, 600)}...</p>
+                    <p>{blog.content.slice(0, 100)}...</p>
+                    <button title='readmore' className='readmore-button' onClick={()=> navigate(`/blog/detail/${blog.id}`)}>Read more...</button>
                   </div>
-                  
                 </div>
               ))}
 

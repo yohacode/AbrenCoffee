@@ -69,13 +69,15 @@
 
 .comment-meta {
   font-size: 0.9rem;
-  color: #555;
+  color: #693820;
   margin-bottom: 0.25rem;
+  text-align: start;
 }
 
 .comment-text {
   font-size: 1rem;
   color: #c1c1c1;
+  text-align: start;
 }
 
 .comment-input {

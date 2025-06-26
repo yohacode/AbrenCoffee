@@ -1,103 +1,118 @@
 /* home.css */
+:root {
+  --bg-image: url('../assets/images/images/bg_4.jpg');
+  --overlay-color: #00000055;
+  --overlay-dark: #0000006f;
+
+  --primary-color: #f4b400;
+  --text-light: #ebebeb;
+  --text-muted: #bfbfbf;
+
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-brand: 'Monotype Corsiva', 'Cursive', sans-serif;
+  --font-weight: 200;
+  --button-radius: 25px;
+  --button-padding: 12px 30px;
+  --transition-speed: 0.3s;
+
+  --letter-spacing: 0.0001em;
+}
 .home-section {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: url('../assets/images/images/bg_4.jpg') no-repeat center center/cover;
-    background-attachment: fixed;
-    text-align: center;
-    width: 100%;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-    font-family: 'Poppins',sans-serif;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-image) no-repeat center center/cover;
+  background-attachment: fixed;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-main);
+  letter-spacing: var(--letter-spacing);
+}
 
-  }
-  
-  .home-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #00000055;
-    z-index: 0;
-  }
-  
-  .home-section .home-content {
-    width: 100%;
-    height: 90vh;
-    padding-top: 6em;
-    z-index: 2;
-    position: relative;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+.home-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-color);
+  z-index: 0;
+}
 
-  .home-content::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #0000006f;
-    z-index: 0;
-  }
-  
-  .home-content h1 {
-    font-size: 3rem;
-    z-index: 3;
-    font-family: 'Monotype Corsiva', 'Cursive', sans-serif;
-  }
-  
-  .brand-name {
-    color: #f4b400;
-  }
-  
-  .home-content span{
-    font-family: 'Monotype Corsiva', 'Cursive', sans-serif;
-    color: #bfbfbf;
-    z-index: 3;
-  }
-  
-  .home-content p{
-    font-size: 1.8rem;
-    font-family: 'Great Vibes', 'Gabriola', cursive;
-    z-index: 3;
-    color: #ebebeb;
-  }
+.home-section .home-content {
+  width: 100%;
+  height: 90vh;
+  padding-top: 6em;
+  z-index: 2;
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-  .shop-button {
-    padding: 12px 30px;
-    border:1px solid #f4b400;
-    color: #f4b400;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 25px;
-    transition: background-color 0.3s ease;
-    z-index: 3;
-  }
-  
-  .shop-button:hover {
-    color: #ffffff;
-    background-color: #f4b400;
-  }
+.home-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-dark);
+  z-index: 0;
+}
 
-  @keyframes slideD {
-    from{
-      transform: translateY(-4rem);
-    }to{
-      transform: translateY(0);
-    }
+.home-content h1 {
+  font-size: 3rem;
+  z-index: 3;
+}
+
+.brand-name {
+  color: var(--primary-color);
+}
+
+.home-content span {
+  font-family: var(--font-brand);
+  color: var(--text-muted);
+  z-index: 3;
+}
+
+.home-content p {
+  font-size: 1.4rem;
+  z-index: 3;
+  color: var(--text-light);
+  font-weight: var(--font-weight);
+}
+
+.shop-button {
+  padding: var(--button-padding);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: var(--button-radius);
+  transition: background-color var(--transition-speed) ease;
+  z-index: 3;
+}
+
+.shop-button:hover {
+  color: #ffffff;
+  background-color: var(--primary-color);
+}
+
+@keyframes slideD {
+  from {
+    transform: translateY(-4rem);
   }
-
-
- 
+  to {
+    transform: translateY(0);
+  }
+}
