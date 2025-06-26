@@ -128,7 +128,9 @@
     color: #ffffff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   }
-  
+  .about-card .about-card-team-img img{
+    object-fit: contain;
+  }
   .about-card img{
     width: 50%;
     height: 80vh;
@@ -150,6 +152,7 @@
     width: 40%;
     height: 60vh;
     padding: 2em;
+    object-fit: cover;
   }
 
   .about-card-values .values{
@@ -221,6 +224,7 @@
 @media screen and (max-width: 720px) {
   
   .about-hero{
+    height: auto;
     padding: 1em;
     padding-top: 4.5em;
     letter-spacing: -0.08em;
@@ -235,7 +239,7 @@
   .about-card .about-card-detail{
     width: 90%;
     padding: 2em;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.07em;
   }
  .about-card-values {
     display: flex;
@@ -251,9 +255,15 @@
   }
   .about-card-team-img{
     width: 10em;
+    object-fit: contain;
+    display: flex;
+    flex-direction: column;
+    image-orientation: from-image;
+    align-items: center;
+    justify-content: center;
   }
   .about-card img{
-    width: 40%;
+    width: 50%;
     height: 35vh;
     margin-bottom: 2em;
   }

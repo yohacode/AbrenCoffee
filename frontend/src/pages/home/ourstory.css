@@ -146,14 +146,14 @@
   .ftco-about .overlap{
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 100%;
   }
   .ftco-about .img {
     width: 100%;
     height: 60vh;
   }
   .ftco-about .ftco-animate {
-    width: 80%;
+    width: 100%;
     height: auto;
     margin: auto;
     display: flex;
@@ -171,7 +171,7 @@
   .ftco-about .overlap{
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 100%;
   }
   .ftco-about .img {
     width: 100%;
