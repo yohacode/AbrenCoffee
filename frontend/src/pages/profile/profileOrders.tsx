@@ -98,7 +98,7 @@ const ProfileOrderList: React.FC = () => {
                     {order.status === 'pending' ? (
                       <div className="pending-order-actions">
                         <button
-                          onClick={() => navigate('/checkout/payment', { state: { orderId: order.id } })}
+                          onClick={() => navigate('/shop/checkout/payment', { state: { orderId: order.id } })}
                           className="btn-primary"
                         >
                           💳 Resume Payment
