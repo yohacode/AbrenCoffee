@@ -21,7 +21,7 @@
 .card {
   position: absolute;
   width: 16em;
-  height: 50%;
+  height: 55%;
   background: url(../../assets/images/images/bob.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -52,8 +52,8 @@
 }
 
 .card img {
-  width: 13em;
-  height: 13em;
+  width: 11em;
+  height: 11em;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: .5rem;
