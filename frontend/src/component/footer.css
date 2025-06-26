@@ -29,12 +29,11 @@
   opacity: 0.3;
   background: #000000d6;
   z-index: 3;
-  margin: auto;
+ 
 }
 .footer__container {
   position: relative;
   z-index: 3;
-  margin: auto;
   padding: 2em;
 }
 .footer__row {
@@ -42,7 +41,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 2rem;
   margin: auto;
 }
 
@@ -192,6 +190,9 @@ color: #f3f1f1;
 
 /* Responsive */
 @media (max-width: 768px) {
+  .footer__container{
+    padding: 0em;
+  }
   .footer__row {
     flex-direction: column;
     align-items: center;
