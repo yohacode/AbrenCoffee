@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import PublicBlog from '../pages/blog/blog';
-import PublicBlogDetail from '../pages/blog/blogDetail';
+import { lazy } from 'react';
+
+const PublicBlog = lazy(() => import('../pages/blog/blog'));
+const PublicBlogDetail = lazy(() => import('../pages/blog/blogDetail'));
 
 const BlogRoutes = () => {
   return (

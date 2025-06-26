@@ -9,7 +9,6 @@ import Layout from './layout';
 import Cart from './pages/shop/cart';
 import AdminRoutes from './routes/adminRoute';
 
-
 // Protected route wrapper
 import type { ReactElement } from 'react';
 

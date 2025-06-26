@@ -1,19 +1,19 @@
 // src/routes/AdminRoutes.js
 import { Routes, Route, Navigate } from 'react-router-dom';
-import PaymentCancel from '../pages/shop/paymentCancel';
-import PaymentSuccess from '../pages/shop/pymentSuccess';
-import Register from '../pages/register';
-import Home from '../pages/home';
-import About from '../pages/about';
-import Contact from '../pages/contact';
-import Login from '../pages/login';
-import Logout from '../pages/logout';
-import Services from '../pages/services';
-import Subscription from '../pages/subscription';
-import Blog from '../pages/blog/blog';
-// Protected route wrapper
-import type { ReactElement } from 'react';
-import ProfileManagement from '../pages/profile/profileManagement';
+import { lazy, type ReactElement } from 'react';
+
+const PaymentCancel = lazy(() => import('../pages/shop/paymentCancel'));
+const PaymentSuccess = lazy(() => import('../pages/shop/pymentSuccess'));
+const Register = lazy(() => import('../pages/register'));
+const Home = lazy(() => import('../pages/home'));
+const About = lazy(() => import('../pages/about'));
+const Contact = lazy(()=> import('../pages/contact'));
+const Login = lazy(() => import('../pages/login'));
+const Logout = lazy(() => import('../pages/logout'));
+const Services = lazy(() => import('../pages/services'));
+const Subscription = lazy(() => import('../pages/subscription'));
+const Blog = lazy(() => import('../pages/blog/blog'));
+const ProfileManagement = lazy(()=> import('../pages/profile/profileManagement'));
 
 const ProtectedRoute = ({ element }: { element: ReactElement }) => {
   const isLoggedIn = localStorage.getItem('access_token');
