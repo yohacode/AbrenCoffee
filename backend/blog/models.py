@@ -67,6 +67,7 @@ class Reactions(models.Model):
         ('love', 'Love'),
         ('sad', 'Sad'),
         ('funny', 'Funny'),
+        ('angry', 'Angry'),
     ]
     blog = models.ForeignKey(Blog, verbose_name=("Blog"), on_delete=models.CASCADE)
     author = models.ForeignKey(CustomUser, verbose_name=("Author"), on_delete=models.CASCADE, blank=True, null=True)
@@ -80,4 +81,3 @@ class Reactions(models.Model):
         return self.author.username if self.author else "Anonymous"
 
     
-

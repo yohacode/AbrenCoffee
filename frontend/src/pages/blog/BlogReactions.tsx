@@ -14,6 +14,7 @@ interface ReactionSummary {
 
 const reactionTypes = [
   { type: "like", emoji: "👍" },
+  { type: "dislike", emoji: "👎" },
   { type: "love", emoji: "❤️" },
   { type: "funny", emoji: "😂" },
   { type: "sad", emoji: "😢" },
@@ -34,9 +35,7 @@ const BlogReactions: React.FC<ReactionProps> = ({ blogId }) => {
       });
       const data = res.data;
       setReactions(data.reaction_summary || []);
-      console.log(data);
-      // Optional: Only if you send user's own reaction from backend
-      // setUserReaction(data.user_reaction || null);
+  
     } catch (err) {
       console.error('Failed to fetch reactions:', err);
     }
