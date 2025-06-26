@@ -40,7 +40,7 @@
 }
 
 .blog-detail-meta {
-  color: #777;
+  color: #bdbdbd;
   font-size: 0.9rem;
 }
 
@@ -104,6 +104,13 @@
   color: white;
 }
 
+.blog-detail span{
+  cursor: pointer;
+  color: #858585;
+}
+.blog-detail strong{
+  color: #cf6316;
+}
 @media (max-width: 780px) {
   .blog-detail-body{
     display: flex;

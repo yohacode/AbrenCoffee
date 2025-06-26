@@ -3,7 +3,6 @@
     margin: auto;
     padding: 1em;
     padding-bottom: 5em;
-    background:  rgba(111, 50, 9, 0.824);
     z-index: 4;
 }
 .blog-comment-container h3 {
@@ -55,7 +54,6 @@
 
 .blog-comment-container {
   margin-top: 2rem;
-  background: #000000;
 }
 
 .comment-list {

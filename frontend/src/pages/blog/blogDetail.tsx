@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from '../../utils/axios';
 import './blogDetail.css';
 import Backbutton from '../../component/backbutton';
-import BlogComment from '../../component/blogComment';
+import BlogComment from './blogComment';
 import BlogReactions from './BlogReactions';
 
 interface BlogDetail {
@@ -30,6 +30,7 @@ interface Comment {
 const PublicBlogDetail: React.FC = () => {
   const [comments, setComments] = useState<Comment[]>([]);
   const { id } = useParams<{ id: string }>();
+  const [isClicked, setIsClicked] = useState(false);
   const [blog, setBlog] = useState<BlogDetail | null>(null);
   const [blogItems, setBlogItems] = useState<BlogDetail[]>([]);
   const [loading, setLoading] = useState(true);
@@ -115,7 +116,8 @@ const PublicBlogDetail: React.FC = () => {
             {new Date(blog.created_at).toLocaleDateString()}
           </p>
           <p>
-            {blog.content}
+            {isClicked ? blog.content.slice(0, 1000) : blog.content.slice(0, 360)}
+            <span onClick={()=> setIsClicked(!isClicked)}>{isClicked ? ' Less' : ' ...More'}</span>
           </p>
           <BlogReactions
             blogId={id!} // or String(id)
