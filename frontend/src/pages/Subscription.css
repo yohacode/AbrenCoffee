@@ -270,7 +270,7 @@
 @media screen and (max-width: 720px) {
    .subscription-hero{
     height: 100vh;
-    padding: 0em;
+    padding: 2em;
   }
   .subscription-intro {
     align-items: start;

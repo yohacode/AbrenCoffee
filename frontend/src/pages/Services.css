@@ -246,6 +246,7 @@
    .service-hero {
     height: 100vh;
     padding: 2em;
+    letter-spacing: -0.04em;
   }
   .services-grid {
     display: flex;
@@ -286,7 +287,8 @@
     width: 120%;
     height: 40vh;
   }
-  .services-cta {
+  .services .services-cta {
+    height: auto;
     padding-top: 4em;
     padding: 2em;
     margin: auto;

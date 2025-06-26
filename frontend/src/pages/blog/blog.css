@@ -178,6 +178,7 @@
   @media (max-width: 780px) {
     .blog{
       height: auto;
+    letter-spacing: -.03em;
     }
     .blog-content{
       height: 200vh;
@@ -208,6 +209,8 @@
     height: 70vh;
     display: flex;
     flex-direction: column;
+    letter-spacing: -.05em;
+
   }
   .blog-card:nth-child(1),
   .blog-card:nth-child(2),

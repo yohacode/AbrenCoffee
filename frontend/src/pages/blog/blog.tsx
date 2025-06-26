@@ -67,9 +67,13 @@ const PublicBlog: React.FC = () => {
     fetchBlogData(selectedCategoryId !== null ? selectedCategoryId : undefined);
   }, [selectedCategoryId]);
 
-  const handleCategorySelect = (categoryId: number) => {
+  const handleCategorySelect = (categoryId: number | null) => {
     setSelectedCategoryId(categoryId);
-    navigate(`/blog/category/${categoryId}`);
+    if (categoryId === null) {
+      navigate('/blog');
+    } else {
+      navigate(`/blog/category/${categoryId}`);
+    }
   };
 
   const filteredItems = useMemo(() => {
@@ -109,8 +113,8 @@ const PublicBlog: React.FC = () => {
 
       <main className="blog-container">
         <div className="blog-catagory-menu">
-          <button onClick={()=> setSelectedCategoryId(null)}>All Articles</button>
           <Categories 
+          allCat={()=> handleCategorySelect(null)}
           categories={allCategories} 
           setCategory={handleCategorySelect} 
           />

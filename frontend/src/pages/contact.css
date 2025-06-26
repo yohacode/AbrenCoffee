@@ -11,6 +11,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
+    letter-spacing: -0.02em;
   }
 
   .contact-hero{
@@ -143,6 +144,7 @@
    .contact-hero{
       padding: 2em;
       height: 100vh;
+    letter-spacing: -0.04em;
     }
   .contact-grid {
     display: flex;

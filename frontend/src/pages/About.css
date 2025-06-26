@@ -224,6 +224,7 @@
   .about-hero{
     padding: 1em;
     padding-top: 4.5em;
+    letter-spacing: -0.08em;
   }
 
    .about-card{
@@ -235,6 +236,7 @@
   .about-card .about-card-detail{
     width: 90%;
     padding: 2em;
+    letter-spacing: -0.05em;
   }
  .about-card-values {
     display: flex;
@@ -298,7 +300,8 @@
     padding-left: 3em;
   }
   .about-container .why-choose-us img{
-    width: 90%;
+    width: 95%;
+    height: 40vh;
   }
   
 }

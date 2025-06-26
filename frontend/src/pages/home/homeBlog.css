@@ -122,5 +122,6 @@
     flex-direction: column;
     width: 80%;
     height: auto;
+    letter-spacing: -0.05em;
   }
   }

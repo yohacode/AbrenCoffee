@@ -166,6 +166,7 @@
     display: flex;
     flex-direction: column;
     height: auto;
+    letter-spacing: -0.09em;
   }
   .ftco-about .overlap{
     align-items: center;

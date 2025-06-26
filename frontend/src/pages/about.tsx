@@ -82,6 +82,8 @@ const About:React.FC = () => {
         </div>
         {/* Why Choose Us Section */}
         <div className="why-choose-us">
+          <img src={usImage} alt="" className="image" />
+
           <div className="content">
             <h2>Why Choose Abren?</h2>
             <ul>
@@ -91,7 +93,6 @@ const About:React.FC = () => {
               <li><FaCheckCircle className="check-icon" /> Seamless integration with your operations</li>
             </ul>
           </div>
-          <img src={usImage} alt="" className="image" />
           
         </div>
         <HomeRegister />
