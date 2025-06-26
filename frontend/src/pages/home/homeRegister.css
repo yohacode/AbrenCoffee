@@ -136,7 +136,7 @@
 @media (max-width: 480px) {
   .home-register {
     width: 100%;
-    padding: 2rem;
+    padding: 0rem;
   }
 
   .section-register form {
@@ -147,6 +147,6 @@
     width: 90%;
     background: rgba(0, 0, 0, 0); /* add opacity for better contrast */
     padding: 0em;
-    height: 72vh;
+    height: auto;
   }
 }
