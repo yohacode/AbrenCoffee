@@ -1,6 +1,6 @@
 // src/hooks/useSession.ts
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../utils/axios';
 
 const useSession = () => {
     const [sessionReady, setSessionReady] = useState(false);
@@ -10,7 +10,7 @@ const useSession = () => {
         const initializeSession = async () => {
             try {
                 // Call backend to trigger session creation
-                await axios.get('http://127.0.0.1:8000/cart/', {
+                await axios.get('/cart/', {
                     withCredentials: true,
                 });
 
