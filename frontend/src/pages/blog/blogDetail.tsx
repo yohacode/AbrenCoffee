@@ -136,7 +136,7 @@ const PublicBlogDetail: React.FC = () => {
               <>
                 {blogItems.map((blog)=> (
                   <div className="related-blog-card">
-                    <img src={`http://127.0.0.1:8000${blog.image}`} alt="" />
+                    <img src={`${BASE_URL}/${blog.image}`} alt="" />
                     <div className="related-blog-info">
                       <p>{blog.author_username}</p>
                       <p>comments {comments.length}</p>
