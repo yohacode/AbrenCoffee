@@ -126,7 +126,7 @@ const UsersList: React.FC = () => {
                     <td>
                       <button
                         className="btn-edit"
-                        onClick={() => navigate(`/admin/users/detail/${user.id}`)}
+                        onClick={() => navigate(`/adminPage/users/detail/${user.id}`)}
                       >
                         ✏️
                       </button>

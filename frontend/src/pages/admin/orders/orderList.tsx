@@ -139,7 +139,7 @@ const OrderList: React.FC = () => {
                     <button
                       title='View'
                       className="btn-edit"
-                      onClick={() => navigate(`/admin/orders/detail/${order.id}`)}
+                      onClick={() => navigate(`/adminPage/orders/detail/${order.id}`)}
                     >
                       <FaEye />
                     </button>

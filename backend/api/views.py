@@ -9,6 +9,16 @@ from rest_framework.generics import UpdateAPIView
 from users.models import CustomUser
 from orders.models import ShippingAddress
 from django.contrib.auth import authenticate, login,logout
+from rest_framework.decorators import api_view, permission_classes
+from django.contrib.auth import update_session_auth_hash
+from django.core.mail import send_mail
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.conf import settings
+from django.utils.http import urlsafe_base64_decode
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth import get_user_model
 
 def merge_session_order_with_user(request, user):
     session_key = request.session.session_key
@@ -76,7 +86,6 @@ class LoginView(APIView):
         else: 
             return Response({'error': 'Invalid credentials'}, status=400)
         
-
 class LogoutAndBlacklistRefreshTokenView(APIView):
     permission_classes = [AllowAny]
 
@@ -110,3 +119,62 @@ class AuthStatusView(APIView):
         return Response({
             'isAuthenticated': False,
         }, status=status.HTTP_200_OK)
+    
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def change_password(request):
+    user = request.user
+    old_password = request.data.get("old_password")
+    new_password = request.data.get("new_password")
+    confirm_password = request.data.get("confirm_password")
+
+    if new_password != confirm_password:
+        return Response({"error": "New passwords do not match"}, status=400)
+
+    if not user.check_password(old_password):
+        return Response({"error": "Old password is incorrect"}, status=400)
+
+    user.set_password(new_password)
+    user.save()
+
+    update_session_auth_hash(request, user)  # keeps user logged in after password change
+
+    return Response({"success": "Password updated successfully"})
+
+@api_view(["POST"])
+def send_password_reset_email(request):
+    email = request.data.get("email")
+    try:
+        user = CustomUser.objects.get(email=email)
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        token = default_token_generator.make_token(user)
+        reset_link = f"{settings.FRONTEND_URL}/reset-password/{uid}/{token}/"
+
+        subject = "Reset your password"
+        message = f"Hi {user.username},\n\nClick the link below to reset your password:\n\n{reset_link}"
+
+        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email])
+        return Response({"success": "Password reset email sent."})
+    except CustomUser.DoesNotExist:
+        return Response({"error": "User not found."}, status=404)
+    
+
+@api_view(["POST"])
+def confirm_password_reset(request):
+    uidb64 = request.data.get("uid")
+    token = request.data.get("token")
+    new_password = request.data.get("new_password")
+
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = get_user_model().objects.get(pk=uid)
+    except Exception:
+        return Response({"error": "Invalid link"}, status=status.HTTP_400_BAD_REQUEST)
+
+    if not default_token_generator.check_token(user, token):
+        return Response({"error": "Invalid or expired token"}, status=400)
+
+    user.set_password(new_password)
+    user.save()
+    return Response({"success": "Password reset successful"})
+

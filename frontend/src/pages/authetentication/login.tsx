@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from '../utils/axios';
+import axios from '../../utils/axios';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -98,7 +98,7 @@ const Login: React.FC = () => {
       {error && <div className="error-message">{error}</div>}
       <div className="login-footer">
           <p>
-            Forgot your password? <a href="/reset">Reset here</a>
+            Forgot your password? <a href="/forgot-password">Reset here</a>
           </p>
         </div>
     </div>

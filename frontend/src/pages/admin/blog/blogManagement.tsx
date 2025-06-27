@@ -7,8 +7,8 @@ const BlogManagement:React.FC = () => {
     
       const renderTabs = () => {
         const buttons = [
-          { name: 'List', to: '/admin/blog' },
-          { name: 'Add Blog', to: '/admin/blog/add'}
+          { name: 'List', to: '/adminPage/blog' },
+          { name: 'Add Blog', to: '/adminPage/blog/add'}
         ];
   
         return (

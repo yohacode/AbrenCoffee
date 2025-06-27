@@ -87,13 +87,14 @@ const App = () => {
           >
             <Routes>
               {/* Admin Panel (Protected) */}
-              <Route path="/admin/*" element={<ProtectedRoute element={<AdminRoutes />} />} />
+              <Route path="/adminPage/*" element={<ProtectedRoute element={<AdminRoutes />} />} />
               {/* Shop Routes */}
               <Route path='/shop/*' element={<ShopRoutes />} />
               {/* Blog Routes */}
               <Route path="/blog/*"  element={<BlogRoutes />} />
               {/* Public Routes */}
               <Route path="/*" element={<PublicRoutes />} />
+
             </Routes>
           </Layout>
         </Suspense>

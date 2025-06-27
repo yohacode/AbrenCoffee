@@ -21,7 +21,7 @@ interface Blog {
   is_published: boolean;
 }
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://127.0.0.1:8000';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const BlogUpdate: React.FC = () => {
   const { id } = useParams<{ id: string }>();

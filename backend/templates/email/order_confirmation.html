@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abren Coffee</title>
+</head>
+<body>
+    <h2>Thank you for your order!</h2>
+
+    <p>Hello {{ order.shipping_address.full_name }},</p>
+
+    <p>We've received your payment for Order #{{ order.id }}.</p>
+
+    <ul>
+    <li><strong>Total:</strong> ${{ order.total }}</li>
+    <li><strong>Status:</strong> {{ order.status }}</li>
+    <li><strong>Shipping Address:</strong> {{ order.shipping_address.address }}</li>
+    </ul>
+
+    <p>We'll notify you once your package ships. ☕</p>
+
+    <p>– Abren Coffee Team</p>
+
+</body>
+</html>

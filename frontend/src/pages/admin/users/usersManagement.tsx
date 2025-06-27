@@ -7,8 +7,8 @@ const UsersManagement:React.FC = () => {
   
     const renderTabs = () => {
       const buttons = [
-        { name: 'List', to: '/admin/users' },
-        { name: 'Add User', to: '/admin/users/add'}
+        { name: 'List', to: '/adminPage/users' },
+        { name: 'Add User', to: '/adminPage/users/add'}
       ];
 
       return (

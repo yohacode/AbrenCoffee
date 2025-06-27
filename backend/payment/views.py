@@ -24,6 +24,8 @@ import base64
 from datetime import datetime
 from django.utils.timezone import make_aware
 from orders.utils import get_cart_total,generate_invoice_pdf,get_or_create_order
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -218,6 +220,27 @@ def stripe_webhook_view(request):
                 if invoice:
                     invoice.status = 'paid'
                     invoice.save()
+
+                recipient_email = getattr(order.shipping_address, 'email', None) or getattr(order.user, 'email', None)
+
+                if recipient_email:
+                    try:
+                        subject = f"🧾 Abren Coffee – Order #{order.id} Confirmation"
+                        message = render_to_string("emails/order_confirmation.html", {
+                            "order": order,
+                        })
+
+                        send_mail(
+                            subject,
+                            "",
+                            settings.DEFAULT_FROM_EMAIL,
+                            recipient_list=[recipient_email],
+                            html_message=message,  # Use HTML template
+                            fail_silently=False,
+                        )
+                        print(f"✅ Confirmation email sent to {recipient_email}")
+                    except Exception as email_error:
+                        print(f"❌ Failed to send confirmation email: {email_error}")
 
         except Exception as e:
             print(f"❌ Webhook processing error: {e}")

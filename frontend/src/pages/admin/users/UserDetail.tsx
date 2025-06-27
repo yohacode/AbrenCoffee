@@ -86,7 +86,7 @@ const UserDetail:React.FC = () => {
     <div className="user-detail">
       <h2>User Detail</h2>
       <div className="detail-card">
-        <img src={`http://127.0.0.1:8000/${user.profile_image}`} alt="" />
+        <img src={user.profile_image} alt="" />
         <div className="user-detail-info">
           <p><strong>ID:</strong> {user.id}</p>
           <p><strong>Username:</strong> {user.username}</p>

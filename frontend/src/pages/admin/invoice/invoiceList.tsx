@@ -105,7 +105,7 @@ const Invoices: React.FC = () => {
                 <td>{new Date(invoice.created_at).toLocaleDateString()}</td>
                 <td>{invoice.status}</td>
                 <td className="action-buttons">
-                  <button title='detail' onClick={() => navigate(`/admin/invoices/detail/${invoice.id}`)}><FaEye/></button>
+                  <button title='detail' onClick={() => navigate(`/adminPage/invoices/detail/${invoice.id}`)}><FaEye/></button>
                   <button title='edit' onClick={() => alert(`Editing ${invoice.id}`)}><FaPen/></button>
                   <button title='delete' onClick={handleDeleteClick}><FaTrashCan/></button>
                   {invoice.pdf_file && (

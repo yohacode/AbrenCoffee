@@ -55,7 +55,7 @@ const ProductDetail:React.FC = () => {
   }, [id]);
 
   const handleEdit = () => {
-    navigate(`/admin/products/update/${id}`);
+    navigate(`/adminPage/products/update/${id}`);
   };
 
   const handleDelete = async () => {
@@ -91,7 +91,7 @@ const ProductDetail:React.FC = () => {
     <div className="product-detail">
       <h2>Product Detail</h2>
       <div className="product-detail-card">
-        <img src={`http://127.0.0.1:8000/${product.image}`} alt="" />
+        <img src={product.image} alt="" />
         <div className="product-detail-info">
           <p><strong>ID:</strong> {product.id}</p>
           <p><strong>Name:</strong> {product.name}</p>

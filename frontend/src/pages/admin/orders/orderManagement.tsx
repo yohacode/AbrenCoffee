@@ -7,8 +7,8 @@ const OrderManagement:React.FC = () => {
     
       const renderTabs = () => {
         const buttons = [
-          { name: 'List', to: '/admin/orders' },
-          { name: 'Add Order', to: '/admin/orders/add'}
+          { name: 'List', to: '/adminPage/orders' },
+          { name: 'Add Order', to: '/adminPage/orders/add'}
         ];
   
         return (

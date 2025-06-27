@@ -7,8 +7,8 @@ const InvoiceManagement:React.FC = () => {
     
       const renderTabs = () => {
         const buttons = [
-          { name: 'List', to: '/admin/invoices/' },
-          { name: 'Add Invoice', to: '/admin/invoices/add'}
+          { name: 'List', to: '/adminPage/invoices/' },
+          { name: 'Add Invoice', to: '/adminPage/invoices/add'}
         ];
   
         return (

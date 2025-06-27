@@ -7,8 +7,8 @@ const ProductManagement:React.FC = () => {
     
       const renderTabs = () => {
         const buttons = [
-          { name: 'List', to: '/admin/products' },
-          { name: 'Add Product', to: '/admin/products/add'}
+          { name: 'List', to: '/adminPage/products' },
+          { name: 'Add Product', to: '/adminPage/products/add'}
         ];
   
         return (

@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { FaEye } from 'react-icons/fa';
 import ConfirmModal from '../../../component/confirmDelete';
 
-
 interface Product {
   id: string;
   name:string;
@@ -111,7 +110,7 @@ const ProductList: React.FC = () => {
                     <button
                       title='view'
                       className="btn-edit"
-                      onClick={() => navigate(`/admin/products/detail/${product.id}`)}
+                      onClick={() => navigate(`/adminPage/products/detail/${product.id}`)}
                       >
                       <FaEye />
                     </button>

@@ -113,7 +113,7 @@ const BlogList: React.FC = () => {
                     <button
                       title='edit'
                       className="btn-edit"
-                      onClick={() => navigate(`/admin/blog/detail/${blog.id}`)}
+                      onClick={() => navigate(`/adminPage/blog/detail/${blog.id}`)}
                     >
                       <FaEye />
                     </button>

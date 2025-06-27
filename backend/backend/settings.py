@@ -142,6 +142,14 @@ PAYPAL_API_BASE = os.getenv('PAYPAL_API_BASE')
 PAYPAL_MERCHANT_EMAIL = os.getenv('PAYPAL_MERCHANT_EMAIL')
 PAYPAL_WEBHOOK_ID = os.getenv('PAYPAL_WEBHOOK_ID')
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'esraelzerihun3@gmail.com'
+EMAIL_HOST_PASSWORD = 'admin1234'  # ✅ use an app password, not your Gmail login
+DEFAULT_FROM_EMAIL = 'Abren Coffee <esrealzerihun3@gmail.com>'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware', 

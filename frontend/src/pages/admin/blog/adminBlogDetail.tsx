@@ -58,7 +58,7 @@ const AdminBlogDetail:React.FC = () => {
   }, [id]);
 
   const handleEdit = () => {
-    navigate(`/admin/blog/update/${id}`);
+    navigate(`/adminpage/blog/update/${id}`);
   };
 
   const handleDelete = async () => {
@@ -94,7 +94,7 @@ const AdminBlogDetail:React.FC = () => {
     <div className="admin-blog-detail">
       <h2><strong>Title:</strong> {blog.title}</h2>
       <div className="blog-detail-card">
-        <img src={`http://127.0.0.1:8000/${blog.image}`} alt="" />
+        <img src={blog.image} alt="" />
         <div className="blog-detail-info">
           <p><strong>Author:</strong> {blog.author_username}</p>
           <p><strong>Category:</strong> {blog.category_name}</p>
