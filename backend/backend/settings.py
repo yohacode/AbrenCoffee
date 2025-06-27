@@ -241,3 +241,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os
+
+API_BASE_URL = os.getenv("API_BASE_URL", "https://abrencoffeeproduction.onrender.com")
+
