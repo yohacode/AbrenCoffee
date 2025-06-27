@@ -17,8 +17,6 @@ interface BlogDetail {
   category_name: string;
 }
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
 const PublicBlog: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [blogItems, setBlogItems] = useState<BlogDetail[]>([]);
@@ -129,10 +127,9 @@ const PublicBlog: React.FC = () => {
             {filteredItems
               .filter((b) => b.image)
               .map((b) => {
-                const imageUrl = b.image.startsWith('http') ? b.image : `${BASE_URL}${b.image}`;
                 return (
                   <article className="blog-card" key={b.id} onClick={() => navigate(`/blog/detail/${b.id}`)}>
-                    <img src={imageUrl} alt={b.title} className="blog-img" />
+                    <img src={b.image} alt={b.title} className="blog-img" />
                     <div className="blog-content">
                       <h2 className="blog-title">{b.title}</h2>
                       <p className='category'>{b.category_name}</p>
