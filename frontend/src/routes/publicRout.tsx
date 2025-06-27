@@ -40,7 +40,7 @@ const PublicRoutes = () => {
         <Route path="/profile" element={<ProtectedRoute element={<ProfileManagement />} />} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/reset-password/:uid/:token" element={<Reset/>} />
-        <Route path="/change-password/:uid/:token" element={<ChangePassword/>} />
+        <Route path="/change-password" element={<ChangePassword/>} />
     </Routes>
   );
 };
