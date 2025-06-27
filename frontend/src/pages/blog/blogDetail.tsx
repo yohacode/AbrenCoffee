@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from '../../utils/axios';
 import './blogDetail.css';
 import Backbutton from '../../component/backbutton';
@@ -35,6 +35,7 @@ const PublicBlogDetail: React.FC = () => {
   const [blogItems, setBlogItems] = useState<BlogDetail[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchBlog = async () => {
@@ -135,7 +136,7 @@ const PublicBlogDetail: React.FC = () => {
           ) : (
               <>
                 {blogItems.map((blog)=> (
-                  <div className="related-blog-card">
+                  <div key={blog.id} className="related-blog-card" onClick={()=> navigate(`blog/detail/${blog.id}`)}>
                     <img src={`${BASE_URL}/${blog.image}`} alt="" />
                     <div className="related-blog-info">
                       <p>{blog.author_username}</p>

@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const response = await axios.get('/blog/list/');
+        const response = await axios.get('blog/list/');
         setBlogItems(response.data.slice(0, 3));
       } catch (error) {
         console.error('Error fetching blogs:', error);
@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
             <div className="footer__blog">
               {blogItems.map((blog) => (
                 <div className="footer__blog-item" key={blog.id} onClick={()=> navigate(`/blog/detail/${blog.id}`)}>
-                  <img src={`http://127.0.0.1:8000/${blog.image}`} alt="" className="footer__blog-img" />
+                  <img src={blog.image} alt="" className="footer__blog-img" />
                   <div className="footer__blog-text">
                     <a href="#">{blog.title}</a>
                     <div className="footer__meta">
