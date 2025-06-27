@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from '../../utils/axios';
+import './forgetPassword.css';
 
 const ForgetPassword:React.FC = () => {
     const [email, setEmail] = useState("");
@@ -15,10 +16,12 @@ const ForgetPassword:React.FC = () => {
   };
 
    return (
-    <div>
-      <h2>Forgot Password</h2>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your email" />
-      <button onClick={handleRequest}>Send Reset Link</button>
+    <div className='forget-password'>
+      <div className="forget-password-container">
+        <h2 className='forget-password-title'>Forgot Password</h2>
+        <input className='forget-password-input' value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Your email" />
+        <button className='forget-password-button' onClick={handleRequest}>Send Reset Link</button>
+      </div>
     </div>
   );
 }

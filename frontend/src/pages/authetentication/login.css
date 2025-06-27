@@ -92,6 +92,10 @@
     background: #00000055;
     z-index: 0;
   }
+
+  .login-box span{
+    color: #033aa1;
+  }
   
   .main .outer{
     position: relative;

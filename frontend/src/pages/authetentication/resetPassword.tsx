@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from '../../utils/axios';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import './resetPassword.css';
 
 const Reset:React.FC = () => {
   const { uid, token } = useParams();
@@ -21,10 +22,12 @@ const Reset:React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Set New Password</h2>
-      <input title='newPassword' value={newPassword} onChange={(e) => setNewPassword(e.target.value)} type="password" />
-      <button onClick={handleReset}>Reset Password</button>
+    <div className='reset-password'>
+      <div className="reset-passowrd-box">
+        <h2>Set New Password</h2>
+        <input title='newPassword' value={newPassword} onChange={(e) => setNewPassword(e.target.value)} type="password" />
+        <button onClick={handleReset}>Reset Password</button>
+      </div>
     </div>
   );
 }

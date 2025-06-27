@@ -1,12 +1,15 @@
 import { toast } from 'react-toastify';
 import axios from '../../utils/axios';
 import { useState } from 'react';
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './changePassword.css';
 
 const ChangePassword:React.FC = () => {
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleChangePassword = async () => {
     try {
@@ -16,21 +19,22 @@ const ChangePassword:React.FC = () => {
         confirm_password: confirmPassword,
         });
         toast.success(res.data.success);
+        navigate(-1);
     } catch {
         toast.error("Error changing password");
     }
     };
 
   return (
-    <div className="login-container">
-      <h2 className="login-title">Login</h2>
-      <form onSubmit={handleChangePassword} className="login-box">
+    <div className="change-password">
+      <h2 className="change-password-title">Login</h2>
+      <form onSubmit={handleChangePassword} className="change-password-box">
         <input
           type="password"
           value={oldPassword}
           onChange={(e) => setOldPassword(e.target.value)}
           placeholder="Username"
-          className="login-input"
+          className="change-password-input"
           required
         />
         <input
@@ -38,7 +42,7 @@ const ChangePassword:React.FC = () => {
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
           placeholder="Password"
-          className="login-input"
+          className="change-password-input"
           required
         />
         <input
@@ -46,16 +50,11 @@ const ChangePassword:React.FC = () => {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           placeholder="Password"
-          className="login-input"
+          className="change-password-input"
           required
         />
-        <button type="submit" className="login-button">Login</button>
+        <button type="submit" className="change-password-button">Submit</button>
       </form>
-      <div className="login-footer">
-          <p>
-            Forgot your password? <a href="/reset">Reset here</a>
-          </p>
-        </div>
     </div>
   )
 }
