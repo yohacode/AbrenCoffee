@@ -8,6 +8,7 @@
     font-family: Roboto, Tahoma, Geneva, Verdana, sans-serif;
     color: #ffffff;
     background: url(../../assets/images/images/bg_4.jpg);
+    transition: all .5s ease;
   }
 
   .profile-management .container {
@@ -31,6 +32,7 @@
     width: 100%;
     background-color: #421d1d;
     z-index: 9;
+    transition: all .5s ease;
   } 
   .profile-management .profile-tab-container {
     display: flex;
@@ -38,6 +40,7 @@
     gap: 0.5rem;
     padding-left: 18em;
     color: #fefefe;
+    transition: all .5s ease;
   }
   .profile-management .profile-tab-container.small {
       display: none;
@@ -50,7 +53,7 @@
     font-size: 1rem;
     padding: 1rem;
     color: #efefef;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
   } 
   .profile-management .profile-tab-container button:hover {
     background-color: #e0e0e0;
@@ -109,7 +112,7 @@
       padding-top: 0rem;
       padding-right: 0;
       top: -.5em;
-      transition: all .5s ease-in-out;
+      transition: all .5s ease;
     }
     .profile-management .tabs.show {
       display: flex;
