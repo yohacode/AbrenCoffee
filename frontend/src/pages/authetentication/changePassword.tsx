@@ -4,6 +4,7 @@ import { useState } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './changePassword.css';
+import Backbutton from '../../component/backbutton';
 
 const ChangePassword:React.FC = () => {
     const [oldPassword, setOldPassword] = useState("");
@@ -27,6 +28,7 @@ const ChangePassword:React.FC = () => {
 
   return (
     <div className="change-password">
+      <Backbutton />
       <h2 className="change-password-title">Login</h2>
       <form onSubmit={handleChangePassword} className="change-password-box">
         <input

@@ -3,6 +3,7 @@ import axios from '../../utils/axios';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import './resetPassword.css';
+import Backbutton from '../../component/backbutton';
 
 const Reset:React.FC = () => {
   const { uid, token } = useParams();
@@ -23,6 +24,7 @@ const Reset:React.FC = () => {
 
   return (
     <div className='reset-password'>
+      <Backbutton />
       <div className="reset-passowrd-box">
         <h2>Set New Password</h2>
         <input title='newPassword' value={newPassword} onChange={(e) => setNewPassword(e.target.value)} type="password" />

@@ -7,6 +7,7 @@ import PaymentMethods from './checkout/PaymentMethods';
 import './checkout/CheckoutStepper.css';
 import './checkout.css';
 import { useNavVisibility } from '../../context/NavVisibilityContext';
+import Backbutton from '../../component/backbutton';
 
 interface Product {
   id: number;
@@ -163,7 +164,7 @@ const Checkout: React.FC = () => {
   return (
     <div className="checkout">
       <div className="checkout-container">
-
+        <Backbutton />
         <div className="accordion">
           {/* Shipping Form Section */}
           <div className={`accordion-section ${activeStep >= 0 ? 'active' : 'disabled'}`}>

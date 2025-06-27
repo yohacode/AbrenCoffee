@@ -3,6 +3,7 @@ import axios from '../../utils/axios';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Backbutton from '../../component/backbutton';
 
 
 const Login: React.FC = () => {
@@ -75,6 +76,7 @@ const Login: React.FC = () => {
   
   return (
     <div className="login-container">
+      <Backbutton />
       <h2 className="login-title">Login</h2>
       <form onSubmit={handleLogin} className="login-box">
         <input
