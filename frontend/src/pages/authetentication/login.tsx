@@ -97,7 +97,7 @@ const Login: React.FC = () => {
       </form>
       {error && <div className="error-message">{error}</div>}
       <div className="login-footer">
-          <p>
+          <p onClick={()=> navigate('/forgot-password')}>
             Forgot your password? <a href="/forgot-password">Reset here</a>
           </p>
         </div>
