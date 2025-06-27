@@ -172,7 +172,7 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
     { link: '#', icon: isLoggedIn ? <img
       src={
         user?.profile_image
-          ? `${import.meta.env.VITE_API_BASE_URL}/${user.profile_image}`
+          ? user.profile_image
           : userImage
       }
       alt="Profile"

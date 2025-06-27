@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from '../../utils/axios';
 import './single_product.css';
 import { useCart } from './useCart';
+import ProductImagePlacehoder from '../../../public/assets/images/images/create an image with another coffee packaging materials.png';
 
 interface Product {
   id: number;
@@ -70,7 +71,7 @@ const SingleProduct: React.FC = () => {
   if (!product) return <p>Product not found.</p>;
 
   // Assuming the image URL returned is relative, prepend the base URL
-  const imageUrl = product.image.startsWith('http') ? product.image : `http://127.0.0.1:8000${product.image}`;
+  const imageUrl = product.image.startsWith('http') ? product.image : ProductImagePlacehoder;
 
   // Define cart or remove this logic if not needed
   const isProductInCart = cart?.cart_items?.some((item) => item.product.id === product?.id) ?? false;
