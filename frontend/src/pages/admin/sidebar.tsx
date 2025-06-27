@@ -29,15 +29,15 @@ const Sidebar: React.FC = () => {
   };
 
   const links = [
-    { name: 'Dashboard', path: '/admin/overview', icon: <FaClock /> },
-    { name: 'Users', path: '/admin/users', icon: <FaUser /> },
-    { name: 'Products', path: '/admin/products', icon: <FaProductHunt /> },
-    { name: 'Orders', path: '/admin/orders', icon: <FaCartPlus /> },
-    { name: 'Invoices', path: '/admin/invoices', icon: <FaFileInvoice /> },
-    { name: 'Blog', path: '/admin/blog', icon: <FaGear /> },
-    { name: 'Subscriptions', path: '/admin/subscriptions', icon: <FaClipboard /> },
-    { name: 'Report', path: '/admin/report', icon: <FaClipboard /> },
-    { name: 'Help', path: '/admin/help', icon: <FaArrowRightToCity /> }
+    { name: 'Dashboard', path: '/adminPage/overview', icon: <FaClock /> },
+    { name: 'Users', path: '/adminPage/users', icon: <FaUser /> },
+    { name: 'Products', path: '/adminPage/products', icon: <FaProductHunt /> },
+    { name: 'Orders', path: '/adminPage/orders', icon: <FaCartPlus /> },
+    { name: 'Invoices', path: '/adminPage/invoices', icon: <FaFileInvoice /> },
+    { name: 'Blog', path: '/adminPage/blog', icon: <FaGear /> },
+    { name: 'Subscriptions', path: '/adminPage/subscriptions', icon: <FaClipboard /> },
+    { name: 'Report', path: '/adminPage/report', icon: <FaClipboard /> },
+    { name: 'Help', path: '/adminPage/help', icon: <FaArrowRightToCity /> }
   ];
 
   return (

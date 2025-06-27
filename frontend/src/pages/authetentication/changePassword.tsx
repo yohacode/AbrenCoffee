@@ -33,7 +33,7 @@ const ChangePassword:React.FC = () => {
           type="password"
           value={oldPassword}
           onChange={(e) => setOldPassword(e.target.value)}
-          placeholder="Username"
+          placeholder="Old Password"
           className="change-password-input"
           required
         />
@@ -41,7 +41,7 @@ const ChangePassword:React.FC = () => {
           type="password"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
-          placeholder="Password"
+          placeholder="New Password"
           className="change-password-input"
           required
         />
@@ -49,7 +49,7 @@ const ChangePassword:React.FC = () => {
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Password"
+          placeholder="Confirm Password"
           className="change-password-input"
           required
         />
