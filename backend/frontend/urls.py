@@ -1,6 +1,12 @@
-from django.urls import path, re_path
-from . import views
+# frontend/urls.py
+from django.urls import re_path
+from django.views.generic import TemplateView
+from django.views.decorators.cache import never_cache
+
+# Serve React index.html
+index_view = never_cache(TemplateView.as_view(template_name="index.html"))
 
 urlpatterns = [
-    path("", views.index),
+    re_path(r"^(?!admin|api|media|static|users|products|orders|payment|adminPanel|blog|cart|subscription|wishlist|paypal).*$", index_view),
 ]
+

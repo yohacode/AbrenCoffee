@@ -79,7 +79,7 @@ const HomeBlog: React.FC = () => {
                 <div key={blog.id} className="home-blog-card" onClick={()=> navigate(`/blog/detail/${blog.id}`)}>
                   <div className="card-content">
                     <img
-                    src={`http://127.0.0.1:8000/${blog.image}`}
+                    src={blog.image}
                     alt={blog.title}
                   />
                     <h3>{blog.title}</h3>
