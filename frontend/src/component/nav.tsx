@@ -163,7 +163,7 @@ const Nav: React.FC<NavProps> = ({ onCartClick }) => {
 
   const profileDropdown = [
     { name: isLoggedIn ? <>{user?.username}</> : '', to: '/profile' },
-    role === 'admin' && isLoggedIn ? { name: 'Dashboard', to: '/admin' } : null,
+    role === 'admin' && isLoggedIn ? { name: 'Dashboard', to: '/adminPage' } : null,
     { name: isLoggedIn ? 'Logout' : 'Login', to: '/login', onClick: handleLogout },
     { name: isLoggedIn ? '' : 'Register', to: '/register', onClick: handleLogout },
   ].filter((item): item is { name: string; to: string; onClick?: () => Promise<void> } => item !== null);

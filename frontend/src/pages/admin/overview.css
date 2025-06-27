@@ -67,14 +67,13 @@
 .overview .card small {
     display: flex;
     gap: .4em;
-    margin-top: 12px;
-    padding-top: 10px;
+    padding-top: .2em;
     border-top: 1px solid #eee;
     font-size: 0.6rem;
 }
 
 .overview .card small p {
-    margin: 4px 0;
+    
     font-size: 0.9rem;
     color: #313131de;
 }
@@ -230,7 +229,7 @@
     /* Individual card styles */
     .overview .card {
         width: 30%;
-        height: 20vh;
+        height: 22vh;
     }
     .users-top-products{
         display: flex;
