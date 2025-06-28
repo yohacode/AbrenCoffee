@@ -32,7 +32,7 @@ section {
 
 /* Counter Items */
 .counter-wrap {
-  flex: 1 1 8em;
+  flex: 1 1 4em;
   text-align: center;
 }
 
@@ -94,7 +94,7 @@ section {
 /* Text Styles */
 .counter-wrap .number {
   font-weight: 400;
-  font-size: 30px;
+  font-size: 1.2rem;
   color: #c49b63;
   margin: 10px 0;
 }
@@ -109,8 +109,8 @@ section {
 .ftco-counter .row {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
-  gap: 3em;
   width: 100%;
 }
 
