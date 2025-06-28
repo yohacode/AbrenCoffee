@@ -4,6 +4,7 @@ import './login.css';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Backbutton from '../../component/backbutton';
+import PasswordInput from '../../component/viewPassword';
 
 
 const Login: React.FC = () => {
@@ -88,14 +89,14 @@ const Login: React.FC = () => {
           className="login-input"
           required
         />
-        <input
-          type="password"
+        <PasswordInput
+          name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
-          className="login-input"
           required
         />
+
         <button type="submit" className="login-button">Login</button>
       </form>
       {error && <div className="error-message">{error}</div>}

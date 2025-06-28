@@ -5,6 +5,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './changePassword.css';
 import Backbutton from '../../component/backbutton';
+import PasswordInput from '../../component/viewPassword';
 
 const ChangePassword:React.FC = () => {
     const [oldPassword, setOldPassword] = useState("");
@@ -31,28 +32,25 @@ const ChangePassword:React.FC = () => {
       <Backbutton />
       <h2 className="change-password-title">Change Password</h2>
       <form onSubmit={handleChangePassword} className="change-password-box">
-        <input
-          type="password"
+        <PasswordInput
+          name="Old Password"
           value={oldPassword}
           onChange={(e) => setOldPassword(e.target.value)}
           placeholder="Old Password"
-          className="change-password-input"
           required
         />
-        <input
-          type="password"
+        <PasswordInput
+          name="New Password"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
           placeholder="New Password"
-          className="change-password-input"
           required
         />
-        <input
-          type="password"
+        <PasswordInput
+          name="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           placeholder="Confirm Password"
-          className="change-password-input"
           required
         />
         <button type="submit" className="change-password-button">Submit</button>

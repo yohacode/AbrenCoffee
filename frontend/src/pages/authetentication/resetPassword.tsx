@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import './resetPassword.css';
 import Backbutton from '../../component/backbutton';
+import PasswordInput from '../../component/viewPassword';
 
 const Reset:React.FC = () => {
   const { uid, token } = useParams();
@@ -27,7 +28,12 @@ const Reset:React.FC = () => {
       <Backbutton />
       <div className="reset-passowrd-box">
         <h2>Set New Password</h2>
-        <input title='newPassword' value={newPassword} onChange={(e) => setNewPassword(e.target.value)} type="password" />
+        <PasswordInput 
+          name='newPassword' 
+          value={newPassword} 
+          onChange={(e) => setNewPassword(e.target.value)} 
+          required
+          />
         <button onClick={handleReset}>Reset Password</button>
       </div>
     </div>
