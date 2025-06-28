@@ -32,6 +32,7 @@ const Reset:React.FC = () => {
           name='newPassword' 
           value={newPassword} 
           onChange={(e) => setNewPassword(e.target.value)} 
+          className='reset-password-input'
           required
           />
         <button onClick={handleReset}>Reset Password</button>

@@ -3,6 +3,7 @@ import axios from '../../utils/axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import './register.css'
+import PasswordInput from '../../component/viewPassword';
 
 const Register: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
@@ -37,8 +38,7 @@ const Register: React.FC = () => {
   return (
     <div className='register-container'>
       <form onSubmit={handleRegister} className="register-box">
-        <input
-          type="text"
+        <PasswordInput
           name="username"
           value={formData.username}
           onChange={handleChange}
@@ -46,8 +46,7 @@ const Register: React.FC = () => {
           className="register-input"
           required
         />
-        <input
-          type="email"
+        <PasswordInput
           name="email"
           value={formData.email}
           onChange={handleChange}
@@ -55,8 +54,7 @@ const Register: React.FC = () => {
           className="register-input"
           required
         />
-        <input
-          type="password"
+        <PasswordInput
           name="password"
           value={formData.password}
           onChange={handleChange}

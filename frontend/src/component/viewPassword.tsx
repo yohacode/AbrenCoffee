@@ -7,6 +7,7 @@ interface PasswordInputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   required: boolean;
+  className: string;
 }
 
 const PasswordInput: React.FC<PasswordInputProps> = ({ id, name, value, onChange, placeholder }) => {
