@@ -55,8 +55,8 @@ const Profile: React.FC = () => {
                 <p><strong>Username:</strong> {user?.username}</p>
                 <p><strong>Email:</strong> {user?.email}</p>
                 <p><strong>Date Joined:</strong> {user?.date_joined}</p>
+                <button className='change-password' onClick={()=> navigate('/change-password')}>Change Password</button>
             </div>
-            <button className='change-password' onClick={()=> navigate('/change-password')}>Change Password</button>
         </>
         
     );

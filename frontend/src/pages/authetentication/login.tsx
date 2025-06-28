@@ -59,9 +59,10 @@ const Login: React.FC = () => {
       localStorage.setItem('username', userUsername);
       localStorage.setItem('isLoggedIn', 'true');
   
-      navigate(-1);
+      navigate('/');
     } catch  {
       toast.error('Login failed. Please try again.');
+      navigate(-1);
     } finally {
       setLoading(true);
     }

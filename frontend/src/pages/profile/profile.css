@@ -75,7 +75,12 @@
   .error-message {
     color: #c0392b;
   }
-  
+  .change-password{
+    padding: .3em;
+    background: none;
+    border: 1px solid #dedede;
+    color: #dedede;
+  }
   /* Responsive tweaks */
   @media (max-width: 780px) {
     .profile{

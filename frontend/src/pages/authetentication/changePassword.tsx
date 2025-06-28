@@ -29,7 +29,7 @@ const ChangePassword:React.FC = () => {
   return (
     <div className="change-password">
       <Backbutton />
-      <h2 className="change-password-title">Login</h2>
+      <h2 className="change-password-title">Change Password</h2>
       <form onSubmit={handleChangePassword} className="change-password-box">
         <input
           type="password"
