@@ -28,7 +28,7 @@ const HomeRegister:React.FC = () => {
       console.log(response.data);
       // You might want to redirect or show success message here
       toast.success('Subscribed successfully!')
-      navigate('/');
+      navigate('/login');
     } catch {
       toast.error('Registration failed');
       setLoading(false);
