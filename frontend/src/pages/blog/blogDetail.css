@@ -69,10 +69,10 @@
     height: 65vh;
     color: #d3d3d3;
     margin: auto;
-  text-align: justify;
-  background-color: rgba(134, 73, 32, 0.824);
-  border-radius: .7em;
-  padding: .8em;
+    text-align: justify;
+    background-color: rgba(134, 73, 32, 0.824);
+    border-radius: .7em;
+    padding: .8em;
 }
 .blog-detail-content .blog-detail-dicription{
   height: 30vh;
@@ -125,9 +125,15 @@
     flex-direction: column;
     width: 100%;
   }
-  .blog-detail-image,
+  .blog-detail-image{
+    width: 91%;
+    height: 45vh;
+    border-radius: 0;
+  }
+
   .blog-detail-content{
-    width: 90%;
+    width: 85%;
+    height: auto;
     letter-spacing: -.08em;
     border-radius: 0;
   }

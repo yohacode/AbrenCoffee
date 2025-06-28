@@ -137,7 +137,7 @@ const PublicBlogDetail: React.FC = () => {
               <>
                 {blogItems.map((blog)=> (
                   <div key={blog.id} className="related-blog-card" onClick={()=> navigate(`blog/detail/${blog.id}`)}>
-                    <img src={`${BASE_URL}/${blog.image}`} alt="" />
+                    <img src={blog.image} alt="" />
                     <div className="related-blog-info">
                       <p>{blog.author_username}</p>
                       <p>comments {comments.length}</p>
@@ -146,7 +146,6 @@ const PublicBlogDetail: React.FC = () => {
                 ))}
               </>
           )}
-          
         </div>
       </section>
     </article>
