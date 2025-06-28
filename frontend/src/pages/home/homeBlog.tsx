@@ -16,7 +16,7 @@ interface Blog {
 const HomeBlog: React.FC = () => {
   const [blogItems, setBlogItems] = useState<Blog[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const blogPerPage = 3;
+  const [blogsPerPage, setBlogsPerPage] = useState(window.innerWidth <= 768 ? 1 : 3);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,7 +32,22 @@ const HomeBlog: React.FC = () => {
     fetchBlogData();
   }, []);
 
-  const totalPages = Math.ceil(blogItems.length / blogPerPage);
+  useEffect(() => {
+  const handleResize = () => {
+    setBlogsPerPage(window.innerWidth <= 768 ? 1 : 3);
+    setCurrentPage(0); // reset to first page on layout switch
+  };
+
+  window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const totalPages = Math.ceil(blogItems.length / blogsPerPage);
+
+  const currentBlogs = blogItems.slice(
+    currentPage * blogsPerPage,
+    (currentPage + 1) * blogsPerPage
+  );
 
   useEffect(() => {
     if (blogItems.length === 0) return;
@@ -51,11 +66,6 @@ const HomeBlog: React.FC = () => {
   const Preview = () => {
     setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
   };
-
-  const currentBlogs = blogItems.slice(
-    currentPage * blogPerPage,
-    (currentPage + 1) * blogPerPage
-  );
 
   return (
     <div className='home-blog'>
