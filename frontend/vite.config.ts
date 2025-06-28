@@ -3,9 +3,10 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: "/static/",
+  base: "/", // root-relative paths
   build: {
-    outDir: "../backend/static",
+    outDir: "dist", // default is fine for static site
     emptyOutDir: true,
   },
 });
+
