@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './viewPassword.css';
 
 interface PasswordInputProps {
   id?: string;
