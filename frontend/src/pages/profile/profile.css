@@ -76,9 +76,10 @@
     color: #c0392b;
   }
   .change-password{
-    padding: .3em;
+    padding: .4em;
     background: none;
     border: 1px solid #dedede;
+    border-radius: .4em;
     color: #dedede;
   }
   /* Responsive tweaks */
