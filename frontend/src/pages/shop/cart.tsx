@@ -42,7 +42,7 @@ const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
                   <div className="cart-item-info">
                     <span className="cart-item-image">
                       <img
-                        src={`http://127.0.0.1:8000/${item.product.image}`}
+                        src={item.product.image}
                         alt={item.product.name}
                         onError={(e) => {
                           (e.currentTarget as HTMLImageElement).src = '/images/placeholder.jpg';
