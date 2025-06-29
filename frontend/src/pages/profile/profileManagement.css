@@ -70,7 +70,9 @@
  .tabs.show{
   display: block;
  }
-
+ .pro-pic-edit, .image-edit{
+  z-index: 999;
+ }
   /* Responsive design */
   @media (max-width: 768px) {
     .profile-management .container {

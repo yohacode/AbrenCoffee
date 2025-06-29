@@ -32,8 +32,9 @@ const ProfileManagement:React.FC = () => {
     const navigate = useNavigate();
 
     // Edit mode state
-      const [editingField, setEditingField] = useState<string | null>(null);
+      const [editingField, setEditingField] = useState<keyof User | null>(null);
       const [editedValue, setEditedValue] = useState<string>('');
+      const [editedFile, setEditedFile] = useState<File | null>(null);
     
 
     const handleToggleClicked = () => {
@@ -139,22 +140,37 @@ const ProfileManagement:React.FC = () => {
     const cancelEditing = () => {
       setEditingField(null);
       setEditedValue('');
+      setEditedFile(null);
     };
+
 
     const saveEdit = async () => {
       if (!user || !editingField) return;
 
       try {
         const token = localStorage.getItem('access_token');
+        const formData = new FormData();
+
+        if (editingField === 'profile_image' && editedFile) {
+          formData.append('profile_image', editedFile);
+        } else {
+          formData.append(editingField, editedValue);
+        }
+
         const response = await axios.patch(
           `/users/update/${user.id}/`,
-          { [editingField]: editedValue },
+          formData,
           {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'multipart/form-data',
+            },
           }
         );
+
         setUser(response.data);
         setEditingField(null);
+        setEditedFile(null);
         setEditedValue('');
       } catch (err: unknown) {
         if (err instanceof Error) {
@@ -164,6 +180,7 @@ const ProfileManagement:React.FC = () => {
         }
       }
     };
+
 
     return (
       <div className="profile-management">
@@ -176,17 +193,22 @@ const ProfileManagement:React.FC = () => {
           </div>
           <div className="profile">
             <div className="profile-container">
-                {editingField === 'image' ? (
+                {editingField === 'profile_image' ? (
                   <>
                     <input
-                      title='image'
+                      title="image"
                       type="file"
                       accept="image/*"
-                      value={editedValue}
-                      onChange={(e) => setEditedValue(e.target.value)}
+                      className='image-edit'
+                      onChange={(e) => {
+                        if (e.target.files && e.target.files.length > 0) {
+                          setEditedFile(e.target.files[0]);
+                        }
+                      }}
                     />
-                    <button onClick={saveEdit}>Save</button>
-                    <button onClick={cancelEditing}>Cancel</button>
+
+                    <button className='pro-pic-edit' onClick={saveEdit}>Save</button>
+                    <button className='pro-pic-edit' onClick={cancelEditing}>Cancel</button>
                   </>
                 ) : (
                   <>
@@ -200,7 +222,7 @@ const ProfileManagement:React.FC = () => {
                       className="proImage"
                       loading="lazy"
                     /> 
-                    <button onClick={() => startEditing('profile_image')}>Edit</button>
+                    <button className='pro-pic-edit' onClick={() => startEditing('profile_image')}>Edit</button>
                   </>
                 )}
 
