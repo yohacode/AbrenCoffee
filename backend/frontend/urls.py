@@ -7,6 +7,6 @@ from django.views.decorators.cache import never_cache
 index_view = never_cache(TemplateView.as_view(template_name="index.html"))
 
 urlpatterns = [
-    re_path(r"^(?!adminPage|api|media|static|users|products|orders|payment|adminPanel|blog|cart|subscription|wishlist|paypal).*$", index_view),
+    re_path(r"^(?!adminPage|api|users|products|orders|payment|adminPanel|blog|cart|subscription|wishlist|paypal).*$", index_view),
 ]
 
