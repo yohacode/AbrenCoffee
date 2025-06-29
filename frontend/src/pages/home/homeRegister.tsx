@@ -24,11 +24,15 @@ const HomeRegister:React.FC = () => {
     setError(null);
 
     try {
-      const response = await axios.post('/api/register/', formData);
-      console.log(response.data);
+      await axios.post('/api/register/', formData);
       // You might want to redirect or show success message here
       toast.success('Subscribed successfully!')
       navigate('/login');
+      setFormData({
+        username: '',
+        email: '',
+        password: '',
+      });
     } catch {
       toast.error('Registration failed');
       setLoading(false);
