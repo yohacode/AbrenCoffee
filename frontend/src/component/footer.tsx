@@ -18,7 +18,6 @@ const Footer: React.FC = () => {
   const [showScroll, setShowScroll] = useState(false);
   const navigate = useNavigate();
 
-  // Example dynamic blog items (could come from props or API)
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
