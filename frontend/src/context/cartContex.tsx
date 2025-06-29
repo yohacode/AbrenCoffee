@@ -45,9 +45,15 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         headers: token ? { Authorization: `Bearer ${token}` } : {},
         withCredentials: true,
       });
-      setCart(response.data);
+      setCart({
+        id: response.data.id ?? 0,
+        cart_items: Array.isArray(response.data.cart_items) ? response.data.cart_items : [],
+        total_price: response.data.total_price ?? 0,
+      });
     } catch (error) {
       console.error('Error fetching cart:', error);
+      // Fail-safe: reset cart to empty
+      setCart({ id: 0, cart_items: [], total_price: 0 });
     }
   };
 

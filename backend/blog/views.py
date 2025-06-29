@@ -7,6 +7,7 @@ from rest_framework.permissions import AllowAny,IsAdminUser, IsAuthenticated
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
 
+
 class BlogList(APIView):
     """
     APIView for retrieving a list of blog posts.

@@ -24,6 +24,7 @@ const Footer: React.FC = () => {
       try {
         const response = await axios.get('blog/list/');
         setBlogItems(response.data.slice(0, 3));
+        console.log(response.data)
       } catch (error) {
         console.error('Error fetching blogs:', error);
       }
