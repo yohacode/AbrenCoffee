@@ -1,6 +1,6 @@
-// src/routes/AdminRoutes.js
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, type ReactElement } from 'react';
+
 const ChangePassword = lazy(()=> import('../pages/authetentication/changePassword')) ;
 const Reset = lazy(() => import('../pages/authetentication/resetPassword')) ;
 const ForgetPassword = lazy(()=> import('../pages/authetentication/forgetPassword')) ;
@@ -8,13 +8,13 @@ const ForgetPassword = lazy(()=> import('../pages/authetentication/forgetPasswor
 const PaymentCancel = lazy(() => import('../pages/shop/paymentCancel'));
 const PaymentSuccess = lazy(() => import('../pages/shop/pymentSuccess'));
 const Register = lazy(() => import('../pages/authetentication/register'));
-const Home = lazy(() => import('../pages/home'));
+const Home = lazy(() => import('../pages/home/home'));
 const About = lazy(() => import('../pages/about'));
 const Contact = lazy(()=> import('../pages/contact'));
 const Login = lazy(() => import('../pages/authetentication/login'));
 const Logout = lazy(() => import('../pages/authetentication/logout'));
 const Services = lazy(() => import('../pages/services'));
-const Subscription = lazy(() => import('../pages/subscription'));
+const Subscription = lazy(() => import('../pages/subscription/subscription'));
 const Blog = lazy(() => import('../pages/blog/blog'));
 const ProfileManagement = lazy(()=> import('../pages/profile/profileManagement'));
 

@@ -100,6 +100,10 @@
   width: 6em;
   height: 6em;
 }
+.related-blog-author{
+  color: #cf6316;
+  font-size: .8rem;
+}
 .reaction-buttons button {
   margin: 4px;
   padding: 6px 10px;

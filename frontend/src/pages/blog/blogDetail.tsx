@@ -139,8 +139,9 @@ const PublicBlogDetail: React.FC = () => {
                   <div key={blog.id} className="related-blog-card" onClick={()=> navigate(`blog/detail/${blog.id}`)}>
                     <img src={blog.image} alt="" />
                     <div className="related-blog-info">
-                      <p>{blog.author_username}</p>
-                      <p>comments {comments.length}</p>
+                      <p className='related-blog-author'>{blog.author_username}</p>
+                      <p className='related-blog-title'>{blog.title}</p>
+                      <span>comments {comments.length}</span>
                     </div>
                   </div>
                 ))}
