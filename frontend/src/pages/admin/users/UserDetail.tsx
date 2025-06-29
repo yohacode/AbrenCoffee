@@ -91,6 +91,29 @@ const UserDetail:React.FC = () => {
           <p><strong>ID:</strong> {user.id}</p>
           <p><strong>Username:</strong> {user.username}</p>
 
+          {/* Profile Image */}
+          <p>
+            <strong>Image:</strong>{' '}
+            {editingField === 'image' ? (
+              <>
+                <input
+                  title='image'
+                  type="file"
+                  accept="image/*"
+                  value={editedValue}
+                  onChange={(e) => setEditedValue(e.target.value)}
+                />
+                <button onClick={saveEdit}>Save</button>
+                <button onClick={cancelEditing}>Cancel</button>
+              </>
+            ) : (
+              <>
+                {user.profile_image}
+                <button onClick={() => startEditing('profile_image')}>Edit</button>
+              </>
+            )}
+          </p>
+
           {/* Email */}
           <p>
             <strong>Email:</strong>{' '}

@@ -31,6 +31,11 @@ const ProfileManagement:React.FC = () => {
     const [isClicked, setIsClicked] = useState(false);
     const navigate = useNavigate();
 
+    // Edit mode state
+      const [editingField, setEditingField] = useState<string | null>(null);
+      const [editedValue, setEditedValue] = useState<string>('');
+    
+
     const handleToggleClicked = () => {
       setIsClicked(!isClicked);
     };
@@ -125,6 +130,41 @@ const ProfileManagement:React.FC = () => {
 
     if (error) return <div className="error-message">{error}</div>;
   
+    const startEditing = (field: keyof User) => {
+      if (!user) return;
+      setEditingField(field);
+      setEditedValue(String(user[field]));
+    };
+
+    const cancelEditing = () => {
+      setEditingField(null);
+      setEditedValue('');
+    };
+
+    const saveEdit = async () => {
+      if (!user || !editingField) return;
+
+      try {
+        const token = localStorage.getItem('access_token');
+        const response = await axios.patch(
+          `/users/update/${user.id}/`,
+          { [editingField]: editedValue },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        setUser(response.data);
+        setEditingField(null);
+        setEditedValue('');
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          alert('Update failed: ' + err.message);
+        } else {
+          alert('Update failed: An unknown error occurred');
+        }
+      }
+    };
+
     return (
       <div className="profile-management">
         <div className="container">
@@ -136,16 +176,34 @@ const ProfileManagement:React.FC = () => {
           </div>
           <div className="profile">
             <div className="profile-container">
-                <img
-                  src={
-                    user?.profile_image
-                      ? user.profile_image
-                      : userImage
-                  }
-                  alt="Profile"
-                  className="proImage"
-                  loading="lazy"
-                />  
+                {editingField === 'image' ? (
+                  <>
+                    <input
+                      title='image'
+                      type="file"
+                      accept="image/*"
+                      value={editedValue}
+                      onChange={(e) => setEditedValue(e.target.value)}
+                    />
+                    <button onClick={saveEdit}>Save</button>
+                    <button onClick={cancelEditing}>Cancel</button>
+                  </>
+                ) : (
+                  <>
+                    <img
+                      src={
+                        user?.profile_image
+                          ? user.profile_image
+                          : userImage
+                      }
+                      alt="Profile"
+                      className="proImage"
+                      loading="lazy"
+                    /> 
+                    <button onClick={() => startEditing('profile_image')}>Edit</button>
+                  </>
+                )}
+
             </div> 
           </div>
           <div className="contents">
