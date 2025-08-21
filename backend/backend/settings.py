@@ -91,7 +91,7 @@ REST_FRAMEWORK = {
 SESSION_ENGINE = os.getenv('SESSION_ENGINE')
 CORS_ALLOW_CREDENTIALS = True
 
-SESSION_COOKIE_SAMESITE = 'None'     # Allow cross-site requests
+SESSION_COOKIE_SAMESITE = None     # Allow cross-site requests
 SESSION_COOKIE_SECURE = False         # Required for 'None' to work in modern browsers
 
 CSRF_COOKIE_SAMESITE = 'None'
