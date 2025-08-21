@@ -188,3 +188,6 @@ cython_debug/
 .cursorindexingignorenode_modules/
 node_modules
 dist
+
+.vscode
+
