@@ -6,10 +6,6 @@ __pycache__/
 # C extensions
 *.so
 
-# Ignore collected static files
-/staticfiles/
-/backend/staticfiles/
-
 
 # Distribution / packaging
 .Python
